@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <!-- Navbar -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
-            <a href="#home" class="nav-logo">CB</a>
+            <a href="#home" class="nav-logo">
+                <span class="logo-bracket">{</span>CB<span class="logo-bracket">}</span>
+            </a>
             <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
                 <span></span>
                 <span></span>
@@ -25,71 +27,119 @@
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#publications" class="nav-link">Publications</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#videos" class="nav-link">Videos</a></li>
                 <li><a href="#cv" class="nav-link">CV</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#contact" class="nav-link btn-nav">Get in touch</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-orb hero-orb-3"></div>
+            <div class="hero-grid-pattern"></div>
+        </div>
         <div class="container hero-content">
             <div class="hero-text">
-                <p class="hero-greeting">Hi, I'm</p>
-                <h1 class="hero-name">Cristiano Baldassari</h1>
-                <p class="hero-title">Researcher &middot; Data Scientist &middot; Filmmaker</p>
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Researcher &amp; Data Scientist
+                </div>
+                <h1 class="hero-name">
+                    Cristiano<br>
+                    <span class="hero-name-accent">Baldassari</span>
+                </h1>
                 <p class="hero-description">
-                    Researcher at the University of Tuscia and freelance Data Scientist based in Rome.
-                    I work at the intersection of machine learning, complex networks and financial time series analysis.
-                    I also direct short films and documentaries.
+                    I work at the intersection of <strong>machine learning</strong>, <strong>complex networks</strong>
+                    and <strong>financial time series</strong> at the University of Tuscia.
+                    I build unsupervised methodologies that bridge graph theory and optimal transport.
                 </p>
                 <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Get in touch</a>
-                    <a href="#publications" class="btn btn-secondary">My research</a>
+                    <a href="#publications" class="btn btn-primary">
+                        <span>Explore research</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+                    </a>
+                    <a href="#contact" class="btn btn-ghost">Contact me</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">13+</span>
+                        <span class="hero-stat-label">Publications</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">10+</span>
+                        <span class="hero-stat-label">Years in Data</span>
+                    </div>
+                    <div class="hero-stat-divider"></div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-number">3</span>
+                        <span class="hero-stat-label">Research Streams</span>
+                    </div>
                 </div>
             </div>
-            <div class="hero-image">
+            <div class="hero-visual">
                 <!-- Replace with your photo: <img src="img/photo.jpg" alt="Cristiano Baldassari"> -->
-                <div class="hero-image-placeholder">CB</div>
+                <div class="hero-image-frame">
+                    <div class="hero-image-placeholder">CB</div>
+                    <div class="hero-image-ring"></div>
+                </div>
             </div>
+        </div>
+        <div class="hero-scroll">
+            <span>scroll</span>
+            <div class="hero-scroll-line"></div>
         </div>
     </section>
 
     <!-- About -->
     <section class="section" id="about">
         <div class="container">
-            <h2 class="section-title">About</h2>
+            <div class="section-header">
+                <span class="section-label">01 / About</span>
+                <h2 class="section-title">Building bridges between<br>data and discovery</h2>
+            </div>
             <div class="about-content">
                 <div class="about-text">
                     <p>
                         I am a researcher at the Department of Economics, Engineering, Society and Business (DEIM)
-                        of the University of Tuscia in Viterbo, and a collaborator at the Rome Technopole Data Lab.
-                        I hold a degree in Physics from Sapienza University of Rome.
+                        of the <strong>University of Tuscia</strong> in Viterbo, and a collaborator at the
+                        <strong>Rome Technopole Data Lab</strong>. I hold a degree in Physics from
+                        <strong>Sapienza University of Rome</strong>.
                     </p>
                     <p>
-                        My research focuses on machine learning, complex networks, signal processing and data mining,
-                        with applications to financial and energy markets. I develop unsupervised methodologies that
-                        bridge time series analysis and graph theory — from visibility graphs to Wasserstein barycenters.
+                        My research focuses on developing unsupervised methodologies that combine time series analysis
+                        with graph theory — from visibility graphs and Markov Transition Fields to Wasserstein barycenters.
+                        I apply these techniques to financial and energy markets.
                     </p>
                     <p>
                         As a freelance data scientist I have worked on customer churn prediction, marketing analytics,
-                        content optimization and data acquisition systems. Outside of research, I am a filmmaker
-                        with over 50 short films and documentaries.
+                        data acquisition systems and content optimization for clients across multiple industries.
                     </p>
                 </div>
-                <div class="about-highlights">
-                    <div class="highlight-card">
-                        <span class="highlight-number">13+</span>
-                        <span class="highlight-label">Publications</span>
+                <div class="about-cards">
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <h3>Machine Learning</h3>
+                        <p>Gaussian mixtures, ensemble methods, unsupervised clustering, optimal transport</p>
                     </div>
-                    <div class="highlight-card">
-                        <span class="highlight-number">54</span>
-                        <span class="highlight-label">Videos</span>
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="6" r="3"/><circle cx="19" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M5 9v3a7 7 0 007 7m7-10v3a7 7 0 01-7 7"/></svg>
+                        </div>
+                        <h3>Complex Networks</h3>
+                        <p>Visibility graphs, Markov Transition Fields, graph-based ML, manifold learning</p>
                     </div>
-                    <div class="highlight-card">
-                        <span class="highlight-number">10+</span>
-                        <span class="highlight-label">Years in Data</span>
+                    <div class="about-card">
+                        <div class="about-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 5 5-9"/></svg>
+                        </div>
+                        <h3>Financial Modeling</h3>
+                        <p>Energy markets, interest rates, jump-diffusion processes, electricity pricing</p>
                     </div>
                 </div>
             </div>
@@ -97,190 +147,224 @@
     </section>
 
     <!-- Publications -->
-    <section class="section section-alt" id="publications">
+    <section class="section section-dark" id="publications">
         <div class="container">
-            <h2 class="section-title">Publications</h2>
-            <p class="section-subtitle">
-                <a href="https://scholar.google.com/citations?user=0CeqNRQAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar profile</a>
-            </p>
+            <div class="section-header">
+                <span class="section-label">02 / Research</span>
+                <h2 class="section-title">Publications</h2>
+                <p class="section-description">
+                    Peer-reviewed research in machine learning, complex networks and quantitative finance.
+                    <a href="https://scholar.google.com/citations?user=0CeqNRQAAAAJ&hl=en" target="_blank" rel="noopener">View on Google Scholar &rarr;</a>
+                </p>
+            </div>
+
+            <div class="pub-filters">
+                <button class="pub-filter active" data-filter="all">All</button>
+                <button class="pub-filter" data-filter="ml">Machine Learning</button>
+                <button class="pub-filter" data-filter="innovation">Innovation</button>
+            </div>
+
             <div class="publications-list">
 
-                <!-- 2026 -->
-                <article class="publication-item">
-                    <span class="publication-year">2026</span>
+                <article class="publication-item" data-tags="ml">
+                    <div class="pub-year-badge">2026</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Information-Driven Modeling of Energy Markets: An Unbalanced Wasserstein Barycenter Approach</h3>
                         <p class="publication-authors">Mari C., Baldassari C.</p>
                         <p class="publication-venue">Applied Stochastic Models in Business and Industry, Wiley</p>
-                        <p class="publication-abstract">A novel methodology is proposed for jointly modeling the price dynamics of natural gas and electricity by integrating graph-based machine learning and optimal transport theory. The procedure reveals an asymmetric balance between the two markets, with natural gas exerting a structurally dominant influence. A Gaussian Mixture Model is fitted to the unbalanced Wasserstein barycenter using maximum likelihood estimation via the EM algorithm. Applied to Italian market data from 2019 to 2023, a period marked by extreme volatility and systemic shocks, the methodology accurately reproduces both common dynamics and idiosyncratic deviations.</p>
+                        <p class="publication-abstract">A novel methodology is proposed for jointly modeling the price dynamics of natural gas and electricity by integrating graph-based machine learning and optimal transport theory. The procedure reveals an asymmetric balance between the two markets, with natural gas exerting a structurally dominant influence. A Gaussian Mixture Model is fitted to the unbalanced Wasserstein barycenter using maximum likelihood estimation via the EM algorithm. Applied to Italian market data from 2019 to 2023, the methodology accurately reproduces both common dynamics and idiosyncratic deviations.</p>
                         <div class="publication-links">
-                            <a href="https://onlinelibrary.wiley.com/doi/10.1002/asmb.70080" class="tag-link" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://onlinelibrary.wiley.com/doi/10.1002/asmb.70080" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                DOI
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2025 -->
-                <article class="publication-item">
-                    <span class="publication-year">2025</span>
+                <article class="publication-item" data-tags="ml">
+                    <div class="pub-year-badge">2025</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Group Detection in Energy Commodity Markets Through Manifold-Informed Wasserstein Barycenter</h3>
                         <p class="publication-authors">Mari C., Laureti T., Baldassari C.</p>
                         <p class="publication-venue">Quality &amp; Quantity, vol. 59, no. 3, pp. 2197–2227</p>
-                        <p class="publication-abstract">An unsupervised machine learning methodology is proposed to examine connections between energy commodity price dynamics (oil, gas, electricity in the USA) and macroeconomic variables (interest rates and the S&amp;P index). The approach combines three key techniques: the Wasserstein barycenter for identifying optimal probability distributions, Graph Machine Learning for network analysis, and Manifold Learning for dimensionality reduction. Key findings include the discovery of a well-defined group of energy commodity markets that share similar characteristics.</p>
+                        <p class="publication-abstract">An unsupervised machine learning methodology to examine connections between energy commodity price dynamics (oil, gas, electricity in the USA) and macroeconomic variables. The approach combines three key techniques: the Wasserstein barycenter for identifying optimal probability distributions, Graph Machine Learning for network analysis, and Manifold Learning for dimensionality reduction.</p>
                         <div class="publication-links">
-                            <a href="https://link.springer.com/article/10.1007/s11135-025-02147-1" class="tag-link" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://link.springer.com/article/10.1007/s11135-025-02147-1" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                DOI
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2024a -->
-                <article class="publication-item">
-                    <span class="publication-year">2024</span>
+                <article class="publication-item" data-tags="ml">
+                    <div class="pub-year-badge">2024</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Understanding the Complexities of the Fine Structure of Interest Rates: A Wasserstein Barycenter Learning Approach</h3>
                         <p class="publication-authors">Mari C., Baldassari C.</p>
                         <p class="publication-venue">Neural Computing and Applications, vol. 36, pp. 19291–19305</p>
-                        <p class="publication-abstract">A novel methodology to investigate the fine structure of interest rates based on machine learning techniques, with a fine-tuning of single-maturity interest rates to capture maturity-specific stochastic factors. The proposed analysis tests the hypothesis of a market segmentation into a short-term segment (the money market) and a long-term segment (the capital market), each with its own segment-specific stochastic factors. The methodology was tested on the US zero-coupon Treasury yield curve.</p>
+                        <p class="publication-abstract">A novel methodology to investigate the fine structure of interest rates based on machine learning techniques, with fine-tuning of single-maturity interest rates to capture maturity-specific stochastic factors. The analysis tests the hypothesis of market segmentation into a short-term and long-term segment, tested on the US zero-coupon Treasury yield curve.</p>
                         <div class="publication-links">
-                            <a href="https://link.springer.com/article/10.1007/s00521-024-10202-5" class="tag-link" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://link.springer.com/article/10.1007/s00521-024-10202-5" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                DOI
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2024b -->
-                <article class="publication-item">
-                    <span class="publication-year">2024</span>
+                <article class="publication-item" data-tags="ml">
+                    <div class="pub-year-badge">2024</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Stochastic Inflation and the Term Structure of Interest Rates: A Simple Diffusion Model</h3>
                         <p class="publication-authors">Baldassari C., Meschini M., Nascenzi P.</p>
-                        <p class="publication-venue">Journal of Finance and Investment Analysis, vol. 13, no. 4, pp. 1–2</p>
-                        <p class="publication-abstract">The paper addresses valuing contingent claims on the term structure in a single good economy under uncertain inflation. A simple diffusion model for pricing inflation-indexed securities is proposed in the arbitrage-free context. A martingale characterization of nominal and real prices is given, a stochastic generalization of the Fisher equation is provided, and a two-factor model for practical inflation-linked security valuation is discussed.</p>
+                        <p class="publication-venue">Journal of Finance and Investment Analysis, vol. 13, no. 4</p>
+                        <p class="publication-abstract">A simple diffusion model for pricing inflation-indexed securities in the arbitrage-free context. A martingale characterization of nominal and real prices is given, a stochastic generalization of the Fisher equation is provided, and a two-factor model for practical inflation-linked security valuation is discussed.</p>
                         <div class="publication-links">
-                            <a href="https://doi.org/10.47260/jfia/1342" class="tag-link" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://doi.org/10.47260/jfia/1342" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                DOI
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2023a -->
-                <article class="publication-item">
-                    <span class="publication-year">2023</span>
+                <article class="publication-item" data-tags="ml">
+                    <div class="pub-year-badge">2023</div>
                     <div class="publication-details">
                         <h3 class="publication-title">A Graph-Based Superframework for Mixture Model Estimation Using EM: An Analysis of US Wholesale Electricity Markets</h3>
                         <p class="publication-authors">Mari C., Baldassari C.</p>
                         <p class="publication-venue">Neural Computing and Applications, vol. 35, no. 20, pp. 14867–14883</p>
-                        <p class="publication-abstract">A fully unsupervised graph-based superframework is proposed to handle the EM initialization problem for estimating mixture models on financial time series. Using a complex network approach that links time series and graphs, graph-structured information derived from the observed data is exploited to produce a meaningful starting point for the EM algorithm. It is shown that structural information derived by complex graphs can definitely capture time series behavior and nonlinear relationships between different observations.</p>
+                        <p class="publication-abstract">A fully unsupervised graph-based superframework to handle the EM initialization problem for estimating mixture models on financial time series. Structural information derived by complex graphs captures time series behavior and nonlinear relationships between different observations.</p>
                         <div class="publication-links">
-                            <a href="https://link.springer.com/article/10.1007/s00521-023-08468-2" class="tag-link" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://link.springer.com/article/10.1007/s00521-023-08468-2" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                DOI
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2023b -->
-                <article class="publication-item">
-                    <span class="publication-year">2023</span>
+                <article class="publication-item" data-tags="ml">
+                    <div class="pub-year-badge">2023</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Optimization of Mixture Models on Time Series Networks Encoded by Visibility Graphs: An Analysis of the US Electricity Market</h3>
                         <p class="publication-authors">Mari C., Baldassari C.</p>
                         <p class="publication-venue">Computational Management Science, vol. 20, no. 1, article 28</p>
-                        <p class="publication-abstract">A fully unsupervised network-based methodology for estimating Gaussian Mixture Models on financial time series by maximum likelihood using the EM algorithm, with visibility graph-structured information of observed data used to initialize the algorithm. Encoding time series through Visibility Graphs allows capturing the behavior of the time series and the nonlinear interactions between observations. The methodology is applied to the US wholesale electricity market.</p>
+                        <p class="publication-abstract">A fully unsupervised network-based methodology for estimating Gaussian Mixture Models using the EM algorithm with visibility graph-structured information. Encoding time series through Visibility Graphs captures the behavior and nonlinear interactions between observations.</p>
                         <div class="publication-links">
-                            <a href="https://link.springer.com/article/10.1007/s10287-023-00460-4" class="tag-link" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://link.springer.com/article/10.1007/s10287-023-00460-4" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                DOI
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2022a -->
-                <article class="publication-item">
-                    <span class="publication-year">2022</span>
+                <article class="publication-item" data-tags="ml">
+                    <div class="pub-year-badge">2022</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Unsupervised Expectation-Maximization Algorithm Initialization for Mixture Models: A Complex Network-Driven Approach for Modeling Financial Time Series</h3>
                         <p class="publication-authors">Mari C., Baldassari C.</p>
                         <p class="publication-venue">Information Sciences, vol. 617, pp. 1–16</p>
-                        <p class="publication-abstract">The methodology exploits the duality between univariate time series and complex networks to provide a new approach for estimating mixture models by maximum likelihood based on an unsupervised initialization technique of the EM algorithm. A fully unsupervised network-based initialization technique is provided by mapping time series to complex networks using the Markov Transition Field as adjacency matrix. The technique produces significantly better results, outperforming existing methods in terms of maximum likelihood, a lower number of components, and agreement with the empirical distribution of log-returns.</p>
+                        <p class="publication-abstract">Exploiting the duality between univariate time series and complex networks to provide a new approach for estimating mixture models by maximum likelihood. A fully unsupervised initialization technique maps time series to complex networks using the Markov Transition Field as adjacency matrix, outperforming existing methods.</p>
                         <div class="publication-links">
-                            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0020025522011938" class="tag-link" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://www.sciencedirect.com/science/article/abs/pii/S0020025522011938" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                DOI
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2022b -->
-                <article class="publication-item">
-                    <span class="publication-year">2022</span>
+                <article class="publication-item" data-tags="innovation">
+                    <div class="pub-year-badge">2022</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Using Text Data Instead of SIC Codes to Tag Innovative Firms and Classify Industrial Activities</h3>
                         <p class="publication-authors">Marra A., Baldassari C.</p>
                         <p class="publication-venue">PLoS ONE, vol. 17, no. 6, e0270041</p>
-                        <p class="publication-abstract">The study employs text mining and semantic algorithms to classify innovative companies as an alternative to standard industrial classification codes. Rather than relying on SIC codes, information is gathered from company websites and corporate documents, extracting keywords to generate tags about firms' activities, specializations and competencies. By matching firms' keywords, researchers can measure interconnectedness and derive industrial proximity measures. The analysis examined 583 innovative firms in Italy's Chieti-Pescara provinces.</p>
+                        <p class="publication-abstract">Text mining and semantic algorithms to classify innovative companies as an alternative to standard industrial classification codes. Information is gathered from company websites and corporate documents, extracting keywords to derive industrial proximity measures. The analysis examined 583 innovative firms in Italy.</p>
                         <div class="publication-links">
-                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9246165/" class="tag-link" target="_blank" rel="noopener">PDF</a>
+                            <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9246165/" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                                PDF
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2021 -->
-                <article class="publication-item">
-                    <span class="publication-year">2021</span>
+                <article class="publication-item" data-tags="ml">
+                    <div class="pub-year-badge">2021</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Ensemble Methods for Jump-Diffusion Models of Power Prices</h3>
                         <p class="publication-authors">Mari C., Baldassari C.</p>
                         <p class="publication-venue">Energies, vol. 14, no. 8, 2084</p>
-                        <p class="publication-abstract">A machine learning-based methodology which makes use of ensemble methods for treating missing data in time series with irregular observation times, detecting anomalies and defining suitable models of system dynamics. Applied to US wholesale electricity price time series characterized by missing data, high volatility, jumps and pronounced spikes. The missForest algorithm handles missing data while the isolation forest algorithm detects anomalous regions, allowing suitable jump-diffusion models of power prices to be defined.</p>
+                        <p class="publication-abstract">A machine learning-based methodology using ensemble methods for treating missing data in time series, detecting anomalies and defining suitable models of system dynamics. Applied to US wholesale electricity prices with missForest for imputation and isolation forest for anomaly detection.</p>
                         <div class="publication-links">
-                            <a href="https://www.mdpi.com/1996-1073/14/8/2084" class="tag-link" target="_blank" rel="noopener">PDF</a>
+                            <a href="https://www.mdpi.com/1996-1073/14/8/2084" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                                PDF
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2020 -->
-                <article class="publication-item">
-                    <span class="publication-year">2020</span>
+                <article class="publication-item" data-tags="innovation">
+                    <div class="pub-year-badge">2020</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Exploring Networks of Proximity for Partner Selection, Firms' Collaboration and Knowledge Exchange. The Case of Clean-Tech Industry</h3>
                         <p class="publication-authors">Marra A., Carlei V., Baldassari C.</p>
                         <p class="publication-venue">Business Strategy and the Environment, vol. 29, no. 3, pp. 1034–1044</p>
-                        <p class="publication-abstract">The paper examines how firms can identify suitable collaboration partners through network analysis within the clean-technology sector. 4,782 clean-tech companies globally are analyzed to develop a methodology supporting partner screening and knowledge exchange. Energy companies pursuing specialization should leverage their network of business proximity, while those seeking diversification should explore their strategic proximity network to engage with firms possessing complementary capabilities.</p>
+                        <p class="publication-abstract">How firms identify suitable collaboration partners through network analysis within the clean-technology sector. 4,782 clean-tech companies are analyzed to develop a methodology supporting partner screening and knowledge exchange through networks of business and strategic proximity.</p>
                         <div class="publication-links">
-                            <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/bse.2415" class="tag-link" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/bse.2415" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                DOI
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2019 -->
-                <article class="publication-item">
-                    <span class="publication-year">2019</span>
+                <article class="publication-item" data-tags="innovation">
+                    <div class="pub-year-badge">2019</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Innovative Industries, Emerging Specialisations and Distinctive Skills: A Bottom-Up Investigation of Chieti and Pescara</h3>
                         <p class="publication-authors">Marra A., Baldassari C., Cantelmo A.</p>
                         <p class="publication-venue">L'industria (Il Mulino), pp. 497–518</p>
-                        <p class="publication-abstract">An investigation of 583 innovative firms in the Chieti-Pescara ecosystem using text mining techniques to identify emerging specializations in ICT, software, research, consulting and e-commerce. The study maps innovative industries and their distinctive competencies from the bottom up, offering insight into the local innovation landscape.</p>
+                        <p class="publication-abstract">An investigation of 583 innovative firms in the Chieti-Pescara ecosystem using text mining to identify emerging specializations in ICT, software, research, consulting and e-commerce, mapping innovative industries from the bottom up.</p>
                         <div class="publication-links">
-                            <a href="https://doi.org/10.1430/94758" class="tag-link" target="_blank" rel="noopener">DOI</a>
+                            <a href="https://doi.org/10.1430/94758" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+                                DOI
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2016 -->
-                <article class="publication-item">
-                    <span class="publication-year">2016</span>
+                <article class="publication-item" data-tags="innovation">
+                    <div class="pub-year-badge">2016</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Digital Technologies for Social Innovation: An Empirical Recognition on the New Enablers</h3>
                         <p class="publication-authors">Maiolini R., Marra A., Baldassari C., Carlei V.</p>
                         <p class="publication-venue">Journal of Technology Management and Innovation, vol. 11, no. 4, pp. 22–28</p>
-                        <p class="publication-abstract">The article offers empirical recognition to Social Innovation by investigating social and innovative activities conducted by startups and SMEs across the world between 2001 and 2014. It captures SI core businesses and underlying complementarities between products, markets and technologies, showing how digital media and IT are tracing innovation trajectories over a multitude of industries, leading current industrial patterns of SI and fostering its cross-industry nature.</p>
+                        <p class="publication-abstract">Empirical recognition to Social Innovation by investigating activities conducted by startups and SMEs worldwide between 2001 and 2014. Digital media and IT are shown to trace innovation trajectories over a multitude of industries, leading current industrial patterns and fostering cross-industry SI.</p>
                         <div class="publication-links">
-                            <a href="https://www.jotmi.org/index.php/GT/article/view/2156" class="tag-link" target="_blank" rel="noopener">PDF</a>
+                            <a href="https://www.jotmi.org/index.php/GT/article/view/2156" class="pub-link" target="_blank" rel="noopener">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+                                PDF
+                            </a>
                         </div>
                     </div>
                 </article>
 
-                <!-- 2015 -->
-                <article class="publication-item">
-                    <span class="publication-year">2015</span>
+                <article class="publication-item" data-tags="innovation">
+                    <div class="pub-year-badge">2015</div>
                     <div class="publication-details">
                         <h3 class="publication-title">Social Innovation in US Tech Industries: Its Core Business and Main Drivers of Innovation</h3>
                         <p class="publication-authors">Marra A., Maiolini R., Baldassari C., Carlei V.</p>
                         <p class="publication-venue">DRUID Conference, Rome, pp. 1–22</p>
-                        <p class="publication-abstract">Conference paper examining social innovation in US technology industries. The study identifies core business patterns and the main drivers of innovation across tech sectors, serving as the basis for the later JOTMI journal publication on digital technologies for social innovation.</p>
+                        <p class="publication-abstract">Conference paper examining social innovation in US technology industries, identifying core business patterns and the main drivers of innovation across tech sectors.</p>
                         <div class="publication-links">
                         </div>
                     </div>
@@ -293,19 +377,27 @@
     <!-- Projects -->
     <section class="section" id="projects">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
+            <div class="section-header">
+                <span class="section-label">03 / Code</span>
+                <h2 class="section-title">Projects</h2>
+            </div>
             <div class="projects-grid">
 
                 <article class="project-card">
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
-                        <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
                         </svg>
-                        <a href="https://github.com/cbaldassari/unbalanced" class="project-repo-link" target="_blank" rel="noopener">GitHub</a>
+                        <a href="https://github.com/cbaldassari/unbalanced" class="project-repo-link" target="_blank" rel="noopener">
+                            View on GitHub
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+                        </a>
                     </div>
                     <h3 class="project-title">unbalanced</h3>
                     <p class="project-description">
-                        Code and notebooks for the paper "Information-Driven Modeling of Energy Markets: An Unbalanced Wasserstein Barycenter Approach" (2026).
+                        Code and notebooks for "Information-Driven Modeling of Energy Markets:
+                        An Unbalanced Wasserstein Barycenter Approach" (ASMBI, 2026).
                     </p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
@@ -316,14 +408,16 @@
                 </article>
 
                 <article class="project-card">
+                    <div class="project-card-glow"></div>
                     <div class="project-header">
-                        <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/>
+                        <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20M2 12h20"/>
                         </svg>
                     </div>
                     <h3 class="project-title">Explo</h3>
                     <p class="project-description">
-                        A mapping &amp; matching tool for exploring networks of proximity and partner selection in innovation ecosystems.
+                        A mapping &amp; matching tool for exploring networks of proximity
+                        and partner selection in innovation ecosystems.
                     </p>
                     <div class="project-tags">
                         <span class="tag">Data Mining</span>
@@ -332,77 +426,17 @@
                     </div>
                 </article>
 
-                <!-- Add more projects as needed -->
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Videos -->
-    <section class="section section-alt" id="videos">
-        <div class="container">
-            <h2 class="section-title">Videos</h2>
-            <p class="section-subtitle">
-                A selection from my <a href="https://vimeo.com/cristianobaldassari" target="_blank" rel="noopener">Vimeo channel</a> (54 videos)
-            </p>
-            <div class="video-grid">
-
-                <article class="video-card">
-                    <div class="video-embed">
-                        <iframe src="https://player.vimeo.com/video/304557581?badge=0&autopause=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3 class="video-title">Frammenti di Libertà</h3>
-                    <span class="video-category">Documentary</span>
-                </article>
-
-                <article class="video-card">
-                    <div class="video-embed">
-                        <iframe src="https://player.vimeo.com/video/389345632?badge=0&autopause=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3 class="video-title">Iperinflazione</h3>
-                    <span class="video-category">Short Film</span>
-                </article>
-
-                <article class="video-card">
-                    <div class="video-embed">
-                        <iframe src="https://player.vimeo.com/video/237892752?badge=0&autopause=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3 class="video-title">Scatto Libero</h3>
-                    <span class="video-category">Documentary</span>
-                </article>
-
-                <article class="video-card">
-                    <div class="video-embed">
-                        <iframe src="https://player.vimeo.com/video/500404051?badge=0&autopause=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3 class="video-title">Explo — Mapping &amp; Matching Tool</h3>
-                    <span class="video-category">Tech</span>
-                </article>
-
-                <article class="video-card">
-                    <div class="video-embed">
-                        <iframe src="https://player.vimeo.com/video/62565917?badge=0&autopause=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3 class="video-title">I Love Spaghetti Western</h3>
-                    <span class="video-category">Short Film</span>
-                </article>
-
-                <article class="video-card">
-                    <div class="video-embed">
-                        <iframe src="https://player.vimeo.com/video/49118471?badge=0&autopause=0" frameborder="0" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
-                    </div>
-                    <h3 class="video-title">Medicina Solidale</h3>
-                    <span class="video-category">Documentary</span>
-                </article>
-
             </div>
         </div>
     </section>
 
     <!-- CV -->
-    <section class="section" id="cv">
+    <section class="section section-dark" id="cv">
         <div class="container">
-            <h2 class="section-title">Curriculum Vitae</h2>
+            <div class="section-header">
+                <span class="section-label">04 / Experience</span>
+                <h2 class="section-title">Curriculum Vitae</h2>
+            </div>
 
             <div class="cv-download">
                 <!-- <a href="docs/cv.pdf" class="btn btn-primary" download>Download CV (PDF)</a> -->
@@ -415,6 +449,7 @@
                         <span class="timeline-date">Present</span>
                         <h3>Researcher — DEIM</h3>
                         <p>Università degli Studi della Tuscia, Viterbo</p>
+                        <p class="timeline-detail">Machine learning, complex networks and financial time series analysis</p>
                     </div>
                 </div>
 
@@ -423,7 +458,7 @@
                     <div class="timeline-content">
                         <span class="timeline-date">Present</span>
                         <h3>Collaborator — Rome Technopole Data Lab</h3>
-                        <p>Research and applied data science</p>
+                        <p>Applied data science and research</p>
                     </div>
                 </div>
 
@@ -432,7 +467,8 @@
                     <div class="timeline-content">
                         <span class="timeline-date">Ongoing</span>
                         <h3>Freelance Data Scientist</h3>
-                        <p>Customer churn prediction, marketing analytics, data acquisition systems, content optimization &amp; SEO</p>
+                        <p>Greater Rome Area</p>
+                        <p class="timeline-detail">Customer churn prediction, marketing analytics, data acquisition systems, content optimization &amp; SEO</p>
                     </div>
                 </div>
 
@@ -449,44 +485,53 @@
     </section>
 
     <!-- Contact -->
-    <section class="section section-alt" id="contact">
-        <div class="container">
-            <h2 class="section-title">Contact</h2>
-            <p class="contact-intro">Interested in collaborating or have questions? Get in touch!</p>
+    <section class="section" id="contact">
+        <div class="container contact-container">
+            <div class="section-header">
+                <span class="section-label">05 / Connect</span>
+                <h2 class="section-title">Let's collaborate</h2>
+                <p class="section-description">Interested in research collaborations, data science projects or just a conversation? Reach out.</p>
+            </div>
 
             <div class="contact-grid">
                 <a href="#" class="contact-card" id="email-link" onclick="openMail(event)">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="4" width="20" height="16" rx="2"/>
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                    </svg>
-                    <span>Email</span>
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                    </div>
+                    <span class="contact-card-label">Email</span>
+                    <span class="contact-card-hint">Click to open</span>
                 </a>
                 <a href="https://github.com/cbaldassari" class="contact-card" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                    </svg>
-                    <span>GitHub</span>
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                    </div>
+                    <span class="contact-card-label">GitHub</span>
+                    <span class="contact-card-hint">cbaldassari</span>
                 </a>
                 <a href="https://www.linkedin.com/in/cristianobaldassari" class="contact-card" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
-                    </svg>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://vimeo.com/cristianobaldassari" class="contact-card" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 8.5c-.1 2.1-1.6 5-4.4 8.7C14.7 20.7 12.3 22.5 10.3 22.5c-1.2 0-2.3-1.2-3.1-3.5-.6-2-1.1-4-1.7-6-.6-2.3-1.3-3.5-2.1-3.5-.2 0-.7.3-1.6.9L1 9.3c1-.9 2-1.8 3-2.7 1.4-1.2 2.4-1.8 3-1.9 1.6-.2 2.6.9 3 3.3.4 2.6.7 4.2.9 4.8.5 2.3 1.1 3.4 1.7 3.4.5 0 1.2-.8 2.1-2.3.9-1.5 1.4-2.7 1.5-3.5.1-1.4-.4-2.1-1.5-2.1-.5 0-1.1.1-1.7.4 1.1-3.7 3.3-5.5 6.4-5.4 2.3.1 3.4 1.6 3.3 4.2z"/>
-                    </svg>
-                    <span>Vimeo</span>
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                            <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                        </svg>
+                    </div>
+                    <span class="contact-card-label">LinkedIn</span>
+                    <span class="contact-card-hint">cristianobaldassari</span>
                 </a>
                 <a href="https://scholar.google.com/citations?user=0CeqNRQAAAAJ&hl=en" class="contact-card" target="_blank" rel="noopener">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                        <path d="M12 14l-6-3.5V4l6-3 6 3v6.5l-6 3.5z"/>
-                    </svg>
-                    <span>Scholar</span>
+                    <div class="contact-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                            <path d="M12 14l-6-3.5V4l6-3 6 3v6.5l-6 3.5z"/>
+                        </svg>
+                    </div>
+                    <span class="contact-card-label">Google Scholar</span>
+                    <span class="contact-card-hint">Publications &amp; citations</span>
                 </a>
             </div>
         </div>
@@ -494,8 +539,9 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Cristiano Baldassari. All rights reserved.</p>
+        <div class="container footer-content">
+            <p>&copy; 2026 Cristiano Baldassari</p>
+            <p class="footer-tagline">Built with curiosity.</p>
         </div>
     </footer>
 
