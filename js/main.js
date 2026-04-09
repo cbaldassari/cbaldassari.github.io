@@ -79,17 +79,6 @@ document.querySelectorAll('.publication-abstract').forEach(el => {
 });
 
 // =============================================
-// ANTI-SPAM EMAIL
-// =============================================
-
-function openMail(e) {
-    e.preventDefault();
-    const u = 'tuanome';       // ← your username before @
-    const d = 'unitus.it';     // ← domain
-    window.location.href = 'mai' + 'lto:' + u + '@' + d;
-}
-
-// =============================================
 // FADE-IN ON SCROLL
 // =============================================
 
