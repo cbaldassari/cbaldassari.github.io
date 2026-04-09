@@ -1017,8 +1017,14 @@ strong {
     color: var(--color-text-tertiary);
 }
 
-.footer-tagline {
-    font-style: italic;
+.footer-link {
+    font-size: 0.82rem;
+    color: var(--color-text-tertiary);
+    transition: color var(--transition);
+}
+
+.footer-link:hover {
+    color: var(--color-primary);
 }
 
 /* =============================================
