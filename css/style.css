@@ -200,6 +200,31 @@ strong {
     pointer-events: none;
 }
 
+.hero-graph {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+}
+
+.hero-graph-communities {
+    width: 700px;
+    height: 700px;
+    background-image: url('../img/communities.png');
+    top: 50%;
+    right: -8%;
+    transform: translateY(-50%);
+    opacity: 0.06;
+    filter: saturate(0.3);
+    animation: graphDrift 30s ease-in-out infinite;
+}
+
+@keyframes graphDrift {
+    0%, 100% { transform: translateY(-50%) scale(1) rotate(0deg); }
+    50% { transform: translateY(-52%) scale(1.02) rotate(2deg); }
+}
+
 .hero-orb {
     position: absolute;
     border-radius: 50%;
@@ -224,15 +249,6 @@ strong {
     bottom: 10%;
     left: -10%;
     animation-delay: -7s;
-}
-
-.hero-orb-3 {
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(var(--color-primary-rgb), 0.12), transparent 70%);
-    top: 40%;
-    left: 50%;
-    animation-delay: -14s;
 }
 
 @keyframes orbFloat {
@@ -540,8 +556,29 @@ strong {
    ABOUT
    ============================================= */
 
+.section-graph {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-graph-bg {
+    position: absolute;
+    top: -20%;
+    left: 55%;
+    width: 600px;
+    height: 600px;
+    background: url('../img/hairball.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.07;
+    filter: saturate(0);
+    pointer-events: none;
+    animation: graphDrift 25s ease-in-out infinite reverse;
+}
+
 .about-content {
     max-width: 640px;
+    position: relative;
+    z-index: 1;
 }
 
 .about-text p {
@@ -1128,6 +1165,18 @@ strong {
 
     .hero-scroll {
         display: none;
+    }
+
+    .hero-graph-communities {
+        width: 400px;
+        height: 400px;
+        opacity: 0.04;
+    }
+
+    .section-graph-bg {
+        opacity: 0.04;
+        width: 350px;
+        height: 350px;
     }
 
     .section {
