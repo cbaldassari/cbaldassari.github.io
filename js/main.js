@@ -79,8 +79,18 @@ function openMail(e) {
     window.location.href = 'mai' + 'lto:' + u + '@' + d;
 }
 
+// =============================================
+// PUBLICATION ABSTRACT TOGGLE
+// =============================================
+
+document.querySelectorAll('.publication-abstract').forEach(el => {
+    el.addEventListener('click', () => {
+        el.classList.toggle('expanded');
+    });
+});
+
 // Apply fade-in to section content
-document.querySelectorAll('.section-title, .publication-item, .project-card, .blog-card, .teaching-item, .timeline-item, .contact-card, .about-content, .hero-content').forEach(el => {
+document.querySelectorAll('.section-title, .publication-item, .project-card, .video-card, .teaching-item, .timeline-item, .contact-card, .about-content, .hero-content').forEach(el => {
     el.classList.add('fade-in');
     observer.observe(el);
 });
