@@ -541,10 +541,7 @@ strong {
    ============================================= */
 
 .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 56px;
-    align-items: start;
+    max-width: 640px;
 }
 
 .about-text p {
