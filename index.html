@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristiano Baldassari</title>
+    <meta name="description" content="Sito personale di Cristiano Baldassari — Università degli Studi della Tuscia di Viterbo">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="nav-logo">CB</a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#about" class="nav-link">Chi sono</a></li>
+                <li><a href="#publications" class="nav-link">Pubblicazioni</a></li>
+                <li><a href="#projects" class="nav-link">Progetti</a></li>
+                <li><a href="#teaching" class="nav-link">Didattica</a></li>
+                <li><a href="#blog" class="nav-link">Blog</a></li>
+                <li><a href="#cv" class="nav-link">CV</a></li>
+                <li><a href="#contact" class="nav-link">Contatti</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <p class="hero-greeting">Ciao, sono</p>
+                <h1 class="hero-name">Cristiano Baldassari</h1>
+                <p class="hero-title"><!-- Inserisci il tuo titolo, es: Ricercatore · Data Scientist · Università della Tuscia --></p>
+                <p class="hero-description">
+                    <!-- Inserisci una breve descrizione, es: Mi occupo di analisi dati, machine learning e ricerca applicata. -->
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Contattami</a>
+                    <a href="#projects" class="btn btn-secondary">I miei progetti</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Sostituisci con la tua foto: <img src="img/foto.jpg" alt="Cristiano Baldassari"> -->
+                <div class="hero-image-placeholder">CB</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chi sono -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">Chi sono</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        <!-- Inserisci la tua bio. Esempio: -->
+                        Sono affiliato all'Università degli Studi della Tuscia di Viterbo.
+                        I miei interessi di ricerca includono...
+                    </p>
+                    <p>
+                        <!-- Aggiungi dettagli sul tuo percorso, interessi, ecc. -->
+                    </p>
+                </div>
+                <div class="about-highlights">
+                    <div class="highlight-card">
+                        <span class="highlight-number"><!-- es: 10+ --></span>
+                        <span class="highlight-label">Pubblicazioni</span>
+                    </div>
+                    <div class="highlight-card">
+                        <span class="highlight-number"><!-- es: 5 --></span>
+                        <span class="highlight-label">Progetti</span>
+                    </div>
+                    <div class="highlight-card">
+                        <span class="highlight-number"><!-- es: 3 --></span>
+                        <span class="highlight-label">Corsi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pubblicazioni -->
+    <section class="section section-alt" id="publications">
+        <div class="container">
+            <h2 class="section-title">Pubblicazioni</h2>
+            <div class="publications-list">
+
+                <!-- Copia e incolla questo blocco per ogni pubblicazione -->
+                <article class="publication-item">
+                    <span class="publication-year">2025</span>
+                    <div class="publication-details">
+                        <h3 class="publication-title">Titolo della pubblicazione</h3>
+                        <p class="publication-authors">Baldassari C., Coautore A., Coautore B.</p>
+                        <p class="publication-venue">Nome della rivista/conferenza, vol. X, pp. XX-XX</p>
+                        <div class="publication-links">
+                            <a href="#" class="tag-link">PDF</a>
+                            <a href="#" class="tag-link">DOI</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-item">
+                    <span class="publication-year">2024</span>
+                    <div class="publication-details">
+                        <h3 class="publication-title">Un'altra pubblicazione</h3>
+                        <p class="publication-authors">Baldassari C., et al.</p>
+                        <p class="publication-venue">Conferenza Internazionale su...</p>
+                        <div class="publication-links">
+                            <a href="#" class="tag-link">PDF</a>
+                            <a href="#" class="tag-link">DOI</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Progetti -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Progetti</h2>
+            <div class="projects-grid">
+
+                <article class="project-card">
+                    <div class="project-header">
+                        <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                        <a href="https://github.com/cbaldassari/unbalanced" class="project-repo-link" target="_blank" rel="noopener">GitHub</a>
+                    </div>
+                    <h3 class="project-title">unbalanced</h3>
+                    <p class="project-description">
+                        <!-- Descrivi il progetto "unbalanced" -->
+                        Progetto in Jupyter Notebook per...
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Jupyter</span>
+                        <span class="tag">Data Science</span>
+                    </div>
+                </article>
+
+                <!-- Aggiungi altri progetti copiando il blocco sopra -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <svg class="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                        </svg>
+                        <a href="#" class="project-repo-link" target="_blank" rel="noopener">GitHub</a>
+                    </div>
+                    <h3 class="project-title">Nome progetto</h3>
+                    <p class="project-description">
+                        Descrizione del progetto...
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Tag 1</span>
+                        <span class="tag">Tag 2</span>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Didattica -->
+    <section class="section section-alt" id="teaching">
+        <div class="container">
+            <h2 class="section-title">Didattica</h2>
+            <div class="teaching-list">
+
+                <article class="teaching-item">
+                    <div class="teaching-info">
+                        <h3>Nome del Corso</h3>
+                        <p class="teaching-role">Docente / Tutor / Esercitatore</p>
+                        <p class="teaching-details">Corso di Laurea in ... — A.A. 2024/2025</p>
+                    </div>
+                    <div class="teaching-links">
+                        <!-- <a href="#" class="btn btn-small">Materiale</a> -->
+                    </div>
+                </article>
+
+                <!-- Aggiungi altri corsi copiando il blocco sopra -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog -->
+    <section class="section" id="blog">
+        <div class="container">
+            <h2 class="section-title">Blog</h2>
+            <div class="blog-grid">
+
+                <article class="blog-card">
+                    <span class="blog-date">9 Aprile 2026</span>
+                    <h3 class="blog-title">Il mio primo post</h3>
+                    <p class="blog-excerpt">
+                        Benvenuti nel mio blog. Qui scriverò di...
+                    </p>
+                    <a href="#" class="blog-read-more">Leggi tutto</a>
+                </article>
+
+                <!-- Aggiungi altri post copiando il blocco sopra -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CV -->
+    <section class="section section-alt" id="cv">
+        <div class="container">
+            <h2 class="section-title">Curriculum Vitae</h2>
+
+            <div class="cv-download">
+                <!-- <a href="docs/cv.pdf" class="btn btn-primary" download>Scarica CV (PDF)</a> -->
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">2020 — Presente</span>
+                        <h3>Ruolo attuale</h3>
+                        <p>Università degli Studi della Tuscia di Viterbo</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">20XX — 20XX</span>
+                        <h3>Titolo di studio / Posizione precedente</h3>
+                        <p>Descrizione...</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">20XX</span>
+                        <h3>Laurea in...</h3>
+                        <p>Università...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contatti -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contatti</h2>
+            <p class="contact-intro">Vuoi collaborare o hai domande? Scrivimi!</p>
+
+            <div class="contact-grid">
+                <a href="#" class="contact-card" id="email-link" onclick="openMail(event)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                    <span>Email</span>
+                </a>
+                <a href="https://github.com/cbaldassari" class="contact-card" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/TUOPROFILO" class="contact-card" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                    </svg>
+                    <span>LinkedIn</span>
+                </a>
+                <!-- Aggiungi ORCID, ResearchGate, ecc. -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Cristiano Baldassari. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
