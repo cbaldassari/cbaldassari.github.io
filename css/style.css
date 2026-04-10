@@ -587,7 +587,7 @@ strong {
 
 .about-visual {
     position: absolute;
-    left: -60px;
+    right: -160px;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
