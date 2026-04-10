@@ -335,36 +335,27 @@ strong {
     margin-bottom: 48px;
 }
 
-.hero-stats {
+.hero-quick-links {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 12px;
 }
 
-.hero-stat {
-    text-align: center;
-}
-
-.hero-stat-number {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--color-text);
-    letter-spacing: -0.5px;
-}
-
-.hero-stat-label {
-    font-size: 0.78rem;
-    color: var(--color-text-tertiary);
+.hero-quick-link {
+    font-size: 0.88rem;
     font-weight: 450;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: var(--color-text-tertiary);
+    transition: color var(--transition);
 }
 
-.hero-stat-divider {
-    width: 1px;
-    height: 32px;
-    background: var(--color-border);
+.hero-quick-link:hover {
+    color: var(--color-primary);
+}
+
+.hero-quick-divider {
+    color: var(--color-border);
+    font-size: 0.85rem;
+    user-select: none;
 }
 
 .hero-visual {
@@ -1192,7 +1183,7 @@ strong {
         justify-content: center;
     }
 
-    .hero-stats {
+    .hero-quick-links {
         justify-content: center;
     }
 
@@ -1261,14 +1252,9 @@ strong {
         font-size: 2rem;
     }
 
-    .hero-stats {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .hero-stat-divider {
-        width: 32px;
-        height: 1px;
+    .hero-quick-links {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .contact-grid {
