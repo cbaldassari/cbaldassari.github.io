@@ -595,9 +595,10 @@ strong {
 }
 
 .orbit-anim {
-    width: 240px;
-    height: 240px;
+    width: 280px;
+    height: 280px;
     color: var(--color-primary);
+    margin-left: -40px;
 }
 
 .orbit-ring-1 {
