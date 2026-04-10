@@ -97,7 +97,7 @@
                 <span class="section-label">01 / About</span>
                 <h2 class="section-title">Background</h2>
             </div>
-            <div class="about-content">
+            <div class="about-content about-grid">
                 <div class="about-text">
                     <p>
                         I'm a researcher at the <strong>University of Tuscia</strong> in Viterbo,
@@ -111,6 +111,43 @@
                         mostly applied to energy and financial markets.
                         I like finding structure where it's not obvious there is any.
                     </p>
+                </div>
+                <div class="about-visual">
+                    <svg class="orbit-anim" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Outer ring -->
+                        <circle cx="130" cy="130" r="120" stroke="currentColor" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.15" class="orbit-ring orbit-ring-1"/>
+                        <!-- Middle ring -->
+                        <circle cx="130" cy="130" r="85" stroke="currentColor" stroke-width="0.5" stroke-dasharray="3 6" opacity="0.12" class="orbit-ring orbit-ring-2"/>
+                        <!-- Inner ring -->
+                        <circle cx="130" cy="130" r="50" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 5" opacity="0.1" class="orbit-ring orbit-ring-3"/>
+                        <!-- Orbiting nodes on outer ring -->
+                        <circle r="3" fill="currentColor" opacity="0.25" class="orbit-node orbit-node-1">
+                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z"/>
+                        </circle>
+                        <circle r="2" fill="currentColor" opacity="0.18" class="orbit-node orbit-node-2">
+                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-7s"/>
+                        </circle>
+                        <circle r="2.5" fill="currentColor" opacity="0.2" class="orbit-node orbit-node-3">
+                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-14s"/>
+                        </circle>
+                        <!-- Orbiting nodes on middle ring -->
+                        <circle r="2.5" fill="currentColor" opacity="0.2" class="orbit-node">
+                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z"/>
+                        </circle>
+                        <circle r="2" fill="currentColor" opacity="0.15" class="orbit-node">
+                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z" begin="-5s"/>
+                        </circle>
+                        <!-- Orbiting nodes on inner ring -->
+                        <circle r="3.5" fill="currentColor" opacity="0.22" class="orbit-node">
+                            <animateMotion dur="9s" repeatCount="indefinite" path="M130,80 A50,50 0 1,1 129.9,80 Z"/>
+                        </circle>
+                        <!-- Center dot -->
+                        <circle cx="130" cy="130" r="4" fill="currentColor" opacity="0.12"/>
+                        <!-- Faint connecting lines (static, decorative) -->
+                        <line x1="130" y1="130" x2="130" y2="10" stroke="currentColor" stroke-width="0.3" opacity="0.06"/>
+                        <line x1="130" y1="130" x2="245" y2="165" stroke="currentColor" stroke-width="0.3" opacity="0.06"/>
+                        <line x1="130" y1="130" x2="50" y2="210" stroke="currentColor" stroke-width="0.3" opacity="0.06"/>
+                    </svg>
                 </div>
             </div>
         </div>
