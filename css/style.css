@@ -578,10 +578,6 @@ strong {
 }
 
 .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 0;
-    align-items: center;
     position: relative;
 }
 
@@ -590,15 +586,16 @@ strong {
 }
 
 .about-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: -80px;
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
 }
 
 .orbit-anim {
-    width: 360px;
-    height: 360px;
+    width: 400px;
+    height: 400px;
     color: var(--color-primary);
 }
 
