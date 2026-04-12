@@ -13,10 +13,17 @@
 const themeToggle = document.getElementById('theme-toggle');
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        const next = isDark ? 'light' : 'dark';
+        const wasDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const next = wasDark ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
+        // Reset tap state and update tagline
+        const pt = document.getElementById('photo-toggle');
+        if (pt) pt.classList.remove('tapped');
+        const ht = document.getElementById('hero-tagline');
+        if (ht) ht.textContent = next === 'dark'
+            ? 'The noise is always in the interesting part.'
+            : 'The interesting part is always in the noise.';
     });
 }
 
@@ -129,23 +136,39 @@ document.querySelectorAll('.section-header, .publication-item, .project-card, .a
 
 const photoToggle = document.getElementById('photo-toggle');
 const heroTagline = document.getElementById('hero-tagline');
-const taglineDefault = 'The interesting part is always in the noise.';
-const taglineAlt = 'The noise is always in the interesting part.';
+const taglineLight = 'The interesting part is always in the noise.';
+const taglineDark = 'The noise is always in the interesting part.';
+
+function isDark() {
+    return document.documentElement.getAttribute('data-theme') === 'dark';
+}
+
+function getTagline(swapped) {
+    const dark = isDark();
+    return (dark !== swapped) ? taglineDark : taglineLight;
+}
+
+function updateTagline() {
+    if (heroTagline) heroTagline.textContent = getTagline(false);
+}
+
+// Set initial tagline based on theme
+updateTagline();
 
 if (photoToggle) {
     // Desktop: hover
     photoToggle.addEventListener('mouseenter', () => {
-        if (heroTagline) heroTagline.textContent = taglineAlt;
+        if (heroTagline) heroTagline.textContent = getTagline(true);
     });
     photoToggle.addEventListener('mouseleave', () => {
-        if (heroTagline) heroTagline.textContent = taglineDefault;
+        if (heroTagline) heroTagline.textContent = getTagline(false);
     });
 
     // Mobile: tap
     photoToggle.addEventListener('click', () => {
         if ('ontouchstart' in window) {
             const tapped = photoToggle.classList.toggle('tapped');
-            if (heroTagline) heroTagline.textContent = tapped ? taglineAlt : taglineDefault;
+            if (heroTagline) heroTagline.textContent = getTagline(tapped);
         }
     });
 }
