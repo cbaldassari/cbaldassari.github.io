@@ -44,6 +44,27 @@ html {
     scroll-padding-top: 80px;
 }
 
+/* Skip to content — visible only on keyboard focus */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 10000;
+    padding: 8px 16px;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 16px;
+    color: #fff;
+}
+
 body {
     font-family: var(--font-body);
     color: var(--color-text);

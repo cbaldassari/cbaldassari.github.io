@@ -1,0 +1,12 @@
+/* TEAM */
+Name: Cristiano Baldassari
+Role: Researcher
+Affiliation: Università degli Studi della Tuscia, Viterbo, Italy
+Site: https://cbaldassari.github.io
+GitHub: https://github.com/cbaldassari
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript
+Components: Static site, GitHub Pages
+Fonts: Inter, JetBrains Mono (self-hosted)
+Last updated: 2026-04-12

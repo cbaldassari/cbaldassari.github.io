@@ -1,0 +1,132 @@
+/* =============================================
+   PRINT STYLESHEET
+   Clean output for printing the page
+   ============================================= */
+
+@page {
+    margin: 2cm;
+}
+
+body {
+    background: white;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.5;
+}
+
+/* Hide non-essential elements */
+.navbar,
+.hero-bg,
+.hero-orb,
+.hero-grid-pattern,
+.hero-scroll,
+.hero-image-ring,
+.photo-elegant,
+.section-graph-bg,
+.orbit-anim,
+.about-visual,
+.pub-filters,
+.btn,
+.btn-nav,
+.skip-link,
+.footer,
+.nav-toggle,
+.badge-dot,
+.timeline-marker {
+    display: none !important;
+}
+
+/* Reset colors and backgrounds */
+.hero,
+.section,
+.section-dark {
+    background: none !important;
+    color: black !important;
+    padding: 20pt 0 !important;
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: black !important;
+    page-break-after: avoid;
+}
+
+.hero-name {
+    font-size: 24pt !important;
+}
+
+.section-title {
+    font-size: 18pt !important;
+}
+
+.publication-title {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+}
+
+/* Profile photo */
+.hero-image-frame img.photo-casual {
+    width: 120px !important;
+    height: 120px !important;
+    border-radius: 50% !important;
+}
+
+/* Links — show URL */
+a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555;
+    word-break: break-all;
+}
+
+a.nav-link::after,
+a.nav-logo::after,
+a.pub-link::after {
+    content: none;
+}
+
+/* Publications */
+.publication-item {
+    page-break-inside: avoid;
+    border-bottom: 0.5pt solid #ccc !important;
+    padding: 8pt 0 !important;
+}
+
+.publication-abstract {
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+.pub-year-badge {
+    color: black !important;
+    background: none !important;
+    border: 1pt solid #999 !important;
+}
+
+/* Timeline */
+.timeline-item {
+    page-break-inside: avoid;
+    padding-left: 0 !important;
+    border-left: none !important;
+}
+
+.timeline-date {
+    color: #333 !important;
+}
+
+/* Contact cards */
+.contact-card {
+    border: 0.5pt solid #ccc !important;
+    background: none !important;
+    color: black !important;
+}
+
+/* Text colors */
+p, span, li {
+    color: #222 !important;
+}
+
+.publication-authors,
+.publication-venue {
+    color: #444 !important;
+}

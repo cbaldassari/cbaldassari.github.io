@@ -49,18 +49,26 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="manifest" href="manifest.json">
     <link rel="alternate" type="application/rss+xml" title="Cristiano Baldassari" href="https://cbaldassari.github.io/feed.xml">
-    <link rel="preload" href="fonts/inter-400.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="fonts/inter-800.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="fonts/jetbrains-500.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/inter-800.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/jetbrains-500.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="dns-prefetch" href="https://link.springer.com">
+    <link rel="dns-prefetch" href="https://onlinelibrary.wiley.com">
+    <link rel="dns-prefetch" href="https://scholar.google.com">
+    <link rel="author" type="text/plain" href="humans.txt">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
 </head>
 <body>
 
+    <!-- Skip to content (accessibility) -->
+    <a href="#home" class="skip-link">Skip to content</a>
+
     <!-- Navbar -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
         <div class="container nav-container">
-            <a href="#home" class="nav-logo">
+            <a href="#home" class="nav-logo" aria-label="Home">
                 <span class="logo-bracket">{</span>CB<span class="logo-bracket">}</span>
             </a>
             <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
@@ -78,7 +86,8 @@
     </nav>
 
     <!-- Hero -->
-    <section class="hero" id="home">
+    <main>
+    <section class="hero" id="home" aria-label="Introduction">
         <div class="hero-bg">
             <div class="hero-orb hero-orb-1"></div>
             <div class="hero-orb hero-orb-2"></div>
@@ -120,7 +129,7 @@
     </section>
 
     <!-- About -->
-    <section class="section section-graph" id="about">
+    <section class="section section-graph" id="about" aria-label="About">
         <div class="section-graph-bg"></div>
         <div class="container">
             <div class="section-header">
@@ -210,7 +219,7 @@
     </section>
 
     <!-- Publications -->
-    <section class="section section-dark" id="publications">
+    <section class="section section-dark" id="publications" aria-label="Publications">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">02 / Research</span>
@@ -422,7 +431,7 @@
     </section>
 
     <!-- CV -->
-    <section class="section section-dark" id="cv">
+    <section class="section section-dark" id="cv" aria-label="Curriculum Vitae">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">03 / Experience</span>
@@ -504,7 +513,7 @@
     </section>
 
     <!-- Contact -->
-    <section class="section" id="contact">
+    <section class="section" id="contact" aria-label="Contact">
         <div class="container contact-container">
             <div class="section-header">
                 <span class="section-label">04 / Connect</span>
@@ -545,9 +554,10 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer" aria-label="Footer">
         <div class="container footer-content">
             <p>&copy; 2026 Cristiano Baldassari</p>
             <a href="privacy.html" class="footer-link">Privacy Policy</a>
