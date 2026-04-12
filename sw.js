@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cb-site-v11';
+const CACHE_NAME = 'cb-site-v12';
 const ASSETS = [
     '/',
     '/index.html',

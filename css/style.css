@@ -246,14 +246,12 @@ strong {
     position: relative;
     padding-top: 72px;
     overflow: hidden;
-    --parallax: 0px;
 }
 
 .hero-bg {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    transform: translateY(calc(var(--parallax) * 0.4));
 }
 
 .hero-graph {
@@ -287,7 +285,7 @@ strong {
     filter: blur(80px);
     opacity: 0.5;
     animation: orbFloat 20s ease-in-out infinite;
-    will-change: transform, translate;
+    will-change: transform;
 }
 
 .hero-orb-1 {

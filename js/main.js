@@ -34,7 +34,6 @@ const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section, .hero');
 const progressBar = document.getElementById('progress-bar');
 const backToTop = document.getElementById('back-to-top');
-const hero = document.querySelector('.hero');
 const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -69,14 +68,6 @@ window.addEventListener('scroll', () => {
         backToTop.classList.toggle('visible', window.scrollY > 400);
     }
 
-    // Hero parallax (respects reduced motion)
-    if (!prefersReducedMotion && hero) {
-        const sy = window.scrollY;
-        const heroHeight = hero.offsetHeight;
-        if (sy < heroHeight * 1.5) {
-            hero.style.setProperty('--parallax', sy + 'px');
-        }
-    }
 });
 
 // Back to top click
