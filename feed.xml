@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Cristiano Baldassari</title>
+        <link>https://cbaldassari.github.io/</link>
+        <description>Research and publications by Cristiano Baldassari</description>
+        <language>en</language>
+        <lastBuildDate>Sun, 12 Apr 2026 00:00:00 +0000</lastBuildDate>
+        <atom:link href="https://cbaldassari.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+
+        <item>
+            <title>Information-Driven Modeling of Energy Markets: An Unbalanced Wasserstein Barycenter Approach</title>
+            <link>https://onlinelibrary.wiley.com/doi/10.1002/asmb.70080</link>
+            <description>Mari C., Baldassari C. — Applied Stochastic Models in Business and Industry, Wiley (2026)</description>
+            <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+            <guid isPermaLink="true">https://onlinelibrary.wiley.com/doi/10.1002/asmb.70080</guid>
+        </item>
+
+        <item>
+            <title>Group Detection in Energy Commodity Markets Through Manifold-Informed Wasserstein Barycenter</title>
+            <link>https://link.springer.com/article/10.1007/s11135-025-02147-1</link>
+            <description>Mari C., Laureti T., Baldassari C. — Quality &amp; Quantity, vol. 59, no. 3, pp. 2197–2227 (2025)</description>
+            <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
+            <guid isPermaLink="true">https://link.springer.com/article/10.1007/s11135-025-02147-1</guid>
+        </item>
+
+        <item>
+            <title>Understanding the Complexities of the Fine Structure of Interest Rates: A Wasserstein Barycenter Learning Approach</title>
+            <link>https://link.springer.com/article/10.1007/s00521-024-10202-5</link>
+            <description>Mari C., Baldassari C. — Neural Computing and Applications, vol. 36, pp. 19291–19305 (2024)</description>
+            <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+            <guid isPermaLink="true">https://link.springer.com/article/10.1007/s00521-024-10202-5</guid>
+        </item>
+
+        <item>
+            <title>A Graph-Based Superframework for Mixture Model Estimation Using EM: An Analysis of US Wholesale Electricity Markets</title>
+            <link>https://link.springer.com/article/10.1007/s00521-023-08468-2</link>
+            <description>Mari C., Baldassari C. — Neural Computing and Applications, vol. 35, no. 20, pp. 14867–14883 (2023)</description>
+            <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+            <guid isPermaLink="true">https://link.springer.com/article/10.1007/s00521-023-08468-2</guid>
+        </item>
+
+        <item>
+            <title>Optimization of Mixture Models on Time Series Networks Encoded by Visibility Graphs: An Analysis of the US Electricity Market</title>
+            <link>https://link.springer.com/article/10.1007/s10287-023-00460-4</link>
+            <description>Mari C., Baldassari C. — Computational Management Science, vol. 20, no. 1, article 28 (2023)</description>
+            <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+            <guid isPermaLink="true">https://link.springer.com/article/10.1007/s10287-023-00460-4</guid>
+        </item>
+    </channel>
+</rss>

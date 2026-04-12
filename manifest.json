@@ -1,0 +1,16 @@
+{
+    "name": "Cristiano Baldassari",
+    "short_name": "C. Baldassari",
+    "description": "Personal website of Cristiano Baldassari — Researcher, Università degli Studi della Tuscia",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#6366f1",
+    "icons": [
+        {
+            "src": "favicon.ico",
+            "sizes": "48x48",
+            "type": "image/x-icon"
+        }
+    ]
+}
