@@ -10,20 +10,22 @@
     }
 })();
 
+function isDark() {
+    return document.documentElement.getAttribute('data-theme') === 'dark';
+}
+
 const themeToggle = document.getElementById('theme-toggle');
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-        const wasDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        const next = wasDark ? 'light' : 'dark';
+        const next = isDark() ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
-        // Reset tap state and update tagline
+        // Reset tap state
         const pt = document.getElementById('photo-toggle');
         if (pt) pt.classList.remove('tapped');
-        const ht = document.getElementById('hero-tagline');
-        if (ht) ht.textContent = next === 'dark'
-            ? 'The noise is always in the interesting part.'
-            : 'The interesting part is always in the noise.';
+        // Update tagline via i18n
+        updateTagline();
+        if (typeof applyTranslations === 'function') applyTranslations();
     });
 }
 
@@ -34,6 +36,8 @@ if (themeToggle) {
 const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section, .hero');
+const progressBar = document.getElementById('progress-bar');
+const backToTop = document.getElementById('back-to-top');
 
 window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 10);
@@ -52,7 +56,27 @@ window.addEventListener('scroll', () => {
             link.classList.add('active');
         }
     });
+
+    // Reading progress bar
+    if (progressBar) {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        progressBar.style.width = progress + '%';
+    }
+
+    // Back to top button
+    if (backToTop) {
+        backToTop.classList.toggle('visible', window.scrollY > 400);
+    }
 });
+
+// Back to top click
+if (backToTop) {
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
 
 // =============================================
 // MOBILE MENU
@@ -79,21 +103,54 @@ navLinks.forEach(link => {
 
 const filterBtns = document.querySelectorAll('.pub-filter');
 const pubItems = document.querySelectorAll('.publication-item');
+let activeFilter = 'all';
+
+function filterPublications() {
+    const searchTerm = (document.getElementById('pub-search')?.value || '').toLowerCase();
+    pubItems.forEach(item => {
+        const matchesFilter = activeFilter === 'all' || item.dataset.tags.includes(activeFilter);
+        const text = item.textContent.toLowerCase();
+        const matchesSearch = !searchTerm || text.includes(searchTerm);
+        item.classList.toggle('hidden', !(matchesFilter && matchesSearch));
+    });
+}
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        const filter = btn.dataset.filter;
-
+        activeFilter = btn.dataset.filter;
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+        filterPublications();
+    });
+});
 
-        pubItems.forEach(item => {
-            if (filter === 'all' || item.dataset.tags.includes(filter)) {
-                item.classList.remove('hidden');
-            } else {
-                item.classList.add('hidden');
-            }
-        });
+// =============================================
+// PUBLICATION SEARCH
+// =============================================
+
+const pubSearch = document.getElementById('pub-search');
+if (pubSearch) {
+    pubSearch.addEventListener('input', filterPublications);
+}
+
+// =============================================
+// BIBTEX COPY
+// =============================================
+
+document.querySelectorAll('.bibtex-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const bibtex = btn.dataset.bibtex;
+        if (bibtex) {
+            navigator.clipboard.writeText(bibtex).then(() => {
+                btn.classList.add('copied');
+                const orig = btn.lastChild.textContent;
+                btn.lastChild.textContent = typeof t === 'function' ? t('pub.bibtex.copied') : 'Copied';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.lastChild.textContent = ' BibTeX';
+                }, 2000);
+            });
+        }
     });
 });
 
@@ -131,44 +188,131 @@ document.querySelectorAll('.section-header, .publication-item, .project-card, .a
 });
 
 // =============================================
-// PROFILE PHOTO TOGGLE (tap on mobile)
+// PROFILE PHOTO TOGGLE
 // =============================================
 
 const photoToggle = document.getElementById('photo-toggle');
 const heroTagline = document.getElementById('hero-tagline');
-const taglineLight = 'The interesting part is always in the noise.';
-const taglineDark = 'The noise is always in the interesting part.';
-
-function isDark() {
-    return document.documentElement.getAttribute('data-theme') === 'dark';
-}
+const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 function getTagline(swapped) {
     const dark = isDark();
-    return (dark !== swapped) ? taglineDark : taglineLight;
+    const lang = document.documentElement.getAttribute('data-lang') || 'en';
+    if (typeof t === 'function') {
+        return (dark !== swapped) ? t('hero.tagline.dark') : t('hero.tagline.light');
+    }
+    const light = 'The interesting part is always in the noise.';
+    const darkT = 'The noise is always in the interesting part.';
+    return (dark !== swapped) ? darkT : light;
 }
 
 function updateTagline() {
-    if (heroTagline) heroTagline.textContent = getTagline(false);
+    if (heroTagline) {
+        const tapped = photoToggle && photoToggle.classList.contains('tapped');
+        heroTagline.textContent = getTagline(tapped);
+    }
 }
 
-// Set initial tagline based on theme
+// Set initial tagline
 updateTagline();
 
 if (photoToggle) {
-    // Desktop: hover
-    photoToggle.addEventListener('mouseenter', () => {
-        if (heroTagline) heroTagline.textContent = getTagline(true);
-    });
-    photoToggle.addEventListener('mouseleave', () => {
-        if (heroTagline) heroTagline.textContent = getTagline(false);
-    });
+    if (!isTouch) {
+        // Desktop only: hover
+        photoToggle.addEventListener('mouseenter', () => {
+            if (heroTagline) heroTagline.textContent = getTagline(true);
+        });
+        photoToggle.addEventListener('mouseleave', () => {
+            if (heroTagline) heroTagline.textContent = getTagline(false);
+        });
+    }
 
-    // Mobile: tap
-    photoToggle.addEventListener('click', () => {
-        if ('ontouchstart' in window) {
-            const tapped = photoToggle.classList.toggle('tapped');
-            if (heroTagline) heroTagline.textContent = getTagline(tapped);
+    // Touch: use touchend to avoid conflicts with mouse events
+    photoToggle.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        const tapped = photoToggle.classList.toggle('tapped');
+        if (heroTagline) heroTagline.textContent = getTagline(tapped);
+    });
+}
+
+// =============================================
+// LANGUAGE TOGGLE
+// =============================================
+
+(function() {
+    const savedLang = localStorage.getItem('lang') || 'en';
+    document.documentElement.setAttribute('data-lang', savedLang);
+})();
+
+const langToggle = document.getElementById('lang-toggle');
+if (langToggle) {
+    // Set initial label
+    const initLang = document.documentElement.getAttribute('data-lang') || 'en';
+    langToggle.querySelector('.lang-label').textContent = initLang === 'en' ? 'IT' : 'EN';
+
+    langToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-lang') || 'en';
+        const next = current === 'en' ? 'it' : 'en';
+        document.documentElement.setAttribute('data-lang', next);
+        localStorage.setItem('lang', next);
+        langToggle.querySelector('.lang-label').textContent = next === 'en' ? 'IT' : 'EN';
+        if (typeof applyTranslations === 'function') applyTranslations();
+        updateTagline();
+    });
+}
+
+// Apply translations on load
+if (typeof applyTranslations === 'function') applyTranslations();
+
+// =============================================
+// KEYBOARD SHORTCUTS
+// =============================================
+
+const shortcutsModal = document.getElementById('shortcuts-modal');
+
+document.addEventListener('keydown', (e) => {
+    // Ignore if typing in an input
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        if (e.key === 'Escape') {
+            e.target.blur();
+        }
+        return;
+    }
+
+    switch (e.key) {
+        case 'd':
+        case 'D':
+            if (themeToggle) themeToggle.click();
+            break;
+        case 't':
+        case 'T':
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            break;
+        case 'l':
+        case 'L':
+            if (langToggle) langToggle.click();
+            break;
+        case '/':
+            e.preventDefault();
+            if (pubSearch) {
+                pubSearch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => pubSearch.focus(), 400);
+            }
+            break;
+        case '?':
+            if (shortcutsModal) shortcutsModal.classList.toggle('visible');
+            break;
+        case 'Escape':
+            if (shortcutsModal) shortcutsModal.classList.remove('visible');
+            break;
+    }
+});
+
+// Close modal on backdrop click
+if (shortcutsModal) {
+    shortcutsModal.addEventListener('click', (e) => {
+        if (e.target === shortcutsModal) {
+            shortcutsModal.classList.remove('visible');
         }
     });
 }

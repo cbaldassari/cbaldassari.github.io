@@ -65,6 +65,9 @@
 </head>
 <body>
 
+    <!-- Reading progress bar -->
+    <div class="progress-bar" id="progress-bar"></div>
+
     <!-- Skip to content (accessibility) -->
     <a href="#home" class="skip-link">Skip to content</a>
 
@@ -80,11 +83,14 @@
                 <span></span>
             </button>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#publications" class="nav-link">Publications</a></li>
-                <li><a href="#cv" class="nav-link">CV</a></li>
-                <li><a href="#contact" class="nav-link btn-nav">Get in touch</a></li>
+                <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+                <li><a href="#publications" class="nav-link" data-i18n="nav.publications">Publications</a></li>
+                <li><a href="#cv" class="nav-link" data-i18n="nav.cv">CV</a></li>
+                <li><a href="#contact" class="nav-link btn-nav" data-i18n="nav.contact">Get in touch</a></li>
             </ul>
+            <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
+                <span class="lang-label">IT</span>
+            </button>
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -104,7 +110,7 @@
             <div class="hero-text">
                 <div class="hero-badge">
                     <span class="badge-dot"></span>
-                    Researcher
+                    <span data-i18n="hero.badge">Researcher</span>
                 </div>
                 <h1 class="hero-name">
                     Cristiano<br>
@@ -115,10 +121,10 @@
                 </p>
                 <div class="hero-cta">
                     <a href="#publications" class="btn btn-primary">
-                        <span>Explore research</span>
+                        <span data-i18n="hero.cta.research">Explore research</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
                     </a>
-                    <a href="#contact" class="btn btn-ghost">Contact me</a>
+                    <a href="#contact" class="btn btn-ghost" data-i18n="hero.cta.contact">Contact me</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -126,11 +132,12 @@
                     <img src="img/photo-elegant.jpg" alt="Cristiano Baldassari" class="photo-casual">
                     <img src="img/photo.jpg" alt="Cristiano Baldassari" class="photo-elegant">
                     <div class="hero-image-ring"></div>
+                    <span class="photo-tooltip">Hover to switch</span>
                 </div>
             </div>
         </div>
         <div class="hero-scroll">
-            <span>scroll</span>
+            <span data-i18n="hero.scroll">scroll</span>
             <div class="hero-scroll-line"></div>
         </div>
     </section>
@@ -139,19 +146,19 @@
     <section class="section" id="about" aria-label="About">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">01 / About</span>
-                <h2 class="section-title">Background</h2>
+                <span class="section-label" data-i18n="about.label">01 / About</span>
+                <h2 class="section-title" data-i18n="about.title">Background</h2>
             </div>
             <div class="about-content about-grid">
                 <div class="about-text">
-                    <p>
+                    <p data-i18n="about.p1" data-i18n-html>
                         I'm a researcher at the <strong>University of Tuscia</strong> in Viterbo,
                         with a physics degree from <strong>Sapienza</strong> in Rome.
                         I started out in consulting, working on fraud detection, predictive models
                         and analytics for banks and media companies, then eventually followed
                         my curiosity into academia.
                     </p>
-                    <p>
+                    <p data-i18n="about.p2">
                         Today I work on unsupervised methods that connect time series and graph theory,
                         mostly applied to energy and financial markets.
                         I like finding structure where it's not obvious there is any.
@@ -228,18 +235,21 @@
     <section class="section section-dark" id="publications" aria-label="Publications">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">02 / Research</span>
-                <h2 class="section-title">Publications</h2>
+                <span class="section-label" data-i18n="pub.label">02 / Research</span>
+                <h2 class="section-title" data-i18n="pub.title">Publications</h2>
                 <p class="section-description">
-                    Peer-reviewed research in machine learning, complex networks and quantitative finance.
-                    <a href="https://scholar.google.com/citations?user=0CeqNRQAAAAJ&hl=en" target="_blank" rel="noopener">View on Google Scholar &rarr;</a>
+                    <span data-i18n="pub.desc">Peer-reviewed research in machine learning, complex networks and quantitative finance.</span>
+                    <a href="https://scholar.google.com/citations?user=0CeqNRQAAAAJ&hl=en" target="_blank" rel="noopener" data-i18n="pub.scholar" data-i18n-html>View on Google Scholar &rarr;</a>
                 </p>
             </div>
 
-            <div class="pub-filters">
-                <button class="pub-filter active" data-filter="all">All</button>
-                <button class="pub-filter" data-filter="ml">Machine Learning</button>
-                <button class="pub-filter" data-filter="innovation">Innovation</button>
+            <div class="pub-controls">
+                <div class="pub-filters">
+                    <button class="pub-filter active" data-filter="all" data-i18n="pub.filter.all">All</button>
+                    <button class="pub-filter" data-filter="ml" data-i18n="pub.filter.ml">Machine Learning</button>
+                    <button class="pub-filter" data-filter="innovation" data-i18n="pub.filter.innovation">Innovation</button>
+                </div>
+                <input type="text" class="pub-search" id="pub-search" placeholder="Search publications..." data-i18n-placeholder="pub.search">
             </div>
 
             <div class="publications-list">
@@ -256,6 +266,10 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
                                 DOI
                             </a>
+                            <button class="bibtex-btn" data-bibtex="@article{mari2026information,&#10;  title={Information-Driven Modeling of Energy Markets: An Unbalanced Wasserstein Barycenter Approach},&#10;  author={Mari, Carlo and Baldassari, Cristiano},&#10;  journal={Applied Stochastic Models in Business and Industry},&#10;  year={2026},&#10;  publisher={Wiley},&#10;  doi={10.1002/asmb.70080}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -272,6 +286,10 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
                                 DOI
                             </a>
+                            <button class="bibtex-btn" data-bibtex="@article{mari2025group,&#10;  title={Group Detection in Energy Commodity Markets Through Manifold-Informed Wasserstein Barycenter},&#10;  author={Mari, Carlo and Laureti, Tiziana and Baldassari, Cristiano},&#10;  journal={Quality &amp; Quantity},&#10;  volume={59},&#10;  number={3},&#10;  pages={2197--2227},&#10;  year={2025},&#10;  publisher={Springer},&#10;  doi={10.1007/s11135-025-02147-1}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -288,6 +306,10 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
                                 DOI
                             </a>
+                            <button class="bibtex-btn" data-bibtex="@article{mari2024understanding,&#10;  title={Understanding the Complexities of the Fine Structure of Interest Rates: A Wasserstein Barycenter Learning Approach},&#10;  author={Mari, Carlo and Baldassari, Cristiano},&#10;  journal={Neural Computing and Applications},&#10;  volume={36},&#10;  pages={19291--19305},&#10;  year={2024},&#10;  publisher={Springer},&#10;  doi={10.1007/s00521-024-10202-5}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -304,6 +326,10 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
                                 DOI
                             </a>
+                            <button class="bibtex-btn" data-bibtex="@article{mari2023graph,&#10;  title={A Graph-Based Superframework for Mixture Model Estimation Using EM: An Analysis of US Wholesale Electricity Markets},&#10;  author={Mari, Carlo and Baldassari, Cristiano},&#10;  journal={Neural Computing and Applications},&#10;  volume={35},&#10;  number={20},&#10;  pages={14867--14883},&#10;  year={2023},&#10;  publisher={Springer},&#10;  doi={10.1007/s00521-023-08468-2}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -320,6 +346,10 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
                                 DOI
                             </a>
+                            <button class="bibtex-btn" data-bibtex="@article{mari2023optimization,&#10;  title={Optimization of Mixture Models on Time Series Networks Encoded by Visibility Graphs: An Analysis of the US Electricity Market},&#10;  author={Mari, Carlo and Baldassari, Cristiano},&#10;  journal={Computational Management Science},&#10;  volume={20},&#10;  number={1},&#10;  pages={28},&#10;  year={2023},&#10;  publisher={Springer},&#10;  doi={10.1007/s10287-023-00460-4}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -336,6 +366,10 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
                                 DOI
                             </a>
+                            <button class="bibtex-btn" data-bibtex="@article{mari2022unsupervised,&#10;  title={Unsupervised Expectation-Maximization Algorithm Initialization for Mixture Models: A Complex Network-Driven Approach for Modeling Financial Time Series},&#10;  author={Mari, Carlo and Baldassari, Cristiano},&#10;  journal={Information Sciences},&#10;  volume={617},&#10;  pages={1--16},&#10;  year={2022},&#10;  publisher={Elsevier}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -352,6 +386,10 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
                                 PDF
                             </a>
+                            <button class="bibtex-btn" data-bibtex="@article{marra2022using,&#10;  title={Using Text Data Instead of SIC Codes to Tag Innovative Firms and Classify Industrial Activities},&#10;  author={Marra, Alessandro and Baldassari, Cristiano},&#10;  journal={PLoS ONE},&#10;  volume={17},&#10;  number={6},&#10;  pages={e0270041},&#10;  year={2022}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -368,6 +406,10 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
                                 PDF
                             </a>
+                            <button class="bibtex-btn" data-bibtex="@article{mari2021ensemble,&#10;  title={Ensemble Methods for Jump-Diffusion Models of Power Prices},&#10;  author={Mari, Carlo and Baldassari, Cristiano},&#10;  journal={Energies},&#10;  volume={14},&#10;  number={8},&#10;  pages={2084},&#10;  year={2021},&#10;  publisher={MDPI}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -384,6 +426,10 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
                                 DOI
                             </a>
+                            <button class="bibtex-btn" data-bibtex="@article{marra2020exploring,&#10;  title={Exploring Networks of Proximity for Partner Selection, Firms' Collaboration and Knowledge Exchange. The Case of Clean-Tech Industry},&#10;  author={Marra, Alessandro and Carlei, Vittorio and Baldassari, Cristiano},&#10;  journal={Business Strategy and the Environment},&#10;  volume={29},&#10;  number={3},&#10;  pages={1034--1044},&#10;  year={2020},&#10;  publisher={Wiley},&#10;  doi={10.1002/bse.2415}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -400,6 +446,10 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
                                 DOI
                             </a>
+                            <button class="bibtex-btn" data-bibtex="@article{marra2019innovative,&#10;  title={Innovative Industries, Emerging Specialisations and Distinctive Skills: A Bottom-Up Investigation of Chieti and Pescara},&#10;  author={Marra, Alessandro and Baldassari, Cristiano and Cantelmo, Anna},&#10;  journal={L'industria (Il Mulino)},&#10;  pages={497--518},&#10;  year={2019},&#10;  doi={10.1430/94758}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -416,6 +466,10 @@
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
                                 PDF
                             </a>
+                            <button class="bibtex-btn" data-bibtex="@article{maiolini2016digital,&#10;  title={Digital Technologies for Social Innovation: An Empirical Recognition on the New Enablers},&#10;  author={Maiolini, Riccardo and Marra, Alessandro and Baldassari, Cristiano and Carlei, Vittorio},&#10;  journal={Journal of Technology Management and Innovation},&#10;  volume={11},&#10;  number={4},&#10;  pages={22--28},&#10;  year={2016}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -428,6 +482,10 @@
                         <p class="publication-venue">DRUID Conference, Rome, pp. 1–22</p>
                         <p class="publication-abstract">Conference paper examining social innovation in US technology industries, identifying core business patterns and the main drivers of innovation across tech sectors.</p>
                         <div class="publication-links">
+                            <button class="bibtex-btn" data-bibtex="@inproceedings{marra2015social,&#10;  title={Social Innovation in US Tech Industries: Its Core Business and Main Drivers of Innovation},&#10;  author={Marra, Alessandro and Maiolini, Riccardo and Baldassari, Cristiano and Carlei, Vittorio},&#10;  booktitle={DRUID Conference},&#10;  address={Rome},&#10;  pages={1--22},&#10;  year={2015}&#10;}">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                                BibTeX
+                            </button>
                         </div>
                     </div>
                 </article>
@@ -440,8 +498,8 @@
     <section class="section section-dark" id="cv" aria-label="Curriculum Vitae">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">03 / Experience</span>
-                <h2 class="section-title">Curriculum Vitae</h2>
+                <span class="section-label" data-i18n="cv.label">03 / Experience</span>
+                <h2 class="section-title" data-i18n="cv.title">Curriculum Vitae</h2>
             </div>
 
             <div class="timeline">
@@ -522,9 +580,9 @@
     <section class="section" id="contact" aria-label="Contact">
         <div class="container contact-container">
             <div class="section-header">
-                <span class="section-label">04 / Connect</span>
-                <h2 class="section-title">Let's collaborate</h2>
-                <p class="section-description">Interested in collaborating or just exchanging ideas? Reach out.</p>
+                <span class="section-label" data-i18n="contact.label">04 / Connect</span>
+                <h2 class="section-title" data-i18n="contact.title">Let's collaborate</h2>
+                <p class="section-description" data-i18n="contact.desc">Interested in collaborating or just exchanging ideas? Reach out.</p>
             </div>
 
             <div class="contact-grid">
@@ -555,7 +613,7 @@
                         </svg>
                     </div>
                     <span class="contact-card-label">Google Scholar</span>
-                    <span class="contact-card-hint">Publications &amp; citations</span>
+                    <span class="contact-card-hint" data-i18n="contact.scholar.hint">Publications &amp; citations</span>
                 </a>
             </div>
         </div>
@@ -566,10 +624,29 @@
     <footer class="footer" aria-label="Footer">
         <div class="container footer-content">
             <p>&copy; 2026 Cristiano Baldassari</p>
-            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+            <a href="privacy.html" class="footer-link" data-i18n="footer.privacy">Privacy Policy</a>
         </div>
     </footer>
 
+    <!-- Keyboard shortcuts modal -->
+    <div class="shortcuts-modal" id="shortcuts-modal">
+        <div class="shortcuts-panel">
+            <h3>Keyboard Shortcuts</h3>
+            <div class="shortcut-row"><span>Toggle dark mode</span><span class="shortcut-key">D</span></div>
+            <div class="shortcut-row"><span>Back to top</span><span class="shortcut-key">T</span></div>
+            <div class="shortcut-row"><span>Switch language</span><span class="shortcut-key">L</span></div>
+            <div class="shortcut-row"><span>Search publications</span><span class="shortcut-key">/</span></div>
+            <div class="shortcut-row"><span>Close / Dismiss</span><span class="shortcut-key">Esc</span></div>
+            <div class="shortcut-row"><span>Show shortcuts</span><span class="shortcut-key">?</span></div>
+        </div>
+    </div>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
+    </button>
+
+    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

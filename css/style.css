@@ -735,7 +735,6 @@ strong {
 .pub-filters {
     display: flex;
     gap: 8px;
-    margin-bottom: 36px;
     flex-wrap: wrap;
 }
 
@@ -1288,6 +1287,250 @@ strong {
 @media (max-width: 768px) {
     [data-theme="dark"] .nav-menu {
         background: rgba(15, 23, 42, 0.98);
+    }
+}
+
+/* =============================================
+   READING PROGRESS BAR
+   ============================================= */
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--color-primary);
+    z-index: 10001;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+/* =============================================
+   BACK TO TOP
+   ============================================= */
+
+.back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px);
+    transition: all var(--transition);
+    box-shadow: var(--shadow-lg);
+    z-index: 999;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+/* =============================================
+   PHOTO TOOLTIP
+   ============================================= */
+
+.photo-tooltip {
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.72rem;
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity var(--transition);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero-image-frame:hover .photo-tooltip {
+    opacity: 1;
+}
+
+/* =============================================
+   PUBLICATION SEARCH
+   ============================================= */
+
+.pub-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.pub-search {
+    padding: 8px 16px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color var(--transition);
+    width: 220px;
+}
+
+.pub-search::placeholder {
+    color: var(--color-text-tertiary);
+}
+
+.pub-search:focus {
+    border-color: var(--color-primary);
+}
+
+/* =============================================
+   BIBTEX BUTTON
+   ============================================= */
+
+.bibtex-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--color-text-tertiary);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.bibtex-btn:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.bibtex-btn.copied {
+    color: #10b981;
+    border-color: #10b981;
+}
+
+/* =============================================
+   LANGUAGE TOGGLE
+   ============================================= */
+
+.lang-toggle {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: all var(--transition);
+    margin-left: 8px;
+}
+
+.lang-toggle:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* =============================================
+   KEYBOARD SHORTCUTS MODAL
+   ============================================= */
+
+.shortcuts-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+}
+
+.shortcuts-modal.visible {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.shortcuts-panel {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    max-width: 380px;
+    width: 90%;
+    box-shadow: var(--shadow-lg);
+}
+
+.shortcuts-panel h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--color-text);
+}
+
+.shortcut-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+}
+
+.shortcut-key {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* =============================================
+   REDUCED MOTION
+   ============================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .hero-orb,
+    .hero-image-ring,
+    .orbit-anim,
+    .hero-scroll-line {
+        animation: none !important;
+    }
+    .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
     }
 }
 
