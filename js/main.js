@@ -23,9 +23,7 @@ if (themeToggle) {
         // Reset tap state
         const pt = document.getElementById('photo-toggle');
         if (pt) pt.classList.remove('tapped');
-        // Update tagline via i18n
         updateTagline();
-        if (typeof applyTranslations === 'function') applyTranslations();
     });
 }
 
@@ -197,10 +195,6 @@ const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 function getTagline(swapped) {
     const dark = isDark();
-    const lang = document.documentElement.getAttribute('data-lang') || 'en';
-    if (typeof t === 'function') {
-        return (dark !== swapped) ? t('hero.tagline.dark') : t('hero.tagline.light');
-    }
     const light = 'The interesting part is always in the noise.';
     const darkT = 'The noise is always in the interesting part.';
     return (dark !== swapped) ? darkT : light;
@@ -236,33 +230,27 @@ if (photoToggle) {
 }
 
 // =============================================
-// LANGUAGE TOGGLE
+// EXPORT ALL BIBTEX
 // =============================================
 
-(function() {
-    const savedLang = localStorage.getItem('lang') || 'en';
-    document.documentElement.setAttribute('data-lang', savedLang);
-})();
-
-const langToggle = document.getElementById('lang-toggle');
-if (langToggle) {
-    // Set initial label
-    const initLang = document.documentElement.getAttribute('data-lang') || 'en';
-    langToggle.querySelector('.lang-label').textContent = initLang === 'en' ? 'IT' : 'EN';
-
-    langToggle.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-lang') || 'en';
-        const next = current === 'en' ? 'it' : 'en';
-        document.documentElement.setAttribute('data-lang', next);
-        localStorage.setItem('lang', next);
-        langToggle.querySelector('.lang-label').textContent = next === 'en' ? 'IT' : 'EN';
-        if (typeof applyTranslations === 'function') applyTranslations();
-        updateTagline();
+const exportBibtex = document.getElementById('export-bibtex');
+if (exportBibtex) {
+    exportBibtex.addEventListener('click', () => {
+        const entries = [];
+        document.querySelectorAll('.bibtex-btn').forEach(btn => {
+            if (btn.dataset.bibtex) entries.push(btn.dataset.bibtex);
+        });
+        if (entries.length === 0) return;
+        const content = entries.join('\n\n');
+        const blob = new Blob([content], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'baldassari_publications.bib';
+        a.click();
+        URL.revokeObjectURL(url);
     });
 }
-
-// Apply translations on load
-if (typeof applyTranslations === 'function') applyTranslations();
 
 // =============================================
 // KEYBOARD SHORTCUTS
@@ -287,10 +275,6 @@ document.addEventListener('keydown', (e) => {
         case 't':
         case 'T':
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            break;
-        case 'l':
-        case 'L':
-            if (langToggle) langToggle.click();
             break;
         case '/':
             e.preventDefault();

@@ -83,15 +83,12 @@
                 <span></span>
             </button>
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
-                <li><a href="#publications" class="nav-link" data-i18n="nav.publications">Publications</a></li>
-                <li><a href="#cv" class="nav-link" data-i18n="nav.cv">CV</a></li>
-                <li><a href="#contact" class="nav-link btn-nav" data-i18n="nav.contact">Get in touch</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
+                <li><a href="#cv" class="nav-link">CV</a></li>
+                <li><a href="#contact" class="nav-link btn-nav">Get in touch</a></li>
             </ul>
             <div class="nav-actions">
-                <button class="lang-toggle" id="lang-toggle" aria-label="Switch language">
-                    <span class="lang-label">IT</span>
-                </button>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                     <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                     <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -112,7 +109,7 @@
             <div class="hero-text">
                 <div class="hero-badge">
                     <span class="badge-dot"></span>
-                    <span data-i18n="hero.badge">Researcher</span>
+                    <span>Researcher</span>
                 </div>
                 <h1 class="hero-name">
                     Cristiano<br>
@@ -123,10 +120,10 @@
                 </p>
                 <div class="hero-cta">
                     <a href="#publications" class="btn btn-primary">
-                        <span data-i18n="hero.cta.research">Explore research</span>
+                        <span>Explore research</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
                     </a>
-                    <a href="#contact" class="btn btn-ghost" data-i18n="hero.cta.contact">Contact me</a>
+                    <a href="#contact" class="btn btn-ghost">Contact me</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -139,7 +136,7 @@
             </div>
         </div>
         <div class="hero-scroll">
-            <span data-i18n="hero.scroll">scroll</span>
+            <span>scroll</span>
             <div class="hero-scroll-line"></div>
         </div>
     </section>
@@ -148,19 +145,19 @@
     <section class="section" id="about" aria-label="About">
         <div class="container">
             <div class="section-header">
-                <span class="section-label" data-i18n="about.label">01 / About</span>
-                <h2 class="section-title" data-i18n="about.title">Background</h2>
+                <span class="section-label">01 / About</span>
+                <h2 class="section-title">Background</h2>
             </div>
             <div class="about-content about-grid">
                 <div class="about-text">
-                    <p data-i18n="about.p1" data-i18n-html>
+                    <p>
                         I'm a researcher at the <strong>University of Tuscia</strong> in Viterbo,
                         with a physics degree from <strong>Sapienza</strong> in Rome.
                         I started out in consulting, working on fraud detection, predictive models
                         and analytics for banks and media companies, then eventually followed
                         my curiosity into academia.
                     </p>
-                    <p data-i18n="about.p2">
+                    <p>
                         Today I work on unsupervised methods that connect time series and graph theory,
                         mostly applied to energy and financial markets.
                         I like finding structure where it's not obvious there is any.
@@ -237,21 +234,27 @@
     <section class="section section-dark" id="publications" aria-label="Publications">
         <div class="container">
             <div class="section-header">
-                <span class="section-label" data-i18n="pub.label">02 / Research</span>
-                <h2 class="section-title" data-i18n="pub.title">Publications</h2>
+                <span class="section-label">02 / Research</span>
+                <h2 class="section-title">Publications</h2>
                 <p class="section-description">
-                    <span data-i18n="pub.desc">Peer-reviewed research in machine learning, complex networks and quantitative finance.</span>
-                    <a href="https://scholar.google.com/citations?user=0CeqNRQAAAAJ&hl=en" target="_blank" rel="noopener" data-i18n="pub.scholar" data-i18n-html>View on Google Scholar &rarr;</a>
+                    <span>Peer-reviewed research in machine learning, complex networks and quantitative finance.</span>
+                    <a href="https://scholar.google.com/citations?user=0CeqNRQAAAAJ&hl=en" target="_blank" rel="noopener">View on Google Scholar &rarr;</a>
                 </p>
             </div>
 
             <div class="pub-controls">
                 <div class="pub-filters">
-                    <button class="pub-filter active" data-filter="all" data-i18n="pub.filter.all">All</button>
-                    <button class="pub-filter" data-filter="ml" data-i18n="pub.filter.ml">Machine Learning</button>
-                    <button class="pub-filter" data-filter="innovation" data-i18n="pub.filter.innovation">Innovation</button>
+                    <button class="pub-filter active" data-filter="all">All</button>
+                    <button class="pub-filter" data-filter="ml">Machine Learning</button>
+                    <button class="pub-filter" data-filter="innovation">Innovation</button>
                 </div>
-                <input type="text" class="pub-search" id="pub-search" placeholder="Search publications..." data-i18n-placeholder="pub.search">
+                <div class="pub-actions">
+                    <input type="text" class="pub-search" id="pub-search" placeholder="Search publications...">
+                    <button class="export-bibtex-btn" id="export-bibtex" aria-label="Export all citations as BibTeX">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                        .bib
+                    </button>
+                </div>
             </div>
 
             <div class="publications-list">
@@ -500,8 +503,8 @@
     <section class="section section-dark" id="cv" aria-label="Curriculum Vitae">
         <div class="container">
             <div class="section-header">
-                <span class="section-label" data-i18n="cv.label">03 / Experience</span>
-                <h2 class="section-title" data-i18n="cv.title">Curriculum Vitae</h2>
+                <span class="section-label">03 / Experience</span>
+                <h2 class="section-title">Curriculum Vitae</h2>
             </div>
 
             <div class="timeline">
@@ -582,9 +585,9 @@
     <section class="section" id="contact" aria-label="Contact">
         <div class="container contact-container">
             <div class="section-header">
-                <span class="section-label" data-i18n="contact.label">04 / Connect</span>
-                <h2 class="section-title" data-i18n="contact.title">Let's collaborate</h2>
-                <p class="section-description" data-i18n="contact.desc">Interested in collaborating or just exchanging ideas? Reach out.</p>
+                <span class="section-label">04 / Connect</span>
+                <h2 class="section-title">Let's collaborate</h2>
+                <p class="section-description">Interested in collaborating or just exchanging ideas? Reach out.</p>
             </div>
 
             <div class="contact-grid">
@@ -615,7 +618,7 @@
                         </svg>
                     </div>
                     <span class="contact-card-label">Google Scholar</span>
-                    <span class="contact-card-hint" data-i18n="contact.scholar.hint">Publications &amp; citations</span>
+                    <span class="contact-card-hint">Publications &amp; citations</span>
                 </a>
             </div>
         </div>
@@ -626,7 +629,7 @@
     <footer class="footer" aria-label="Footer">
         <div class="container footer-content">
             <p>&copy; 2026 Cristiano Baldassari</p>
-            <a href="privacy.html" class="footer-link" data-i18n="footer.privacy">Privacy Policy</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
         </div>
     </footer>
 
@@ -636,7 +639,6 @@
             <h3>Keyboard Shortcuts</h3>
             <div class="shortcut-row"><span>Toggle dark mode</span><span class="shortcut-key">D</span></div>
             <div class="shortcut-row"><span>Back to top</span><span class="shortcut-key">T</span></div>
-            <div class="shortcut-row"><span>Switch language</span><span class="shortcut-key">L</span></div>
             <div class="shortcut-row"><span>Search publications</span><span class="shortcut-key">/</span></div>
             <div class="shortcut-row"><span>Close / Dismiss</span><span class="shortcut-key">Esc</span></div>
             <div class="shortcut-row"><span>Show shortcuts</span><span class="shortcut-key">?</span></div>
@@ -648,7 +650,6 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
     </button>
 
-    <script src="js/i18n.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
