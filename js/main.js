@@ -20,10 +20,8 @@ if (themeToggle) {
         const next = isDark() ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', next);
         localStorage.setItem('theme', next);
-        // Reset tap state
-        const pt = document.getElementById('photo-toggle');
-        if (pt) pt.classList.remove('tapped');
-        updateTagline();
+        // Reset photo state
+        setPhotoState(false);
     });
 }
 
@@ -72,7 +70,12 @@ window.addEventListener('scroll', () => {
 // Back to top click
 if (backToTop) {
     backToTop.addEventListener('click', () => {
+        backToTop.classList.add('clicked');
+        backToTop.blur();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    backToTop.addEventListener('animationend', () => {
+        backToTop.classList.remove('clicked');
     });
 }
 
@@ -193,6 +196,11 @@ const photoToggle = document.getElementById('photo-toggle');
 const heroTagline = document.getElementById('hero-tagline');
 const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
+// Add .has-hover only on real pointer devices — never on touch
+if (!isTouch) {
+    document.documentElement.classList.add('has-hover');
+}
+
 function getTagline(swapped) {
     const dark = isDark();
     const light = 'The interesting part is always in the noise.';
@@ -210,23 +218,36 @@ function updateTagline() {
 // Set initial tagline
 updateTagline();
 
+function setPhotoState(swapped) {
+    if (photoToggle) {
+        photoToggle.classList.toggle('tapped', swapped);
+    }
+    if (heroTagline) heroTagline.textContent = getTagline(swapped);
+}
+
 if (photoToggle) {
+    // On touch: disable transition so swap is instant (avoids compositor stale layers)
+    if (isTouch) {
+        photoToggle.querySelectorAll('img').forEach(img => {
+            img.style.transition = 'none';
+        });
+    }
+
     if (!isTouch) {
-        // Desktop only: hover
+        // Desktop only: hover swaps tagline
         photoToggle.addEventListener('mouseenter', () => {
             if (heroTagline) heroTagline.textContent = getTagline(true);
         });
         photoToggle.addEventListener('mouseleave', () => {
             if (heroTagline) heroTagline.textContent = getTagline(false);
         });
+    } else {
+        // Touch devices: tap to toggle
+        photoToggle.addEventListener('click', () => {
+            const tapped = photoToggle.classList.contains('tapped');
+            setPhotoState(!tapped);
+        });
     }
-
-    // Touch: use touchend to avoid conflicts with mouse events
-    photoToggle.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        const tapped = photoToggle.classList.toggle('tapped');
-        if (heroTagline) heroTagline.textContent = getTagline(tapped);
-    });
 }
 
 // =============================================
