@@ -1246,6 +1246,14 @@ strong {
     opacity: 0;
 }
 
+/* Nav actions (lang + theme toggles) */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-left: auto;
+}
+
 /* Theme toggle button */
 .theme-toggle {
     background: none;
@@ -1258,7 +1266,6 @@ strong {
     justify-content: center;
     color: var(--color-text-secondary);
     transition: all var(--transition);
-    margin-left: 8px;
 }
 
 .theme-toggle:hover {
@@ -1442,7 +1449,6 @@ strong {
     font-size: 0.78rem;
     font-weight: 600;
     transition: all var(--transition);
-    margin-left: 8px;
 }
 
 .lang-toggle:hover {
