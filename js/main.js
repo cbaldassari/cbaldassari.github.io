@@ -71,13 +71,17 @@ window.addEventListener('scroll', () => {
         backToTop.classList.toggle('visible', window.scrollY > 400);
     }
 
-    // Hero orb parallax (desktop only, respects reduced motion)
-    if (!isTouch && !prefersReducedMotion && heroOrb1 && heroOrb2) {
+    // Hero parallax (desktop only, respects reduced motion)
+    if (!isTouch && !prefersReducedMotion && hero) {
         const sy = window.scrollY;
-        const heroHeight = hero ? hero.offsetHeight : 800;
-        if (sy < heroHeight * 1.2) {
-            heroOrb1.style.translate = '0 ' + (sy * 0.08) + 'px';
-            heroOrb2.style.translate = '0 ' + (sy * -0.05) + 'px';
+        const heroHeight = hero.offsetHeight;
+        if (sy < heroHeight * 1.5) {
+            if (heroOrb1) heroOrb1.style.translate = '0 ' + (sy * 0.35) + 'px';
+            if (heroOrb2) heroOrb2.style.translate = '0 ' + (sy * -0.2) + 'px';
+            const heroContent = hero.querySelector('.hero-content');
+            const heroVisual = hero.querySelector('.hero-visual');
+            if (heroContent) heroContent.style.translate = '0 ' + (sy * 0.15) + 'px';
+            if (heroVisual) heroVisual.style.translate = '0 ' + (sy * 0.1) + 'px';
         }
     }
 });
