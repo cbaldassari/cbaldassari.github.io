@@ -34,6 +34,11 @@ const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section, .hero');
 const progressBar = document.getElementById('progress-bar');
 const backToTop = document.getElementById('back-to-top');
+const heroOrb1 = document.querySelector('.hero-orb-1');
+const heroOrb2 = document.querySelector('.hero-orb-2');
+const hero = document.querySelector('.hero');
+const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 10);
@@ -64,6 +69,16 @@ window.addEventListener('scroll', () => {
     // Back to top button
     if (backToTop) {
         backToTop.classList.toggle('visible', window.scrollY > 400);
+    }
+
+    // Hero orb parallax (desktop only, respects reduced motion)
+    if (!isTouch && !prefersReducedMotion && heroOrb1 && heroOrb2) {
+        const sy = window.scrollY;
+        const heroHeight = hero ? hero.offsetHeight : 800;
+        if (sy < heroHeight * 1.2) {
+            heroOrb1.style.translate = '0 ' + (sy * 0.08) + 'px';
+            heroOrb2.style.translate = '0 ' + (sy * -0.05) + 'px';
+        }
     }
 });
 
@@ -183,10 +198,65 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.section-header, .publication-item, .project-card, .about-card, .timeline-item, .contact-card, .about-text, .hero-content').forEach(el => {
+document.querySelectorAll('.section-header, .publication-item, .project-card, .about-card, .timeline-item, .contact-card, .about-text, .hero-content, .stat-item').forEach(el => {
     el.classList.add('fade-in');
     observer.observe(el);
 });
+
+// =============================================
+// STATS COUNTER
+// =============================================
+
+(function initStats() {
+    const pubCount = document.querySelectorAll('.publication-item').length;
+
+    const years = [];
+    document.querySelectorAll('.pub-year-badge').forEach(el => {
+        const y = parseInt(el.textContent, 10);
+        if (!isNaN(y)) years.push(y);
+    });
+    const yearSpan = years.length > 0 ? Math.max(...years) - Math.min(...years) : 0;
+
+    const venues = new Set();
+    document.querySelectorAll('.publication-venue').forEach(el => {
+        const name = el.textContent.split(',')[0].trim();
+        if (name) venues.add(name);
+    });
+    const venueCount = venues.size;
+
+    const elPub = document.getElementById('stat-publications');
+    const elYears = document.getElementById('stat-years');
+    const elVenues = document.getElementById('stat-venues');
+
+    function animateCounter(el, target, duration) {
+        if (!el || target === 0) return;
+        if (prefersReducedMotion) { el.textContent = target; return; }
+        let start = null;
+        function step(ts) {
+            if (!start) start = ts;
+            const p = Math.min((ts - start) / duration, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(eased * target);
+            if (p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    const statsBar = document.getElementById('stats-bar');
+    if (statsBar) {
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(elPub, pubCount, 1200);
+                    animateCounter(elYears, yearSpan, 1000);
+                    animateCounter(elVenues, venueCount, 800);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        statsObserver.observe(statsBar);
+    }
+})();
 
 // =============================================
 // PROFILE PHOTO TOGGLE
@@ -194,7 +264,6 @@ document.querySelectorAll('.section-header, .publication-item, .project-card, .a
 
 const photoToggle = document.getElementById('photo-toggle');
 const heroTagline = document.getElementById('hero-tagline');
-const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 // Add .has-hover only on real pointer devices — never on touch
 if (!isTouch) {

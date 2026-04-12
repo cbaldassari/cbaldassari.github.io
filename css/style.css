@@ -285,6 +285,7 @@ strong {
     filter: blur(80px);
     opacity: 0.5;
     animation: orbFloat 20s ease-in-out infinite;
+    will-change: transform, translate;
 }
 
 .hero-orb-1 {
@@ -1599,6 +1600,48 @@ strong {
 .fade-in:nth-child(5) { transition-delay: 0.32s; }
 
 /* =============================================
+   STATS BAR
+   ============================================= */
+
+.stats-bar {
+    padding: 56px 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--color-primary);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+}
+
+.stat-label {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+/* =============================================
    RESPONSIVE
    ============================================= */
 
@@ -1711,6 +1754,14 @@ strong {
         display: none;
     }
 
+    .stats-container {
+        gap: 32px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
     .section {
         padding: 80px 0;
     }
@@ -1750,6 +1801,11 @@ strong {
 @media (max-width: 480px) {
     .hero-name {
         font-size: 2rem;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        gap: 24px;
     }
 
     .hero-quick-links {
