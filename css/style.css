@@ -1344,9 +1344,15 @@ strong {
     transform: translateY(0);
 }
 
-.back-to-top:hover {
-    background: var(--color-accent);
-    transform: translateY(-2px);
+@media (hover: hover) {
+    .back-to-top:hover {
+        background: var(--color-accent);
+        transform: translateY(-2px);
+    }
+}
+
+.back-to-top:active {
+    background: var(--color-primary);
 }
 
 /* =============================================
