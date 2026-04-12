@@ -106,10 +106,24 @@ document.querySelectorAll('.section-header, .publication-item, .project-card, .a
 // =============================================
 
 const photoToggle = document.getElementById('photo-toggle');
+const heroTagline = document.getElementById('hero-tagline');
+const taglineDefault = 'The interesting part is always in the noise.';
+const taglineAlt = 'The noise is always in the interesting part.';
+
 if (photoToggle) {
-    photoToggle.addEventListener('click', (e) => {
+    // Desktop: hover
+    photoToggle.addEventListener('mouseenter', () => {
+        if (heroTagline) heroTagline.textContent = taglineAlt;
+    });
+    photoToggle.addEventListener('mouseleave', () => {
+        if (heroTagline) heroTagline.textContent = taglineDefault;
+    });
+
+    // Mobile: tap
+    photoToggle.addEventListener('click', () => {
         if ('ontouchstart' in window) {
-            photoToggle.classList.toggle('tapped');
+            const tapped = photoToggle.classList.toggle('tapped');
+            if (heroTagline) heroTagline.textContent = tapped ? taglineAlt : taglineDefault;
         }
     });
 }
