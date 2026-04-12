@@ -1196,18 +1196,26 @@ strong {
 
     .hero-visual {
         order: -1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .hero-image-frame {
+        width: 200px;
+        height: 200px;
     }
 
     .hero-image-placeholder,
     .hero-image-frame img {
         width: 200px;
         height: 200px;
-        margin: 0 auto;
+        border-radius: 50%;
         font-size: 3.5rem;
     }
 
     .hero-image-ring {
         inset: -10px;
+        border-radius: 50%;
     }
 
     .hero-name {
