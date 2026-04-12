@@ -1227,24 +1227,7 @@ strong {
     background: var(--color-bg-dark);
 }
 
-/* Dark mode: swap profile photos */
-[data-theme="dark"] .hero-image-frame .photo-casual {
-    opacity: 0;
-}
 
-[data-theme="dark"] .hero-image-frame .photo-elegant {
-    opacity: 1;
-}
-
-[data-theme="dark"] .hero-image-frame:hover .photo-casual,
-[data-theme="dark"] .hero-image-frame.tapped .photo-casual {
-    opacity: 1;
-}
-
-[data-theme="dark"] .hero-image-frame:hover .photo-elegant,
-[data-theme="dark"] .hero-image-frame.tapped .photo-elegant {
-    opacity: 0;
-}
 
 /* Nav actions (lang + theme toggles) */
 .nav-actions {
