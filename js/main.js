@@ -198,65 +198,10 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-document.querySelectorAll('.section-header, .publication-item, .project-card, .about-card, .timeline-item, .contact-card, .about-text, .hero-content, .stat-item').forEach(el => {
+document.querySelectorAll('.section-header, .publication-item, .project-card, .about-card, .timeline-item, .contact-card, .about-text, .hero-content').forEach(el => {
     el.classList.add('fade-in');
     observer.observe(el);
 });
-
-// =============================================
-// STATS COUNTER
-// =============================================
-
-(function initStats() {
-    const pubCount = document.querySelectorAll('.publication-item').length;
-
-    const years = [];
-    document.querySelectorAll('.pub-year-badge').forEach(el => {
-        const y = parseInt(el.textContent, 10);
-        if (!isNaN(y)) years.push(y);
-    });
-    const yearSpan = years.length > 0 ? Math.max(...years) - Math.min(...years) : 0;
-
-    const venues = new Set();
-    document.querySelectorAll('.publication-venue').forEach(el => {
-        const name = el.textContent.split(',')[0].trim();
-        if (name) venues.add(name);
-    });
-    const venueCount = venues.size;
-
-    const elPub = document.getElementById('stat-publications');
-    const elYears = document.getElementById('stat-years');
-    const elVenues = document.getElementById('stat-venues');
-
-    function animateCounter(el, target, duration) {
-        if (!el || target === 0) return;
-        if (prefersReducedMotion) { el.textContent = target; return; }
-        let start = null;
-        function step(ts) {
-            if (!start) start = ts;
-            const p = Math.min((ts - start) / duration, 1);
-            const eased = 1 - Math.pow(1 - p, 3);
-            el.textContent = Math.round(eased * target);
-            if (p < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-    }
-
-    const statsBar = document.getElementById('stats-bar');
-    if (statsBar) {
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter(elPub, pubCount, 1200);
-                    animateCounter(elYears, yearSpan, 1000);
-                    animateCounter(elVenues, venueCount, 800);
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-        statsObserver.observe(statsBar);
-    }
-})();
 
 // =============================================
 // PROFILE PHOTO TOGGLE
