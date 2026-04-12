@@ -100,3 +100,16 @@ document.querySelectorAll('.section-header, .publication-item, .project-card, .a
     el.classList.add('fade-in');
     observer.observe(el);
 });
+
+// =============================================
+// PROFILE PHOTO TOGGLE (tap on mobile)
+// =============================================
+
+const photoToggle = document.getElementById('photo-toggle');
+if (photoToggle) {
+    photoToggle.addEventListener('click', (e) => {
+        if ('ontouchstart' in window) {
+            photoToggle.classList.toggle('tapped');
+        }
+    });
+}
