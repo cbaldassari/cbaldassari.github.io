@@ -34,8 +34,6 @@ const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section, .hero');
 const progressBar = document.getElementById('progress-bar');
 const backToTop = document.getElementById('back-to-top');
-const heroOrb1 = document.querySelector('.hero-orb-1');
-const heroOrb2 = document.querySelector('.hero-orb-2');
 const hero = document.querySelector('.hero');
 const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -71,17 +69,12 @@ window.addEventListener('scroll', () => {
         backToTop.classList.toggle('visible', window.scrollY > 400);
     }
 
-    // Hero parallax (desktop only, respects reduced motion)
-    if (!isTouch && !prefersReducedMotion && hero) {
+    // Hero parallax (respects reduced motion)
+    if (!prefersReducedMotion && hero) {
         const sy = window.scrollY;
         const heroHeight = hero.offsetHeight;
         if (sy < heroHeight * 1.5) {
-            if (heroOrb1) heroOrb1.style.translate = '0 ' + (sy * 0.35) + 'px';
-            if (heroOrb2) heroOrb2.style.translate = '0 ' + (sy * -0.2) + 'px';
-            const heroContent = hero.querySelector('.hero-content');
-            const heroVisual = hero.querySelector('.hero-visual');
-            if (heroContent) heroContent.style.translate = '0 ' + (sy * 0.15) + 'px';
-            if (heroVisual) heroVisual.style.translate = '0 ' + (sy * 0.1) + 'px';
+            hero.style.setProperty('--parallax', sy + 'px');
         }
     }
 });

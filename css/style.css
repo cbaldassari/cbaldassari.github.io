@@ -246,12 +246,14 @@ strong {
     position: relative;
     padding-top: 72px;
     overflow: hidden;
+    --parallax: 0px;
 }
 
 .hero-bg {
     position: absolute;
     inset: 0;
     pointer-events: none;
+    transform: translateY(calc(var(--parallax) * 0.4));
 }
 
 .hero-graph {
