@@ -43,6 +43,25 @@
         .privacy a {
             font-weight: 500;
         }
+        .privacy hr {
+            border: none;
+            border-top: 1px solid var(--color-border);
+            margin: 56px 0;
+        }
+        .lang-switch {
+            display: inline-flex;
+            gap: 12px;
+            margin-bottom: 32px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .lang-switch a {
+            color: var(--color-text-tertiary);
+            text-decoration: none;
+        }
+        .lang-switch a.active {
+            color: var(--color-primary);
+        }
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -64,6 +83,15 @@
     </nav>
 
     <main class="privacy">
+
+        <div class="lang-switch">
+            <a href="#en" class="active">English</a>
+            <span style="color: var(--color-border);">|</span>
+            <a href="#it">Italiano</a>
+        </div>
+
+        <!-- English version -->
+        <div id="en">
         <h1>Privacy Policy</h1>
         <p class="last-updated">Last updated: April 13, 2026</p>
 
@@ -79,6 +107,11 @@
             It does <strong>not</strong> use cookies, analytics tools, tracking scripts,
             or any form of user profiling. No personal data is collected, processed or stored
             by the website owner through this site.
+        </p>
+        <p>
+            The site uses a <strong>service worker</strong> to cache pages and assets locally
+            in your browser for offline access. This cache is stored only on your device,
+            does not transmit any data, and can be cleared at any time through your browser settings.
         </p>
 
         <h2>3. Hosting</h2>
@@ -104,7 +137,7 @@
 
         <h2>5. External links</h2>
         <p>
-            This site contains links to external websites (GitHub, LinkedIn, Google Scholar, Vimeo, etc.).
+            This site contains links to external websites (GitHub, LinkedIn, Google Scholar, etc.).
             Clicking on these links will take you to third-party sites with their own privacy policies.
             The data controller is not responsible for the privacy practices of these external sites.
         </p>
@@ -133,6 +166,88 @@
             This privacy policy may be updated from time to time. The "last updated" date at the top
             of this page indicates when the latest revision was made.
         </p>
+        </div>
+
+        <hr>
+
+        <!-- Italian version -->
+        <div id="it">
+        <h1>Informativa sulla Privacy</h1>
+        <p class="last-updated">Ultimo aggiornamento: 13 aprile 2026</p>
+
+        <h2>1. Titolare del trattamento</h2>
+        <p>
+            Cristiano Baldassari<br>
+            Contatti: vedi <a href="index.html#contact">pagina contatti</a>
+        </p>
+
+        <h2>2. Dati raccolti</h2>
+        <p>
+            Questo sito web è un sito statico ospitato su <strong>GitHub Pages</strong>.
+            <strong>Non</strong> utilizza cookie, strumenti di analisi, script di tracciamento
+            o alcuna forma di profilazione degli utenti. Nessun dato personale viene raccolto,
+            elaborato o conservato dal titolare del trattamento attraverso questo sito.
+        </p>
+        <p>
+            Il sito utilizza un <strong>service worker</strong> per memorizzare nella cache locale
+            del browser pagine e risorse per l'accesso offline. Questa cache è conservata
+            esclusivamente sul dispositivo dell'utente, non trasmette alcun dato e può essere
+            cancellata in qualsiasi momento dalle impostazioni del browser.
+        </p>
+
+        <h2>3. Hosting</h2>
+        <p>
+            Questo sito è ospitato da <strong>GitHub, Inc.</strong> (società controllata da Microsoft Corporation)
+            tramite il servizio GitHub Pages. Quando si visita il sito, GitHub può raccogliere
+            informazioni tecniche come l'indirizzo IP nei log del server come parte della propria
+            infrastruttura. Questo trattamento è effettuato da GitHub in qualità di titolare autonomo.
+        </p>
+        <p>
+            Per informazioni sul trattamento dei dati da parte di GitHub:
+            <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a>.
+        </p>
+
+        <h2>4. Servizi di terze parti</h2>
+        <p>Questo sito <strong>non</strong> carica risorse da server di terze parti. In particolare:</p>
+        <ul>
+            <li>I font sono ospitati localmente (nessun Google Fonts CDN).</li>
+            <li>Nessuno strumento di analisi o tracciamento (nessun Google Analytics, Meta Pixel, ecc.).</li>
+            <li>Nessuna rete pubblicitaria.</li>
+            <li>Nessun contenuto incorporato da piattaforme esterne.</li>
+        </ul>
+
+        <h2>5. Link esterni</h2>
+        <p>
+            Il sito contiene link a siti esterni (GitHub, LinkedIn, Google Scholar, ecc.).
+            Cliccando su questi link si accede a siti di terze parti con proprie informative sulla privacy.
+            Il titolare del trattamento non è responsabile delle pratiche di privacy di tali siti.
+        </p>
+
+        <h2>6. Diritti dell'interessato ai sensi del GDPR</h2>
+        <p>
+            Ai sensi del Regolamento generale sulla protezione dei dati (GDPR), l'utente ha diritto a:
+        </p>
+        <ul>
+            <li>Accesso ai propri dati personali (Art. 15)</li>
+            <li>Rettifica dei dati inesatti (Art. 16)</li>
+            <li>Cancellazione dei dati (Art. 17)</li>
+            <li>Limitazione del trattamento (Art. 18)</li>
+            <li>Portabilità dei dati (Art. 20)</li>
+            <li>Opposizione al trattamento (Art. 21)</li>
+            <li>Proporre reclamo al <em>Garante per la protezione dei dati personali</em>: <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a></li>
+        </ul>
+        <p>
+            Poiché questo sito non raccoglie dati personali, tali diritti si applicano principalmente
+            al fornitore di hosting (GitHub). Per qualsiasi richiesta, è possibile contattare il titolare
+            all'indirizzo disponibile nella <a href="index.html#contact">pagina contatti</a>.
+        </p>
+
+        <h2>7. Modifiche all'informativa</h2>
+        <p>
+            Questa informativa sulla privacy può essere aggiornata periodicamente. La data di
+            "ultimo aggiornamento" in alto indica quando è stata effettuata l'ultima revisione.
+        </p>
+        </div>
 
         <a href="index.html" class="back-link">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
