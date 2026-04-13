@@ -21,7 +21,12 @@
         energy: {
             label: 'Energy prices',
             names: ['Gas-driven spike', 'Stable baseload', 'Volatile bimodal'],
-            desc: 'Three synthetic scenarios loosely inspired by energy price dynamics: a gas-dominated regime with price spikes, a stable baseload scenario, and a volatile market with two distinct price modes. Distributions are illustrative, not fitted to real data.',
+            desc: 'Energy markets exhibit structurally different price regimes depending on fuel mix, demand patterns, and grid stress. This preset models three synthetic scenarios (not real data):',
+            details: [
+                'Gas-driven spike \u2014 A market dominated by gas-fired generation, where prices cluster around a moderate level but occasionally spike due to supply shocks. The right tail captures those extreme events.',
+                'Stable baseload \u2014 A market with abundant low-cost generation (e.g. nuclear, hydro), producing a single narrow price peak with low volatility.',
+                'Volatile bimodal \u2014 A market alternating between low off-peak prices and high on-peak prices, generating two distinct modes in the distribution.'
+            ],
             dists: [
                 [{ mu: 2.0, s: 0.7, w: 0.65 }, { mu: 4.5, s: 0.5, w: 0.35 }],
                 [{ mu: 2.5, s: 0.6, w: 1.0 }],
@@ -32,7 +37,12 @@
         rates: {
             label: 'Interest rates',
             names: ['Low-rate regime', 'Normal regime', 'High-rate tail'],
-            desc: 'Three synthetic interest rate regimes: a near-zero environment, a normal monetary policy scenario, and a regime with persistent high rates and fat tails. Distributions are illustrative, not fitted to real data.',
+            desc: 'Interest rates reflect monetary policy and macroeconomic conditions. Different regimes produce different yield distributions. This preset models three synthetic scenarios (not real data):',
+            details: [
+                'Low-rate regime \u2014 A near-zero interest rate environment typical of accommodative monetary policy or post-crisis periods. Narrow distribution concentrated near zero.',
+                'Normal regime \u2014 A standard monetary policy scenario with rates around a moderate level and typical uncertainty. Single broad peak.',
+                'High-rate tail \u2014 A stressed environment with persistently elevated rates and a fat left tail, reflecting uncertainty about whether rates will normalize or stay high.'
+            ],
             dists: [
                 [{ mu: 0.8, s: 0.4, w: 1.0 }],
                 [{ mu: 3.0, s: 0.9, w: 1.0 }],
@@ -43,7 +53,12 @@
         bimodal: {
             label: 'Bimodal mix',
             names: ['Unimodal narrow', 'Bimodal separated', 'Broad flat'],
-            desc: 'A synthetic scenario to illustrate how the barycenter interpolates between distributions with very different shapes: a tight peak, two widely separated modes, and a broad diffuse distribution.',
+            desc: 'A purely methodological scenario showing how the barycenter handles distributions with very different shapes. No market interpretation \u2014 this illustrates the algorithm itself:',
+            details: [
+                'Unimodal narrow \u2014 A tight, concentrated distribution with a single sharp peak. Represents high certainty around one value.',
+                'Bimodal separated \u2014 Two well-separated modes with a gap between them. The barycenter must decide how to bridge this gap rather than simply averaging.',
+                'Broad flat \u2014 A diffuse distribution spread across a wide range. Represents high uncertainty or a uniform-like prior.'
+            ],
             dists: [
                 [{ mu: 1.0, s: 0.5, w: 1.0 }],
                 [{ mu: -0.5, s: 0.6, w: 0.5 }, { mu: 6.0, s: 0.6, w: 0.5 }],
@@ -469,7 +484,18 @@
 
         // update description
         var descEl = document.getElementById('wb-preset-desc');
-        if (descEl) descEl.textContent = p.desc;
+        if (descEl) {
+            var html = '<span>' + p.desc + '</span>';
+            if (p.details) {
+                html += '<ul class="wb-preset-details">';
+                for (var d = 0; d < p.details.length; d++) {
+                    var col = DIST_COLORS[d];
+                    html += '<li><span class="wb-legend-dot" style="background:rgb(' + col.r + ',' + col.g + ',' + col.b + ');vertical-align:middle;margin-right:4px;display:inline-block;"></span>' + p.details[d] + '</li>';
+                }
+                html += '</ul>';
+            }
+            descEl.innerHTML = html;
+        }
 
         var btns = document.querySelectorAll('.wb-preset-btn');
         for (var b = 0; b < btns.length; b++) {

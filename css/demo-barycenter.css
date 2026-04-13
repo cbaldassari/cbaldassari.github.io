@@ -175,6 +175,21 @@
     margin-bottom: 20px;
 }
 
+.wb-preset-details {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.wb-preset-details li {
+    font-size: 0.82rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
 /* Section labels */
 .wb-section {
     margin-bottom: 28px;
