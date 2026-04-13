@@ -168,6 +168,13 @@
     color: #fff;
 }
 
+.wb-preset-description {
+    font-size: 0.84rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
 /* Footnote */
 .wb-footnote {
     font-size: 0.78rem;

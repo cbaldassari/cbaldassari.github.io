@@ -17,11 +17,11 @@
         { r: 6, g: 182, b: 212 },     // cyan
         { r: 249, g: 115, b: 22 }     // orange
     ];
-    var DIST_NAMES = ['Distribution A', 'Distribution B', 'Distribution C'];
-
     var PRESETS = {
         energy: {
             label: 'Energy prices',
+            names: ['Gas-driven spike', 'Stable baseload', 'Volatile bimodal'],
+            desc: 'Three stylized scenarios for energy price distributions: a gas-dominated regime with price spikes, a stable baseload scenario, and a volatile market with two distinct price modes. Inspired by Italian electricity and natural gas market data (2019\u20132023).',
             dists: [
                 [{ mu: 2.0, s: 0.7, w: 0.65 }, { mu: 4.5, s: 0.5, w: 0.35 }],
                 [{ mu: 2.5, s: 0.6, w: 1.0 }],
@@ -31,6 +31,8 @@
         },
         rates: {
             label: 'Interest rates',
+            names: ['Low-rate regime', 'Normal regime', 'High-rate tail'],
+            desc: 'Three interest rate regimes modeled as probability distributions over the yield level: a near-zero environment, a normal monetary policy scenario, and a regime with persistent high rates and fat tails. Inspired by US Treasury yield curve data.',
             dists: [
                 [{ mu: 0.8, s: 0.4, w: 1.0 }],
                 [{ mu: 3.0, s: 0.9, w: 1.0 }],
@@ -40,6 +42,8 @@
         },
         bimodal: {
             label: 'Bimodal mix',
+            names: ['Unimodal narrow', 'Bimodal separated', 'Broad flat'],
+            desc: 'A synthetic scenario to illustrate how the barycenter interpolates between distributions with very different shapes: a tight peak, two widely separated modes, and a broad diffuse distribution.',
             dists: [
                 [{ mu: 1.0, s: 0.5, w: 1.0 }],
                 [{ mu: -0.5, s: 0.6, w: 0.5 }, { mu: 6.0, s: 0.6, w: 0.5 }],
@@ -376,15 +380,16 @@
     }
 
     // --- UI ---
-    function buildLegend() {
+    function buildLegend(names) {
         var el = document.getElementById('wb-legend');
         if (!el) return;
+        var labels = names || ['Distribution A', 'Distribution B', 'Distribution C'];
         var html = '';
         for (var i = 0; i < DIST_COLORS.length; i++) {
             var c = DIST_COLORS[i];
             html += '<div class="wb-legend-item">';
             html += '<span class="wb-legend-dot" style="background:rgb(' + c.r + ',' + c.g + ',' + c.b + ')"></span>';
-            html += DIST_NAMES[i];
+            html += labels[i];
             html += '</div>';
         }
         html += '<div class="wb-legend-item">';
@@ -394,15 +399,16 @@
         el.innerHTML = html;
     }
 
-    function buildControls() {
+    function buildControls(names) {
         var el = document.getElementById('wb-controls');
         if (!el) return;
+        var labels = names || ['Distribution A', 'Distribution B', 'Distribution C'];
         var html = '';
         for (var i = 0; i < weights.length; i++) {
             var val = Math.round(weights[i] * 100);
             html += '<div class="wb-control-row">';
-            html += '<span class="wb-control-label">' + DIST_NAMES[i] + '</span>';
-            html += '<input type="range" class="wb-control-slider" min="0" max="100" value="' + val + '" data-idx="' + i + '" aria-label="Weight for ' + DIST_NAMES[i] + '">';
+            html += '<span class="wb-control-label">' + labels[i] + '</span>';
+            html += '<input type="range" class="wb-control-slider" min="0" max="100" value="' + val + '" data-idx="' + i + '" aria-label="Weight for ' + labels[i] + '">';
             html += '<span class="wb-control-value">' + weights[i].toFixed(2) + '</span>';
             html += '</div>';
         }
@@ -458,7 +464,12 @@
         }
         weights = p.weights.slice();
         recomputeBarycenter();
-        buildControls();
+        buildLegend(p.names);
+        buildControls(p.names);
+
+        // update description
+        var descEl = document.getElementById('wb-preset-desc');
+        if (descEl) descEl.textContent = p.desc;
 
         var btns = document.querySelectorAll('.wb-preset-btn');
         for (var b = 0; b < btns.length; b++) {

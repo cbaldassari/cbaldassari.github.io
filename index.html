@@ -512,23 +512,37 @@
                     <div class="wb-intro">
                         <h3 class="wb-title">Wasserstein Barycenter</h3>
                         <p class="wb-description">
-                            The optimal transport "average" of multiple probability distributions.
-                            Adjust weights to see how the barycenter morphs between input distributions.
+                            Given multiple probability distributions, the Wasserstein barycenter is the
+                            distribution that best represents all of them in the sense of
+                            <strong>optimal transport</strong> &mdash; it minimizes the total cost of
+                            "moving mass" from each input to the result.
+                            Unlike a simple pointwise average, it preserves the shape and features
+                            of the inputs.
+                        </p>
+                        <p class="wb-description">
+                            The colored curves below represent different market scenarios modeled as
+                            probability distributions. The dark curve is their Wasserstein barycenter.
+                            The floating particles suggest the optimal transport paths.
+                            Use the sliders to change each scenario's influence and watch the
+                            barycenter reshape in real time.
                         </p>
                     </div>
-                    <div class="wb-canvas-wrap">
-                        <canvas id="wb-canvas" aria-label="Wasserstein barycenter visualization"></canvas>
-                    </div>
-                    <div class="wb-legend" id="wb-legend"></div>
-                    <div class="wb-controls" id="wb-controls"></div>
                     <div class="wb-presets">
                         <button class="wb-preset-btn" data-preset="energy">Energy prices</button>
                         <button class="wb-preset-btn" data-preset="rates">Interest rates</button>
                         <button class="wb-preset-btn" data-preset="bimodal">Bimodal mix</button>
                     </div>
+                    <p class="wb-preset-description" id="wb-preset-desc"></p>
+                    <div class="wb-canvas-wrap">
+                        <canvas id="wb-canvas" aria-label="Wasserstein barycenter visualization"></canvas>
+                    </div>
+                    <div class="wb-legend" id="wb-legend"></div>
+                    <div class="wb-controls" id="wb-controls"></div>
                     <p class="wb-footnote">
-                        Computed via quantile averaging:
-                        <span class="wb-math">Q<sub>bary</sub>(t) = &Sigma; w<sub>i</sub> Q<sub>i</sub>(t)</span>
+                        1D Wasserstein-2 barycenter computed exactly via quantile averaging:
+                        <span class="wb-math">Q<sub>bary</sub>(t) = &Sigma; w<sub>i</sub> Q<sub>i</sub>(t)</span>.
+                        Input distributions are Gaussian mixtures fitted to stylized market data.
+                        See <a href="#publications">publications</a> for the full methodology.
                     </p>
                 </div>
             </div>
