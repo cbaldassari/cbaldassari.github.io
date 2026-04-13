@@ -669,8 +669,14 @@
 
     <script src="js/main.js?v=9"></script>
     <script>
+    // Unregister old service worker and clear caches
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js');
+        navigator.serviceWorker.getRegistrations().then(regs => {
+            regs.forEach(r => r.unregister());
+        });
+        caches.keys().then(keys => {
+            keys.forEach(k => caches.delete(k));
+        });
     }
     </script>
 </body>
