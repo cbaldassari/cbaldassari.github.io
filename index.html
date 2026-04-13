@@ -59,9 +59,9 @@
     <script>
     (function(){var s=localStorage.getItem('theme'),d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(s==='dark'||(!s&&d))document.documentElement.setAttribute('data-theme','dark');})();
     </script>
-    <link rel="stylesheet" href="css/fonts.css?v=8">
-    <link rel="stylesheet" href="css/style.css?v=8">
-    <link rel="stylesheet" href="css/print.css?v=8" media="print">
+    <link rel="stylesheet" href="css/fonts.css?v=9">
+    <link rel="stylesheet" href="css/style.css?v=9">
+    <link rel="stylesheet" href="css/print.css?v=9" media="print">
 </head>
 <body>
 
@@ -499,28 +499,28 @@
         </div>
     </section>
 
-    <!-- Demo (hidden: remove the hidden attribute to publish) -->
-    <section class="section" id="demo" aria-label="Interactive demos" hidden>
+    <!-- Demo (draft: not linked in navbar, add nav-link to publish) -->
+    <section class="section" id="demo" aria-label="Interactive demos">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">03 / Interactive</span>
                 <h2 class="section-title">Demos</h2>
             </div>
             <div class="demo-content">
-                <!-- Add demo components here -->
+                <p style="color: var(--color-text-secondary); font-style: italic;">Work in progress.</p>
             </div>
         </div>
     </section>
 
-    <!-- API (hidden: remove the hidden attribute to publish) -->
-    <section class="section section-dark" id="api" aria-label="API endpoints" hidden>
+    <!-- API (draft: not linked in navbar, add nav-link to publish) -->
+    <section class="section section-dark" id="api" aria-label="API endpoints">
         <div class="container">
             <div class="section-header">
                 <span class="section-label">04 / Data</span>
                 <h2 class="section-title">API</h2>
             </div>
             <div class="api-content">
-                <!-- Add API documentation here -->
+                <p style="color: var(--color-text-secondary); font-style: italic;">Work in progress.</p>
             </div>
         </div>
     </section>
@@ -676,7 +676,7 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
     </button>
 
-    <script src="js/main.js?v=8"></script>
+    <script src="js/main.js?v=9"></script>
     <script>
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js');
