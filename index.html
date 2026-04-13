@@ -530,17 +530,32 @@
                             barycenter reshape in real time.
                         </p>
                     </div>
-                    <div class="wb-presets">
-                        <button class="wb-preset-btn" data-preset="energy">Energy prices</button>
-                        <button class="wb-preset-btn" data-preset="rates">Interest rates</button>
-                        <button class="wb-preset-btn" data-preset="bimodal">Bimodal mix</button>
+                    <div class="wb-section">
+                        <h4 class="wb-section-label">Scenario</h4>
+                        <p class="wb-section-hint">Choose a preset to load a set of synthetic distributions.</p>
+                        <div class="wb-presets">
+                            <button class="wb-preset-btn" data-preset="energy">Energy prices</button>
+                            <button class="wb-preset-btn" data-preset="rates">Interest rates</button>
+                            <button class="wb-preset-btn" data-preset="bimodal">Bimodal mix</button>
+                        </div>
+                        <p class="wb-preset-description" id="wb-preset-desc"></p>
                     </div>
-                    <p class="wb-preset-description" id="wb-preset-desc"></p>
-                    <div class="wb-canvas-wrap">
-                        <canvas id="wb-canvas" aria-label="Wasserstein barycenter visualization"></canvas>
+
+                    <div class="wb-section">
+                        <h4 class="wb-section-label">Distributions &amp; Barycenter</h4>
+                        <p class="wb-section-hint">Colored curves are the input distributions. The dark curve is the Wasserstein barycenter. Particles show optimal transport paths.</p>
+                        <div class="wb-canvas-wrap">
+                            <canvas id="wb-canvas" aria-label="Wasserstein barycenter visualization"></canvas>
+                        </div>
+                        <div class="wb-legend" id="wb-legend"></div>
                     </div>
-                    <div class="wb-legend" id="wb-legend"></div>
-                    <div class="wb-controls" id="wb-controls"></div>
+
+                    <div class="wb-section">
+                        <h4 class="wb-section-label">Weights</h4>
+                        <p class="wb-section-hint">Drag a slider to change how much each distribution influences the barycenter. Weights are automatically normalized.</p>
+                        <div class="wb-controls" id="wb-controls"></div>
+                    </div>
+
                     <p class="wb-footnote">
                         1D Wasserstein-2 barycenter computed exactly via quantile averaging:
                         <span class="wb-math">Q<sub>bary</sub>(t) = &Sigma; w<sub>i</sub> Q<sub>i</sub>(t)</span>.

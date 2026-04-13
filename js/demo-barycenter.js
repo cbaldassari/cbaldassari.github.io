@@ -235,7 +235,7 @@
     function render() {
         var w = parseFloat(canvas.style.width);
         var h = parseFloat(canvas.style.height);
-        var pad = 20;
+        var pad = 36;
         var colors = getColors();
 
         // find global max for y-scale
@@ -244,7 +244,7 @@
             for (var i = 0; i < BINS; i++) if (pdfs[k][i] > maxY) maxY = pdfs[k][i];
         if (currentBary)
             for (var i = 0; i < BINS; i++) if (currentBary[i] > maxY) maxY = currentBary[i];
-        maxY *= 1.15;
+        maxY *= 1.25;
 
         // clear
         ctx.clearRect(0, 0, w, h);
@@ -374,7 +374,7 @@
         ctx.font = '10px ' + getComputedStyle(document.documentElement).getPropertyValue('--font-mono').trim();
         ctx.fillStyle = colors.textTertiary;
         ctx.textAlign = 'right';
-        ctx.fillText('density', w - pad, pad + 10);
+        ctx.fillText('density', w - pad, 14);
 
         animId = requestAnimationFrame(render);
     }

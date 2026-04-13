@@ -175,6 +175,28 @@
     margin-bottom: 20px;
 }
 
+/* Section labels */
+.wb-section {
+    margin-bottom: 28px;
+}
+
+.wb-section-label {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.wb-section-hint {
+    font-size: 0.82rem;
+    color: var(--color-text-tertiary);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
 /* Footnote */
 .wb-footnote {
     font-size: 0.78rem;
