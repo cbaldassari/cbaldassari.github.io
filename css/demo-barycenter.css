@@ -1,0 +1,208 @@
+/* =============================================
+   WASSERSTEIN BARYCENTER DEMO
+   Scoped under .wb-demo to avoid collisions
+   ============================================= */
+
+.wb-demo {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.wb-intro {
+    margin-bottom: 28px;
+}
+
+.wb-title {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 650;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+}
+
+.wb-description {
+    font-size: 0.88rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+/* Canvas */
+.wb-canvas-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+    margin-bottom: 24px;
+}
+
+.wb-canvas-wrap canvas {
+    display: block;
+    width: 100%;
+}
+
+/* Legend */
+.wb-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.wb-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--color-text-secondary);
+}
+
+.wb-legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* Controls */
+.wb-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+.wb-control-row {
+    display: grid;
+    grid-template-columns: 100px 1fr 44px;
+    align-items: center;
+    gap: 12px;
+}
+
+.wb-control-label {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.wb-control-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--color-border);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+.wb-control-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    cursor: pointer;
+    border: 2px solid var(--color-bg);
+    box-shadow: 0 0 0 2px var(--color-primary);
+    transition: transform 0.15s ease;
+}
+
+.wb-control-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+.wb-control-slider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    cursor: pointer;
+    border: 2px solid var(--color-bg);
+    box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.wb-control-value {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-align: right;
+    min-width: 36px;
+}
+
+/* Presets */
+.wb-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.wb-preset-btn {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.wb-preset-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.wb-preset-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+/* Footnote */
+.wb-footnote {
+    font-size: 0.78rem;
+    color: var(--color-text-tertiary);
+    line-height: 1.6;
+}
+
+.wb-math {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .wb-control-row {
+        grid-template-columns: 80px 1fr 40px;
+        gap: 8px;
+    }
+
+    .wb-control-label {
+        font-size: 0.76rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .wb-control-row {
+        grid-template-columns: 1fr 40px;
+        gap: 6px;
+    }
+
+    .wb-control-label {
+        grid-column: 1 / -1;
+    }
+
+    .wb-legend {
+        gap: 10px;
+    }
+}

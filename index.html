@@ -62,6 +62,7 @@
     <link rel="stylesheet" href="css/fonts.css?v=9">
     <link rel="stylesheet" href="css/style.css?v=9">
     <link rel="stylesheet" href="css/print.css?v=9" media="print">
+    <link rel="stylesheet" href="css/demo-barycenter.css?v=1">
 </head>
 <body>
 
@@ -507,7 +508,29 @@
                 <h2 class="section-title">Demos</h2>
             </div>
             <div class="demo-content">
-                <p style="color: var(--color-text-secondary); font-style: italic;">Work in progress.</p>
+                <div class="wb-demo" id="wb-demo">
+                    <div class="wb-intro">
+                        <h3 class="wb-title">Wasserstein Barycenter</h3>
+                        <p class="wb-description">
+                            The optimal transport "average" of multiple probability distributions.
+                            Adjust weights to see how the barycenter morphs between input distributions.
+                        </p>
+                    </div>
+                    <div class="wb-canvas-wrap">
+                        <canvas id="wb-canvas" aria-label="Wasserstein barycenter visualization"></canvas>
+                    </div>
+                    <div class="wb-legend" id="wb-legend"></div>
+                    <div class="wb-controls" id="wb-controls"></div>
+                    <div class="wb-presets">
+                        <button class="wb-preset-btn" data-preset="energy">Energy prices</button>
+                        <button class="wb-preset-btn" data-preset="rates">Interest rates</button>
+                        <button class="wb-preset-btn" data-preset="bimodal">Bimodal mix</button>
+                    </div>
+                    <p class="wb-footnote">
+                        Computed via quantile averaging:
+                        <span class="wb-math">Q<sub>bary</sub>(t) = &Sigma; w<sub>i</sub> Q<sub>i</sub>(t)</span>
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -668,6 +691,7 @@
     </button>
 
     <script src="js/main.js?v=9"></script>
+    <script src="js/demo-barycenter.js?v=1"></script>
     <script>
     // Unregister old service worker and clear caches
     if ('serviceWorker' in navigator) {
