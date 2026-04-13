@@ -23,9 +23,9 @@
             names: ['Gas-driven spike', 'Stable baseload', 'Volatile bimodal'],
             desc: 'Energy markets exhibit structurally different price regimes depending on fuel mix, demand patterns, and grid stress. This preset models three synthetic scenarios (not real data):',
             details: [
-                'Gas-driven spike \u2014 A market dominated by gas-fired generation, where prices cluster around a moderate level but occasionally spike due to supply shocks. The right tail captures those extreme events.',
-                'Stable baseload \u2014 A market with abundant low-cost generation (e.g. nuclear, hydro), producing a single narrow price peak with low volatility.',
-                'Volatile bimodal \u2014 A market alternating between low off-peak prices and high on-peak prices, generating two distinct modes in the distribution.'
+                'Gas-driven spike - A market dominated by gas-fired generation, where prices cluster around a moderate level but occasionally spike due to supply shocks. The right tail captures those extreme events.',
+                'Stable baseload - A market with abundant low-cost generation (e.g. nuclear, hydro), producing a single narrow price peak with low volatility.',
+                'Volatile bimodal - A market alternating between low off-peak prices and high on-peak prices, generating two distinct modes in the distribution.'
             ],
             dists: [
                 [{ mu: 2.0, s: 0.7, w: 0.65 }, { mu: 4.5, s: 0.5, w: 0.35 }],
@@ -39,9 +39,9 @@
             names: ['Low-rate regime', 'Normal regime', 'High-rate tail'],
             desc: 'Interest rates reflect monetary policy and macroeconomic conditions. Different regimes produce different yield distributions. This preset models three synthetic scenarios (not real data):',
             details: [
-                'Low-rate regime \u2014 A near-zero interest rate environment typical of accommodative monetary policy or post-crisis periods. Narrow distribution concentrated near zero.',
-                'Normal regime \u2014 A standard monetary policy scenario with rates around a moderate level and typical uncertainty. Single broad peak.',
-                'High-rate tail \u2014 A stressed environment with persistently elevated rates and a fat left tail, reflecting uncertainty about whether rates will normalize or stay high.'
+                'Low-rate regime - A near-zero interest rate environment typical of accommodative monetary policy or post-crisis periods. Narrow distribution concentrated near zero.',
+                'Normal regime - A standard monetary policy scenario with rates around a moderate level and typical uncertainty. Single broad peak.',
+                'High-rate tail - A stressed environment with persistently elevated rates and a fat left tail, reflecting uncertainty about whether rates will normalize or stay high.'
             ],
             dists: [
                 [{ mu: 0.8, s: 0.4, w: 1.0 }],
@@ -53,11 +53,11 @@
         bimodal: {
             label: 'Bimodal mix',
             names: ['Unimodal narrow', 'Bimodal separated', 'Broad flat'],
-            desc: 'A purely methodological scenario showing how the barycenter handles distributions with very different shapes. No market interpretation \u2014 this illustrates the algorithm itself:',
+            desc: 'A purely methodological scenario showing how the barycenter handles distributions with very different shapes. No market interpretation - this illustrates the algorithm itself:',
             details: [
-                'Unimodal narrow \u2014 A tight, concentrated distribution with a single sharp peak. Represents high certainty around one value.',
-                'Bimodal separated \u2014 Two well-separated modes with a gap between them. The barycenter must decide how to bridge this gap rather than simply averaging.',
-                'Broad flat \u2014 A diffuse distribution spread across a wide range. Represents high uncertainty or a uniform-like prior.'
+                'Unimodal narrow - A tight, concentrated distribution with a single sharp peak. Represents high certainty around one value.',
+                'Bimodal separated - Two well-separated modes with a gap between them. The barycenter must decide how to bridge this gap rather than simply averaging.',
+                'Broad flat - A diffuse distribution spread across a wide range. Represents high uncertainty or a uniform-like prior.'
             ],
             dists: [
                 [{ mu: 1.0, s: 0.5, w: 1.0 }],
