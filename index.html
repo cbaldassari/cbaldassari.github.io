@@ -512,22 +512,24 @@
                     <div class="wb-intro">
                         <h3 class="wb-title">Wasserstein Barycenter</h3>
                         <p class="wb-description">
-                            Given multiple probability distributions, the Wasserstein barycenter is the
-                            distribution that best represents all of them in the sense of
-                            <strong>optimal transport</strong> &mdash; it minimizes the total cost of
-                            "moving mass" from each input to the result.
-                            Unlike a simple pointwise average, it preserves the shape and features
-                            of the inputs.
+                            Each curve below represents a possible scenario &mdash; for example,
+                            how energy prices might be distributed under different market conditions.
+                            The <strong>Wasserstein barycenter</strong> (the dark curve) is a way
+                            to combine these scenarios into a single representative distribution.
                         </p>
                         <p class="wb-description">
-                            The colored curves below represent different market scenarios modeled as
-                            probability distributions. The dark curve is their Wasserstein barycenter.
-                            The floating particles visualize the optimal transport: each particle
-                            travels from an input distribution to the barycenter, representing the
-                            "mass" that needs to be moved &mdash; the quantity the Wasserstein
-                            distance measures.
-                            Use the sliders to change each scenario's influence and watch the
-                            barycenter reshape in real time.
+                            What makes it different from a simple average? A pointwise average of
+                            two bell curves with separate peaks produces an artificial dip in the
+                            middle. The Wasserstein barycenter instead "slides" the peaks toward
+                            each other, preserving a natural shape. It does this by finding the
+                            cheapest way to redistribute probability mass between the inputs
+                            &mdash; a concept from <strong>optimal transport</strong> theory.
+                        </p>
+                        <p class="wb-description">
+                            The floating particles visualize this process: each one travels from
+                            an input distribution to the barycenter, showing the mass that needs
+                            to be moved. Use the sliders to adjust how much each scenario counts
+                            and watch the barycenter reshape in real time.
                         </p>
                     </div>
                     <div class="wb-section">
@@ -557,10 +559,13 @@
                     </div>
 
                     <p class="wb-footnote">
-                        1D Wasserstein-2 barycenter computed exactly via quantile averaging:
-                        <span class="wb-math">Q<sub>bary</sub>(t) = &Sigma; w<sub>i</sub> Q<sub>i</sub>(t)</span>.
-                        Input distributions are synthetic Gaussian mixtures for illustrative purposes only &mdash; they do not represent real market data.
-                        See <a href="#publications">publications</a> for the full methodology.
+                        Technical note: the barycenter is computed exactly for one-dimensional
+                        distributions by averaging their quantile functions (inverse CDFs),
+                        weighted by the sliders above.
+                        All distributions shown are synthetic &mdash; they do not represent
+                        real market data.
+                        See <a href="#publications">publications</a> for the full methodology
+                        applied to real-world datasets.
                     </p>
                 </div>
             </div>
