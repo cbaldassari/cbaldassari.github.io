@@ -77,7 +77,7 @@
 
 .wb-control-row {
     display: grid;
-    grid-template-columns: 100px 1fr 44px;
+    grid-template-columns: 160px 1fr 44px;
     align-items: center;
     gap: 12px;
 }
@@ -88,6 +88,8 @@
     font-weight: 500;
     color: var(--color-text-secondary);
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .wb-control-slider {
@@ -227,7 +229,7 @@
 /* Responsive */
 @media (max-width: 768px) {
     .wb-control-row {
-        grid-template-columns: 80px 1fr 40px;
+        grid-template-columns: auto 1fr 40px;
         gap: 8px;
     }
 
@@ -236,14 +238,15 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 580px) {
     .wb-control-row {
         grid-template-columns: 1fr 40px;
-        gap: 6px;
+        gap: 4px;
     }
 
     .wb-control-label {
         grid-column: 1 / -1;
+        white-space: normal;
     }
 
     .wb-legend {
