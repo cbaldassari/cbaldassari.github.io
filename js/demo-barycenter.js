@@ -21,7 +21,7 @@
         energy: {
             label: 'Energy prices',
             names: ['Gas-driven spike', 'Stable baseload', 'Volatile bimodal'],
-            desc: 'Three stylized scenarios for energy price distributions: a gas-dominated regime with price spikes, a stable baseload scenario, and a volatile market with two distinct price modes. Inspired by Italian electricity and natural gas market data (2019\u20132023).',
+            desc: 'Three synthetic scenarios loosely inspired by energy price dynamics: a gas-dominated regime with price spikes, a stable baseload scenario, and a volatile market with two distinct price modes. Distributions are illustrative, not fitted to real data.',
             dists: [
                 [{ mu: 2.0, s: 0.7, w: 0.65 }, { mu: 4.5, s: 0.5, w: 0.35 }],
                 [{ mu: 2.5, s: 0.6, w: 1.0 }],
@@ -32,7 +32,7 @@
         rates: {
             label: 'Interest rates',
             names: ['Low-rate regime', 'Normal regime', 'High-rate tail'],
-            desc: 'Three interest rate regimes modeled as probability distributions over the yield level: a near-zero environment, a normal monetary policy scenario, and a regime with persistent high rates and fat tails. Inspired by US Treasury yield curve data.',
+            desc: 'Three synthetic interest rate regimes: a near-zero environment, a normal monetary policy scenario, and a regime with persistent high rates and fat tails. Distributions are illustrative, not fitted to real data.',
             dists: [
                 [{ mu: 0.8, s: 0.4, w: 1.0 }],
                 [{ mu: 3.0, s: 0.9, w: 1.0 }],
