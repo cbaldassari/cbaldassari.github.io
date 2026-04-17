@@ -587,15 +587,13 @@
                     <div class="vg-intro">
                         <h3 class="vg-title">Visibility Graph Embedding</h3>
                         <p class="vg-description">
-                            Feature extraction service that maps a univariate time series
-                            to a fixed-length <strong>float64</strong> vector.
-                            The input is parsed from a data file or passed as a JSON array
-                            via REST call. Internally, the series is transformed into an
-                            undirected graph using the visibility graph algorithm, then
-                            the graph topology is encoded as the sorted eigenvalue
-                            spectrum of its normalized Laplacian. The output embedding
-                            can be consumed by any standard ML pipeline - classification,
-                            clustering, anomaly detection, similarity search.
+                            Maps a univariate time series to a fixed-length
+                            <strong>float64</strong> vector via
+                            <a href="https://github.com/CarlosBergillos/ts2vg" target="_blank" rel="noopener">visibility graph</a>
+                            construction and
+                            <a href="https://github.com/benedekrozemberczki/diff2vec" target="_blank" rel="noopener">Diff2Vec</a>
+                            graph embedding. Input from file upload or REST call.
+                            Output usable in any ML pipeline.
                         </p>
                     </div>
 
@@ -620,38 +618,33 @@
                         <h4 class="vg-section-label">Algorithm</h4>
                         <p class="vg-section-hint">
                             <strong>1. Parsing.</strong>
-                            The input file is read and the target column is extracted
-                            as a numeric array <strong>float64[n]</strong>.
-                            Multi-column files require a <strong>column</strong> parameter;
+                            The target column is extracted as
+                            <strong>float64[n]</strong>.
+                            Multi-column files require a
+                            <strong>column</strong> parameter;
                             single-column files are detected automatically.
                         </p>
                         <p class="vg-section-hint">
-                            <strong>2. Graph construction.</strong>
-                            An adjacency matrix
-                            A&nbsp;&isin;&nbsp;{0,1}<sup>n&times;n</sup>
-                            is built using the visibility graph algorithm.
-                            <strong>Natural VG</strong> connects nodes (i, j)
-                            if y<sub>k</sub>&nbsp;&lt;&nbsp;y<sub>i</sub>&nbsp;+&nbsp;(y<sub>j</sub>&nbsp;&minus;&nbsp;y<sub>i</sub>)&middot;(k&minus;i)/(j&minus;i)
-                            for all i&nbsp;&lt;&nbsp;k&nbsp;&lt;&nbsp;j.
-                            <strong>Horizontal VG</strong> connects (i, j)
-                            if y<sub>k</sub>&nbsp;&lt;&nbsp;min(y<sub>i</sub>,&nbsp;y<sub>j</sub>)
-                            for all i&nbsp;&lt;&nbsp;k&nbsp;&lt;&nbsp;j.
-                            Natural VGs produce denser graphs and capture global
-                            patterns; horizontal VGs are sparser and encode local
-                            structure. Complexity: O(n&sup2;) average, O(n&sup3;) worst case.
+                            <strong>2. Visibility graph.</strong>
+                            Each observation becomes a node; edges connect
+                            mutually visible points. Two variants:
+                            <strong>natural</strong> (denser, global patterns)
+                            and <strong>horizontal</strong> (sparser, local
+                            structure). Built with
+                            <a href="https://github.com/CarlosBergillos/ts2vg" target="_blank" rel="noopener">ts2vg</a>.
+                            See
+                            <a href="https://link.springer.com/article/10.1007/s10287-023-00460-4" target="_blank" rel="noopener">Mari &amp; Baldassari (2023)</a>
+                            and
+                            <a href="https://link.springer.com/article/10.1007/s00521-023-08468-2" target="_blank" rel="noopener">Mari &amp; Baldassari (2023b)</a>
+                            for applications to financial time series.
                         </p>
                         <p class="vg-section-hint">
-                            <strong>3. Graph embedding (Diff2Vec).</strong>
-                            Node-level embeddings are computed using
-                            <strong>Diff2Vec</strong>, a diffusion-based method
-                            that runs Euler diffusion trees over the graph and
-                            trains a skip-gram model on the resulting node
-                            sequences. Each node receives a
-                            d-dimensional <strong>float64</strong> vector.
-                            The graph-level embedding is the mean of all node
-                            vectors, producing a single
-                            <strong>float64[d]</strong> descriptor for the
-                            entire time series. Default d&nbsp;=&nbsp;128.
+                            <strong>3. Diff2Vec embedding.</strong>
+                            Node embeddings via diffusion trees and skip-gram
+                            (<a href="https://github.com/benedekrozemberczki/diff2vec" target="_blank" rel="noopener">Rozemberczki &amp; Sarkar, 2020</a>),
+                            aggregated by mean into a single
+                            <strong>float64[d]</strong> graph-level vector.
+                            Default d&nbsp;=&nbsp;128.
                         </p>
                     </div>
 
@@ -766,11 +759,9 @@ embedding = r.json()["embedding"]</div>
                     <div class="vg-section">
                         <h4 class="vg-section-label">Try it</h4>
                         <p class="vg-section-hint">
-                            Upload a CSV/JSON file, paste values directly,
-                            or load a sample series. This client-side demo
-                            uses a simplified spectral embedding (Laplacian
-                            eigenvalues) for instant results. The REST API
-                            uses Diff2Vec for production-grade embeddings.
+                            Upload a file, paste values, or load a sample.
+                            This browser demo uses a lightweight spectral
+                            approximation; the REST API runs Diff2Vec.
                             Max 100 points.
                         </p>
                         <div class="vg-upload-area" id="vg-upload-area">
@@ -812,16 +803,11 @@ embedding = r.json()["embedding"]</div>
                         </div>
 
                         <div class="vg-section">
-                            <h4 class="vg-section-label">Spectral Embedding</h4>
+                            <h4 class="vg-section-label">Embedding</h4>
                             <p class="vg-section-hint">
-                                Sorted eigenvalues
-                                [&lambda;<sub>1</sub>,&nbsp;&hellip;,&nbsp;&lambda;<sub>d</sub>]
-                                of the normalized Laplacian, excluding
-                                &lambda;<sub>0</sub>&nbsp;=&nbsp;0.
-                                This vector encodes the graph's connectivity
-                                structure and can be used as a feature input
-                                for classification, clustering, or similarity
-                                search across different time series.
+                                Fixed-length vector encoding the graph topology.
+                                Usable as feature input for classification,
+                                clustering, or similarity search.
                             </p>
                             <div class="vg-embedding-wrap">
                                 <div class="vg-embedding-vector" id="vg-embedding"></div>
@@ -831,14 +817,15 @@ embedding = r.json()["embedding"]</div>
                     </div>
 
                     <p class="vg-footnote">
-                        The REST API uses <strong>ts2vg</strong> for visibility
-                        graph construction and <strong>Diff2Vec</strong>
-                        (karateclub) for graph embedding. The client-side demo
-                        uses a simplified spectral approach (Laplacian eigenvalues,
-                        dim&nbsp;=&nbsp;min(10,&nbsp;n&minus;1)).
                         Backend: Python / FastAPI.
-                        See <a href="#publications">publications</a> for
-                        applications to financial and energy market data.
+                        Libraries:
+                        <a href="https://github.com/CarlosBergillos/ts2vg" target="_blank" rel="noopener">ts2vg</a>,
+                        <a href="https://github.com/benedekrozemberczki/karateclub" target="_blank" rel="noopener">karateclub</a>
+                        (Diff2Vec).
+                        Browser demo: spectral approximation
+                        (dim&nbsp;=&nbsp;min(10,&nbsp;n&minus;1)).
+                        Related work:
+                        <a href="#publications">publications</a>.
                     </p>
                 </div>
             </div>
