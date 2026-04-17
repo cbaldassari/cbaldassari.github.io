@@ -641,16 +641,17 @@
                             structure. Complexity: O(n&sup2;) average, O(n&sup3;) worst case.
                         </p>
                         <p class="vg-section-hint">
-                            <strong>3. Spectral embedding.</strong>
-                            The normalized Laplacian
-                            L&nbsp;=&nbsp;I&nbsp;&minus;&nbsp;D<sup>&minus;&frac12;</sup>AD<sup>&minus;&frac12;</sup>
-                            is computed from A. Its eigenvalues
-                            &lambda;<sub>0</sub>&nbsp;&le;&nbsp;&lambda;<sub>1</sub>&nbsp;&le;&nbsp;&hellip;&nbsp;&le;&nbsp;&lambda;<sub>n&minus;1</sub>
-                            are extracted via Jacobi iteration. The output vector is
-                            [&lambda;<sub>1</sub>,&nbsp;&hellip;,&nbsp;&lambda;<sub>d</sub>]
-                            where d&nbsp;=&nbsp;min(embedding_dim,&nbsp;n&minus;1).
-                            &lambda;<sub>0</sub>&nbsp;=&nbsp;0 is discarded
-                            (always zero for connected graphs).
+                            <strong>3. Graph embedding (Diff2Vec).</strong>
+                            Node-level embeddings are computed using
+                            <strong>Diff2Vec</strong>, a diffusion-based method
+                            that runs Euler diffusion trees over the graph and
+                            trains a skip-gram model on the resulting node
+                            sequences. Each node receives a
+                            d-dimensional <strong>float64</strong> vector.
+                            The graph-level embedding is the mean of all node
+                            vectors, producing a single
+                            <strong>float64[d]</strong> descriptor for the
+                            entire time series. Default d&nbsp;=&nbsp;128.
                         </p>
                     </div>
 
@@ -696,12 +697,14 @@
                             <tbody>
                                 <tr><td>values</td><td>float[]</td><td>Time series values (required)</td></tr>
                                 <tr><td>method</td><td>string</td><td><code>natural</code> | <code>horizontal</code> (default: <code>natural</code>)</td></tr>
-                                <tr><td>embedding_dim</td><td>int</td><td>Output vector length (default: 10)</td></tr>
+                                <tr><td>embedding_dim</td><td>int</td><td>Diff2Vec output dimensions (default: 128)</td></tr>
+                                <tr><td>diffusion_number</td><td>int</td><td>Number of Euler diffusions (default: 10)</td></tr>
+                                <tr><td>diffusion_cover</td><td>int</td><td>Nodes per diffusion tree (default: 80)</td></tr>
                             </tbody>
                         </table>
 <div class="vg-code-block">curl -X POST /api/vg-embedding \
   -H "Content-Type: application/json" \
-  -d '{"values":[1.2,3.4,2.1,5.6,4.3],"method":"natural","embedding_dim":10}'</div>
+  -d '{"values":[1.2,3.4,2.1,5.6,4.3],"method":"natural","embedding_dim":128}'</div>
 
                         <div class="vg-endpoint">
                             <span class="vg-method">POST</span>
@@ -716,25 +719,28 @@
                                 <tr><td>file</td><td>file</td><td>Data file (.csv, .tsv, .json, .xlsx, .parquet)</td></tr>
                                 <tr><td>column</td><td>string</td><td>Target column name (optional for single-column files)</td></tr>
                                 <tr><td>method</td><td>string</td><td><code>natural</code> | <code>horizontal</code> (default: <code>natural</code>)</td></tr>
-                                <tr><td>embedding_dim</td><td>int</td><td>Output vector length (default: 10)</td></tr>
+                                <tr><td>embedding_dim</td><td>int</td><td>Diff2Vec output dimensions (default: 128)</td></tr>
+                                <tr><td>diffusion_number</td><td>int</td><td>Number of Euler diffusions (default: 10)</td></tr>
+                                <tr><td>diffusion_cover</td><td>int</td><td>Nodes per diffusion tree (default: 80)</td></tr>
                             </tbody>
                         </table>
 <div class="vg-code-block">curl -X POST /api/vg-embedding/upload \
   -F "file=@prices.csv" \
   -F "column=close" \
-  -F "method=natural"</div>
+  -F "method=natural" \
+  -F "embedding_dim=128"</div>
 
                         <p class="vg-section-hint">Response (JSON):</p>
 <div class="vg-code-block">{
-  "embedding": [0.0234, 0.1567, 0.2891, 0.4012, ...],
+  "embedding": [0.0234, 0.1567, 0.2891, ...],   // float64[embedding_dim]
   "graph": {
     "nodes": 80,
     "edges": 342,
     "density": 0.108,
-    "adjacency_list": [[1,2,5], [0,2,3], ...]
+    "adjacency_list": {"0": [1,2,5], "1": [0,2,3], ...}
   },
   "method": "natural",
-  "embedding_dim": 10
+  "embedding_dim": 128
 }</div>
 
                         <p class="vg-section-hint">Python example:</p>
@@ -744,11 +750,11 @@
 r = requests.post("/api/vg-embedding", json={
     "values": [1.2, 3.4, 2.1, 5.6, 4.3],
     "method": "natural",
-    "embedding_dim": 10
+    "embedding_dim": 128
 })
-embedding = r.json()["embedding"]
+embedding = r.json()["embedding"]  # float64[128]
 
-# From file
+# From file upload
 with open("prices.csv", "rb") as f:
     r = requests.post("/api/vg-embedding/upload",
         files={"file": f},
@@ -761,8 +767,11 @@ embedding = r.json()["embedding"]</div>
                         <h4 class="vg-section-label">Try it</h4>
                         <p class="vg-section-hint">
                             Upload a CSV/JSON file, paste values directly,
-                            or load a sample series. Max 100 points for the
-                            client-side demo.
+                            or load a sample series. This client-side demo
+                            uses a simplified spectral embedding (Laplacian
+                            eigenvalues) for instant results. The REST API
+                            uses Diff2Vec for production-grade embeddings.
+                            Max 100 points.
                         </p>
                         <div class="vg-upload-area" id="vg-upload-area">
                             <input type="file" id="vg-file-input" accept=".csv,.tsv,.json" hidden>
@@ -822,9 +831,12 @@ embedding = r.json()["embedding"]</div>
                     </div>
 
                     <p class="vg-footnote">
-                        Embedding dimension: min(10,&nbsp;n&minus;1).
-                        The client-side demo processes CSV, TSV, and JSON files;
-                        XLSX and Parquet are supported via the REST endpoint.
+                        The REST API uses <strong>ts2vg</strong> for visibility
+                        graph construction and <strong>Diff2Vec</strong>
+                        (karateclub) for graph embedding. The client-side demo
+                        uses a simplified spectral approach (Laplacian eigenvalues,
+                        dim&nbsp;=&nbsp;min(10,&nbsp;n&minus;1)).
+                        Backend: Python / FastAPI.
                         See <a href="#publications">publications</a> for
                         applications to financial and energy market data.
                     </p>

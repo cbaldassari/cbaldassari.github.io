@@ -1,0 +1,10 @@
+fastapi>=0.100.0
+uvicorn>=0.22.0
+pandas>=2.0.0
+numpy>=1.24.0
+networkx>=3.0
+ts2vg>=1.0.0
+karateclub>=2.0.0
+openpyxl>=3.1.0
+pyarrow>=12.0.0
+python-multipart>=0.0.6
