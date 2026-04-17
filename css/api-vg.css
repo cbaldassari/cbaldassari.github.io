@@ -356,6 +356,10 @@
     line-height: 1.6;
 }
 
+.vg-footnote strong {
+    color: #fff;
+}
+
 .vg-footnote a {
     font-weight: 500;
 }
