@@ -321,6 +321,141 @@
     font-weight: 500;
 }
 
+/* Code blocks */
+.vg-code-block {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: #e2e8f0;
+    line-height: 1.7;
+    overflow-x: auto;
+    white-space: pre;
+    margin-bottom: 16px;
+}
+
+/* Endpoint badges */
+.vg-endpoint {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    margin-bottom: 8px;
+}
+
+.vg-method {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    background: #10b981;
+    color: #fff;
+    letter-spacing: 0.3px;
+}
+
+.vg-url {
+    color: #fff;
+    font-weight: 500;
+}
+
+/* Parameter tables */
+.vg-param-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    margin-bottom: 16px;
+}
+
+.vg-param-table th {
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 12px 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.vg-param-table td {
+    padding: 8px 12px 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--color-text-tertiary);
+    vertical-align: top;
+}
+
+.vg-param-table td:first-child {
+    font-family: var(--font-mono);
+    color: #fff;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Format tags */
+.vg-format-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 8px 0 16px;
+}
+
+.vg-format-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #fff;
+}
+
+/* File upload area */
+.vg-upload-area {
+    border: 2px dashed rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 12px;
+}
+
+.vg-upload-area:hover,
+.vg-upload-area.dragover {
+    border-color: var(--color-primary);
+    background: rgba(99, 102, 241, 0.06);
+}
+
+.vg-upload-text {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-text-tertiary);
+    margin-bottom: 4px;
+}
+
+.vg-upload-link {
+    color: var(--color-primary);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.vg-upload-link:hover {
+    text-decoration: underline;
+}
+
+.vg-upload-formats {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-text-tertiary);
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .vg-pipeline {

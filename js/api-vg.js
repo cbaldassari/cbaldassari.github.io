@@ -289,6 +289,97 @@
         ctx.fillText('value', w - pad, 14);
     }
 
+    // --- File handling ---
+    function handleFile(file) {
+        var reader = new FileReader();
+        var name = file.name.toLowerCase();
+
+        reader.onload = function (e) {
+            var text = e.target.result;
+            var values = [];
+
+            if (name.endsWith('.json')) {
+                try {
+                    var data = JSON.parse(text);
+                    if (Array.isArray(data)) {
+                        for (var i = 0; i < data.length; i++) {
+                            var v = parseFloat(data[i]);
+                            if (!isNaN(v) && isFinite(v)) values.push(v);
+                        }
+                    } else if (typeof data === 'object') {
+                        var keys = Object.keys(data);
+                        for (var k = 0; k < keys.length; k++) {
+                            if (Array.isArray(data[keys[k]])) {
+                                var arr = data[keys[k]];
+                                for (var i = 0; i < arr.length; i++) {
+                                    var v = parseFloat(arr[i]);
+                                    if (!isNaN(v) && isFinite(v)) values.push(v);
+                                }
+                                if (values.length > 0) break;
+                            }
+                        }
+                    }
+                } catch (err) { /* invalid JSON */ }
+            } else {
+                // CSV / TSV
+                var lines = text.trim().split(/\r?\n/);
+                var sep = name.endsWith('.tsv') ? '\t' : ',';
+                var startRow = 0;
+
+                // Detect header
+                if (lines.length > 1) {
+                    var firstParts = lines[0].split(sep);
+                    var allNonNumeric = true;
+                    for (var i = 0; i < firstParts.length; i++) {
+                        if (!isNaN(parseFloat(firstParts[i].trim()))) {
+                            allNonNumeric = false;
+                            break;
+                        }
+                    }
+                    if (allNonNumeric) startRow = 1;
+                }
+
+                // Find first numeric column
+                var numCols = 0;
+                if (lines.length > startRow) {
+                    numCols = lines[startRow].split(sep).length;
+                }
+                var colIdx = -1;
+                for (var c = 0; c < numCols; c++) {
+                    var allNumeric = true;
+                    var count = 0;
+                    for (var r = startRow; r < Math.min(lines.length, startRow + 5); r++) {
+                        var parts = lines[r].split(sep);
+                        if (c < parts.length) {
+                            var v = parseFloat(parts[c].trim());
+                            if (isNaN(v)) { allNumeric = false; break; }
+                            count++;
+                        }
+                    }
+                    if (allNumeric && count > 0) { colIdx = c; break; }
+                }
+                // If first col is non-numeric (dates), try second
+                if (colIdx === -1 && numCols > 1) colIdx = 1;
+                if (colIdx === -1) colIdx = 0;
+
+                for (var r = startRow; r < lines.length; r++) {
+                    var parts = lines[r].split(sep);
+                    if (colIdx < parts.length) {
+                        var v = parseFloat(parts[colIdx].trim());
+                        if (!isNaN(v) && isFinite(v)) values.push(v);
+                    }
+                }
+            }
+
+            if (values.length > 0) {
+                document.getElementById('vg-input').value =
+                    values.map(function (v) { return v.toFixed(4); }).join(', ');
+            }
+        };
+
+        reader.readAsText(file);
+    }
+
     // --- Parse input ---
     function parseSeries(text) {
         var parts = text.trim().split(/[\s,;]+/);
@@ -350,6 +441,33 @@
     // --- Events ---
     function bindEvents() {
         document.getElementById('vg-run').addEventListener('click', onCompute);
+
+        // File upload
+        var fileInput = document.getElementById('vg-file-input');
+        var uploadArea = document.getElementById('vg-upload-area');
+
+        if (fileInput) {
+            fileInput.addEventListener('change', function () {
+                if (this.files.length > 0) handleFile(this.files[0]);
+            });
+        }
+
+        if (uploadArea) {
+            uploadArea.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                this.classList.add('dragover');
+            });
+            uploadArea.addEventListener('dragleave', function () {
+                this.classList.remove('dragover');
+            });
+            uploadArea.addEventListener('drop', function (e) {
+                e.preventDefault();
+                this.classList.remove('dragover');
+                if (e.dataTransfer.files.length > 0) {
+                    handleFile(e.dataTransfer.files[0]);
+                }
+            });
+        }
 
         var sampleBtns = api.querySelectorAll('.vg-sample-btn');
         for (var i = 0; i < sampleBtns.length; i++) {
