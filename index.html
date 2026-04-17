@@ -63,6 +63,7 @@
     <link rel="stylesheet" href="css/style.css?v=9">
     <link rel="stylesheet" href="css/print.css?v=9" media="print">
     <link rel="stylesheet" href="css/demo-barycenter.css?v=1">
+    <link rel="stylesheet" href="css/api-vg.css?v=1">
 </head>
 <body>
 
@@ -87,6 +88,7 @@
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#publications" class="nav-link">Publications</a></li>
                 <li><a href="#demo" class="nav-link">Demo</a></li>
+                <li><a href="#api" class="nav-link">API</a></li>
                 <li><a href="#cv" class="nav-link">CV</a></li>
                 <li><a href="#contact" class="nav-link btn-nav">Get in touch</a></li>
             </ul>
@@ -581,7 +583,140 @@
                 <h2 class="section-title">API</h2>
             </div>
             <div class="api-content">
-                <p style="color: var(--color-text-secondary); font-style: italic;">Work in progress.</p>
+                <div class="vg-api" id="vg-api">
+                    <div class="vg-intro">
+                        <h3 class="vg-title">Visibility Graph Embedding</h3>
+                        <p class="vg-description">
+                            A feature extraction pipeline that converts any univariate
+                            time series into a fixed-length numeric vector.
+                            The idea: encode temporal dynamics as a graph, then
+                            summarize the graph's topology as a vector that can be
+                            fed directly into downstream machine learning tasks
+                            - classification, clustering, anomaly detection.
+                        </p>
+                    </div>
+
+                    <div class="vg-pipeline">
+                        <div class="vg-pipeline-step">
+                            <span class="vg-pipeline-icon">Input</span>
+                            <span class="vg-pipeline-name">Time Series</span>
+                        </div>
+                        <span class="vg-pipeline-arrow">&rarr;</span>
+                        <div class="vg-pipeline-step">
+                            <span class="vg-pipeline-icon">Transform</span>
+                            <span class="vg-pipeline-name">Visibility Graph</span>
+                        </div>
+                        <span class="vg-pipeline-arrow">&rarr;</span>
+                        <div class="vg-pipeline-step">
+                            <span class="vg-pipeline-icon">Output</span>
+                            <span class="vg-pipeline-name">Embedding</span>
+                        </div>
+                    </div>
+
+                    <div class="vg-section">
+                        <h4 class="vg-section-label">How it works</h4>
+                        <p class="vg-section-hint">
+                            <strong>Step 1 - Visibility Graph.</strong>
+                            Each observation in the time series becomes a node.
+                            Two nodes are connected by an edge if they can "see"
+                            each other - that is, no intermediate observation
+                            blocks the line of sight between them.
+                            The <strong>natural</strong> variant draws a straight
+                            line between two points and checks whether every
+                            intermediate value falls below it.
+                            The <strong>horizontal</strong> variant checks
+                            whether every intermediate value is below
+                            the lower of the two endpoints.
+                            Natural VGs produce denser graphs that capture
+                            global patterns; horizontal VGs are sparser and
+                            emphasize local structure.
+                        </p>
+                        <p class="vg-section-hint">
+                            <strong>Step 2 - Graph embedding.</strong>
+                            The adjacency matrix of the visibility graph is
+                            converted into its normalized Laplacian
+                            L&nbsp;=&nbsp;I&nbsp;&minus;&nbsp;D<sup>&minus;1/2</sup>AD<sup>&minus;1/2</sup>.
+                            The sorted eigenvalues of L form the embedding
+                            vector - a compact, fixed-length descriptor of
+                            the graph's topological structure.
+                            Two time series with similar dynamics produce
+                            similar embedding vectors, regardless of amplitude
+                            shifts or rescaling.
+                        </p>
+                    </div>
+
+                    <div class="vg-section">
+                        <h4 class="vg-section-label">Input</h4>
+                        <p class="vg-section-hint">
+                            Any univariate, equally spaced time series:
+                            financial returns, energy prices, sensor readings,
+                            or synthetic data.
+                            Paste comma-separated values or load a sample.
+                            Maximum 100 points.
+                        </p>
+                        <div class="vg-samples">
+                            <button class="vg-sample-btn" data-sample="sine">Sine wave</button>
+                            <button class="vg-sample-btn" data-sample="random-walk">Random walk</button>
+                            <button class="vg-sample-btn" data-sample="seasonal">Seasonal</button>
+                        </div>
+                        <div class="vg-input-group">
+                            <textarea class="vg-textarea" id="vg-input" placeholder="e.g. 1.2, 3.4, 2.1, 5.6, ..." rows="3"></textarea>
+                            <div class="vg-options">
+                                <button class="vg-option-btn selected" data-vg-type="natural">Natural VG</button>
+                                <button class="vg-option-btn" data-vg-type="horizontal">Horizontal VG</button>
+                            </div>
+                        </div>
+                        <button class="vg-run-btn" id="vg-run">Compute</button>
+                    </div>
+
+                    <div class="vg-loading" id="vg-loading">
+                        <div class="vg-spinner"></div>
+                        <span>Computing...</span>
+                    </div>
+
+                    <div class="vg-output" id="vg-output">
+                        <div class="vg-section">
+                            <h4 class="vg-section-label">Visibility Graph</h4>
+                            <p class="vg-section-hint">
+                                Each dot is an observation positioned at (t, value).
+                                Edges connect pairs of mutually visible points.
+                            </p>
+                            <div class="vg-graph-wrap">
+                                <canvas id="vg-canvas" aria-label="Visibility graph visualization"></canvas>
+                            </div>
+                            <div class="vg-info" id="vg-info"></div>
+                        </div>
+
+                        <div class="vg-section">
+                            <h4 class="vg-section-label">Spectral Embedding</h4>
+                            <p class="vg-section-hint">
+                                The first non-trivial eigenvalues of the
+                                normalized Laplacian. This vector encodes the
+                                graph's connectivity structure and can be used
+                                as a feature vector for classification,
+                                clustering, or similarity search across
+                                different time series.
+                            </p>
+                            <div class="vg-embedding-wrap">
+                                <div class="vg-embedding-vector" id="vg-embedding"></div>
+                                <button class="vg-copy-btn" id="vg-copy">Copy vector</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="vg-footnote">
+                        Technical note: the natural visibility graph connects
+                        (t<sub>i</sub>,&nbsp;y<sub>i</sub>) and
+                        (t<sub>j</sub>,&nbsp;y<sub>j</sub>) if
+                        y<sub>k</sub>&nbsp;&lt;&nbsp;y<sub>i</sub>&nbsp;+&nbsp;(y<sub>j</sub>&nbsp;&minus;&nbsp;y<sub>i</sub>)&middot;(k&minus;i)/(j&minus;i)
+                        for all i&nbsp;&lt;&nbsp;k&nbsp;&lt;&nbsp;j.
+                        The horizontal variant requires
+                        y<sub>k</sub>&nbsp;&lt;&nbsp;min(y<sub>i</sub>,&nbsp;y<sub>j</sub>).
+                        Embedding dimension: min(10, n&minus;1).
+                        See <a href="#publications">publications</a> for
+                        applications to real-world financial and energy data.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -590,7 +725,7 @@
     <section class="section section-dark" id="cv" aria-label="Curriculum Vitae">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">03 / Experience</span>
+                <span class="section-label">05 / Experience</span>
                 <h2 class="section-title">Curriculum Vitae</h2>
             </div>
 
@@ -663,7 +798,7 @@
     <section class="section" id="contact" aria-label="Contact">
         <div class="container contact-container">
             <div class="section-header">
-                <span class="section-label">04 / Connect</span>
+                <span class="section-label">06 / Connect</span>
                 <h2 class="section-title">Let's collaborate</h2>
                 <p class="section-description">Interested in collaborating or just exchanging ideas? Reach out.</p>
             </div>
@@ -730,6 +865,7 @@
 
     <script src="js/main.js?v=9"></script>
     <script src="js/demo-barycenter.js?v=1"></script>
+    <script src="js/api-vg.js?v=1"></script>
     <script>
     // Unregister old service worker and clear caches
     if ('serviceWorker' in navigator) {
