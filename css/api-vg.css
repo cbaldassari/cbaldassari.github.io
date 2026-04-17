@@ -56,7 +56,7 @@
 .vg-pipeline {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 12px;
     margin: 20px 0 28px;
     flex-wrap: wrap;
@@ -420,7 +420,7 @@
     border: 2px dashed rgba(255,255,255,0.12);
     border-radius: var(--radius);
     padding: 20px;
-    text-align: center;
+    text-align: left;
     cursor: pointer;
     transition: all 0.2s ease;
     margin-bottom: 12px;
