@@ -4,8 +4,9 @@
     var api = document.getElementById('vg-api');
     if (!api) return;
 
-    var MAX_POINTS = 100;
-    var EMBED_DIM = 10;
+    var MAX_POINTS = 500;
+    var EMBED_DIM_SPECTRAL = 10;
+    var EMBED_DIM_EIGENMAPS = 32;
 
     // --- Seeded PRNG (Mulberry32) ---
     function mulberry32(seed) {
@@ -50,6 +51,7 @@
     var currentSeries = null;
     var currentEdges = null;
     var vgType = 'natural';
+    var embedMethod = 'spectral';
 
     // --- Natural Visibility Graph ---
     function naturalVG(series) {
@@ -124,7 +126,7 @@
         return L;
     }
 
-    // --- Jacobi eigenvalue algorithm for symmetric matrices ---
+    // --- Jacobi eigenvalue algorithm (values only) ---
     function jacobiEigenvalues(matrix) {
         var n = matrix.length;
         if (n === 0) return [];
@@ -187,11 +189,93 @@
         return eigenvalues.sort(function (a, b) { return a - b; });
     }
 
-    // --- Spectral embedding ---
+    // --- Jacobi eigendecomposition (values + vectors) ---
+    function jacobiEigen(matrix) {
+        var n = matrix.length;
+        if (n === 0) return { values: [], vectors: [] };
+        if (n === 1) return { values: [matrix[0][0]], vectors: [[1]] };
+
+        var i, j;
+        var M = [];
+        var V = [];
+        for (i = 0; i < n; i++) {
+            M[i] = [];
+            V[i] = new Float64Array(n);
+            V[i][i] = 1;
+            for (j = 0; j < n; j++) M[i][j] = matrix[i][j];
+        }
+
+        var maxIter = 50 * n;
+
+        for (var iter = 0; iter < maxIter; iter++) {
+            var maxVal = 0, p = 0, q = 1;
+            for (i = 0; i < n; i++) {
+                for (j = i + 1; j < n; j++) {
+                    if (Math.abs(M[i][j]) > maxVal) {
+                        maxVal = Math.abs(M[i][j]);
+                        p = i;
+                        q = j;
+                    }
+                }
+            }
+            if (maxVal < 1e-10) break;
+
+            var diff = M[q][q] - M[p][p];
+            var t;
+            if (Math.abs(diff) < 1e-15) {
+                t = 1;
+            } else {
+                var phi = diff / (2 * M[p][q]);
+                t = 1 / (Math.abs(phi) + Math.sqrt(phi * phi + 1));
+                if (phi < 0) t = -t;
+            }
+
+            var c = 1 / Math.sqrt(t * t + 1);
+            var s = t * c;
+            var tau = s / (1 + c);
+            var tmp = M[p][q];
+
+            M[p][q] = 0;
+            M[q][p] = 0;
+            M[p][p] -= t * tmp;
+            M[q][q] += t * tmp;
+
+            for (i = 0; i < n; i++) {
+                if (i !== p && i !== q) {
+                    var mip = M[i][p];
+                    var miq = M[i][q];
+                    M[i][p] = M[p][i] = mip - s * (miq + tau * mip);
+                    M[i][q] = M[q][i] = miq + s * (mip - tau * miq);
+                }
+                // Update eigenvectors
+                var vip = V[i][p];
+                var viq = V[i][q];
+                V[i][p] = vip - s * (viq + tau * vip);
+                V[i][q] = viq + s * (vip - tau * viq);
+            }
+        }
+
+        // Sort by eigenvalue
+        var indices = [];
+        for (i = 0; i < n; i++) indices.push(i);
+        indices.sort(function (a, b) { return M[a][a] - M[b][b]; });
+
+        var values = [];
+        var vectors = [];
+        for (i = 0; i < n; i++) {
+            values.push(M[indices[i]][indices[i]]);
+            var vec = [];
+            for (j = 0; j < n; j++) vec.push(V[j][indices[i]]);
+            vectors.push(vec);
+        }
+
+        return { values: values, vectors: vectors };
+    }
+
+    // --- Spectral embedding (eigenvalues only) ---
     function spectralEmbedding(n, edges, dim) {
         var L = normalizedLaplacian(n, edges);
         var eigenvalues = jacobiEigenvalues(L);
-        // Skip lambda_0 (always ~0), take next `dim` eigenvalues
         var emb = [];
         var start = 1;
         var end = Math.min(start + dim, n);
@@ -200,6 +284,23 @@
         }
         while (emb.length < dim) emb.push(0);
         return emb;
+    }
+
+    // --- Laplacian Eigenmaps (eigenvectors, mean-pooled) ---
+    function laplacianEigenmaps(n, edges, dim) {
+        var L = normalizedLaplacian(n, edges);
+        var eig = jacobiEigen(L);
+        var actualDim = Math.min(dim, n - 1);
+
+        // Mean-pool node embeddings from eigenvectors 1..actualDim
+        var graphEmb = [];
+        for (var d = 1; d <= actualDim; d++) {
+            var sum = 0;
+            for (var i = 0; i < n; i++) sum += eig.vectors[d][i];
+            graphEmb.push(sum / n);
+        }
+        while (graphEmb.length < dim) graphEmb.push(0);
+        return graphEmb;
     }
 
     // --- Canvas ---
@@ -391,6 +492,33 @@
         return values;
     }
 
+    // --- Show results ---
+    function showResults(series, edges, embedding, dim) {
+        var loading = document.getElementById('vg-loading');
+        var output = document.getElementById('vg-output');
+
+        resizeCanvas();
+        drawVG(series, edges);
+
+        // Info line
+        var maxEdges = series.length * (series.length - 1) / 2;
+        var density = maxEdges > 0 ? edges.length / maxEdges : 0;
+        var methodLabel = embedMethod === 'spectral' ? 'spectral' : 'eigenmaps';
+        document.getElementById('vg-info').textContent =
+            series.length + ' nodes, ' +
+            edges.length + ' edges, density ' +
+            density.toFixed(3) + ', ' + methodLabel + ' dim ' + dim;
+
+        // Embedding vector
+        var embStr = '[' + embedding.map(function (v) {
+            return v.toFixed(6);
+        }).join(', ') + ']';
+        document.getElementById('vg-embedding').textContent = embStr;
+
+        loading.classList.remove('visible');
+        output.classList.add('visible');
+    }
+
     // --- Compute ---
     function onCompute() {
         var input = document.getElementById('vg-input');
@@ -400,6 +528,7 @@
 
         var loading = document.getElementById('vg-loading');
         var output = document.getElementById('vg-output');
+
         loading.classList.add('visible');
         output.classList.remove('visible');
 
@@ -413,28 +542,16 @@
             currentSeries = series;
             currentEdges = edges;
 
-            var dim = Math.min(EMBED_DIM, series.length - 1);
-            var embedding = spectralEmbedding(series.length, edges, dim);
+            var dim, embedding;
+            if (embedMethod === 'eigenmaps') {
+                dim = Math.min(EMBED_DIM_EIGENMAPS, series.length - 1);
+                embedding = laplacianEigenmaps(series.length, edges, dim);
+            } else {
+                dim = Math.min(EMBED_DIM_SPECTRAL, series.length - 1);
+                embedding = spectralEmbedding(series.length, edges, dim);
+            }
 
-            resizeCanvas();
-            drawVG(series, edges);
-
-            // Info line
-            var maxEdges = series.length * (series.length - 1) / 2;
-            var density = maxEdges > 0 ? edges.length / maxEdges : 0;
-            document.getElementById('vg-info').textContent =
-                series.length + ' nodes, ' +
-                edges.length + ' edges, density ' +
-                density.toFixed(3) + ', embedding dim ' + dim;
-
-            // Embedding vector
-            var embStr = '[' + embedding.map(function (v) {
-                return v.toFixed(6);
-            }).join(', ') + ']';
-            document.getElementById('vg-embedding').textContent = embStr;
-
-            loading.classList.remove('visible');
-            output.classList.add('visible');
+            showResults(series, edges, embedding, dim);
         }, 30);
     }
 
@@ -486,6 +603,15 @@
                 for (var j = 0; j < typeBtns.length; j++) typeBtns[j].classList.remove('selected');
                 this.classList.add('selected');
                 vgType = this.dataset.vgType;
+            });
+        }
+
+        var embedBtns = api.querySelectorAll('.vg-embed-btn');
+        for (var i = 0; i < embedBtns.length; i++) {
+            embedBtns[i].addEventListener('click', function () {
+                for (var j = 0; j < embedBtns.length; j++) embedBtns[j].classList.remove('selected');
+                this.classList.add('selected');
+                embedMethod = this.dataset.embedMethod;
             });
         }
 

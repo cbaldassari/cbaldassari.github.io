@@ -190,6 +190,40 @@
     color: #fff;
 }
 
+.vg-option-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-right: 4px;
+}
+
+.vg-embed-btn {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: transparent;
+    color: var(--color-text-tertiary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.vg-embed-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.vg-embed-btn.selected {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
 .vg-run-btn {
     font-family: var(--font-mono);
     font-size: 0.82rem;

@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="css/style.css?v=9">
     <link rel="stylesheet" href="css/print.css?v=9" media="print">
     <link rel="stylesheet" href="css/demo-barycenter.css?v=1">
-    <link rel="stylesheet" href="css/api-vg.css?v=2">
+    <link rel="stylesheet" href="css/api-vg.css?v=3">
 </head>
 <body>
 
@@ -760,9 +760,7 @@ embedding = r.json()["embedding"]</div>
                         <h4 class="vg-section-label">Try it</h4>
                         <p class="vg-section-hint">
                             Upload a file, paste values, or load a sample.
-                            This browser demo uses a lightweight spectral
-                            approximation; the REST API runs Diff2Vec.
-                            Max 100 points.
+                            Both methods run entirely in the browser. Max 500 points.
                         </p>
                         <div class="vg-upload-area" id="vg-upload-area">
                             <input type="file" id="vg-file-input" accept=".csv,.tsv,.json" hidden>
@@ -777,8 +775,14 @@ embedding = r.json()["embedding"]</div>
                         <div class="vg-input-group">
                             <textarea class="vg-textarea" id="vg-input" placeholder="e.g. 1.2, 3.4, 2.1, 5.6, ..." rows="3"></textarea>
                             <div class="vg-options">
+                                <span class="vg-option-label">Graph:</span>
                                 <button class="vg-option-btn selected" data-vg-type="natural">Natural VG</button>
                                 <button class="vg-option-btn" data-vg-type="horizontal">Horizontal VG</button>
+                            </div>
+                            <div class="vg-options">
+                                <span class="vg-option-label">Embedding:</span>
+                                <button class="vg-embed-btn selected" data-embed-method="spectral">Spectral</button>
+                                <button class="vg-embed-btn" data-embed-method="eigenmaps">Eigenmaps</button>
                             </div>
                         </div>
                         <button class="vg-run-btn" id="vg-run">Compute</button>
@@ -817,13 +821,20 @@ embedding = r.json()["embedding"]</div>
                     </div>
 
                     <p class="vg-footnote">
-                        Backend: Python / FastAPI.
-                        Libraries:
-                        <a href="https://github.com/CarlosBergillos/ts2vg" target="_blank" rel="noopener">ts2vg</a>,
-                        <a href="https://github.com/benedekrozemberczki/karateclub" target="_blank" rel="noopener">karateclub</a>
-                        (Diff2Vec).
-                        Browser demo: spectral approximation
+                        <strong>Spectral</strong> uses the eigenvalues of the
+                        normalized graph Laplacian as embedding coordinates
                         (dim&nbsp;=&nbsp;min(10,&nbsp;n&minus;1)).
+                        <strong>Eigenmaps</strong> extends this to
+                        <a href="https://doi.org/10.1162/089976603321780317" target="_blank" rel="noopener">Laplacian Eigenmaps</a>
+                        (Belkin &amp; Niyogi, 2003):
+                        eigenvectors of the Laplacian provide per-node coordinates
+                        that are mean-pooled into a graph-level vector
+                        (dim&nbsp;=&nbsp;min(32,&nbsp;n&minus;1)).
+                        Both methods run entirely in the browser via the
+                        Jacobi eigendecomposition; no data leaves the client.
+                        For production workloads the REST API offers
+                        <a href="https://github.com/benedekrozemberczki/diff2vec" target="_blank" rel="noopener">Diff2Vec</a>
+                        (128-dim, up to 10&nbsp;000 points).
                         Related work:
                         <a href="#publications">publications</a>.
                     </p>
@@ -976,7 +987,7 @@ embedding = r.json()["embedding"]</div>
 
     <script src="js/main.js?v=9"></script>
     <script src="js/demo-barycenter.js?v=1"></script>
-    <script src="js/api-vg.js?v=1"></script>
+    <script src="js/api-vg.js?v=3"></script>
     <script>
     // Unregister old service worker and clear caches
     if ('serviceWorker' in navigator) {
