@@ -3,12 +3,12 @@
    ============================================= */
 
 :root {
-    --color-primary: #6366f1;
-    --color-primary-rgb: 99, 102, 241;
-    --color-primary-light: rgba(99, 102, 241, 0.08);
-    --color-primary-glow: rgba(99, 102, 241, 0.15);
-    --color-accent: #06b6d4;
-    --color-accent-rgb: 6, 182, 212;
+    --color-primary: #c9a84c;
+    --color-primary-rgb: 201, 168, 76;
+    --color-primary-light: rgba(201, 168, 76, 0.08);
+    --color-primary-glow: rgba(201, 168, 76, 0.15);
+    --color-accent: #7c9885;
+    --color-accent-rgb: 124, 152, 133;
     --color-text: #0f172a;
     --color-text-secondary: #64748b;
     --color-text-tertiary: #94a3b8;
@@ -19,6 +19,7 @@
     --color-border: #e2e8f0;
     --color-border-light: #f1f5f9;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-display: 'Inter', -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
     --max-width: 1120px;
     --radius: 12px;
@@ -313,14 +314,7 @@ strong {
 }
 
 .hero-grid-pattern {
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
-    background-size: 60px 60px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 100%);
+    display: none;
 }
 
 .hero-content {
@@ -625,6 +619,50 @@ strong {
 
 .section-description a {
     font-weight: 500;
+}
+
+/* =============================================
+   VISUAL GALLERY
+   ============================================= */
+
+.visual-gallery {
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+.visual-piece {
+    margin: 0 0 48px;
+}
+
+.visual-video-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: rgba(255,255,255,0.03);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+}
+
+.visual-video {
+    display: block;
+    width: 100%;
+    border-radius: var(--radius-lg);
+}
+
+.visual-caption {
+    font-size: 0.82rem;
+    color: var(--color-text-tertiary);
+    line-height: 1.7;
+    margin-top: 16px;
+    max-width: 640px;
+}
+
+.visual-caption strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+.visual-caption a {
+    color: var(--color-primary);
 }
 
 /* =============================================
