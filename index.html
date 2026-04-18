@@ -57,7 +57,7 @@
     <link rel="dns-prefetch" href="https://scholar.google.com">
     <link rel="author" type="text/plain" href="humans.txt">
     <script>
-    (function(){var s=localStorage.getItem('theme'),d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(s==='dark'||(!s&&d))document.documentElement.setAttribute('data-theme','dark');})();
+    (function(){var s=localStorage.getItem('theme');if(s==='light')document.documentElement.setAttribute('data-theme','light');})();
     </script>
     <link rel="stylesheet" href="css/fonts.css?v=9">
     <link rel="stylesheet" href="css/style.css?v=9">
@@ -105,182 +105,82 @@
     <!-- Hero -->
     <main>
     <section class="hero" id="home" aria-label="Introduction">
-        <div class="hero-bg">
-            <div class="hero-orb hero-orb-1"></div>
-            <div class="hero-orb hero-orb-2"></div>
-            <div class="hero-grid-pattern"></div>
-        </div>
+        <div class="hero-bg"></div>
         <div class="container hero-content">
             <div class="hero-text">
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    <span>Research &middot; Visual</span>
-                </div>
+                <p class="hero-role">Research & Visual</p>
                 <h1 class="hero-name">
-                    Cristiano<br>
-                    <span class="hero-name-accent">Baldassari</span>
+                    Cristiano<br>Baldassari
                 </h1>
                 <p class="hero-description" id="hero-tagline">
                     The interesting part is always in the noise.
                 </p>
-                <div class="hero-cta">
-                    <a href="#visual" class="btn btn-primary">
-                        <span>View work</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
-                    </a>
-                    <a href="#publications" class="btn btn-ghost">Publications</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="hero-image-frame" id="photo-toggle">
-                    <img src="img/photo-elegant.jpg" alt="Cristiano Baldassari" class="photo-casual">
-                    <img src="img/photo.jpg" alt="Cristiano Baldassari" class="photo-elegant">
-                    <div class="hero-image-ring"></div>
-
-                </div>
-            </div>
-        </div>
-        <div class="hero-scroll">
-            <span>scroll</span>
-            <div class="hero-scroll-line"></div>
-        </div>
-    </section>
-
-    <!-- About -->
-    <section class="section" id="about" aria-label="About">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">01 / About</span>
-                <h2 class="section-title">Background</h2>
-            </div>
-            <div class="about-content about-grid">
-                <div class="about-text">
-                    <p>
-                        I'm a researcher at the <strong>University of Tuscia</strong> in Viterbo,
-                        with a physics degree from <strong>Sapienza</strong> in Rome.
-                        I started out in consulting, working on fraud detection, predictive models
-                        and analytics for banks and media companies, then eventually followed
-                        my curiosity into academia.
-                    </p>
-                    <p>
-                        Today I work on unsupervised methods that connect time series and graph theory,
-                        mostly applied to energy and financial markets.
-                        I like finding structure where it's not obvious there is any.
-                    </p>
-                    <p>
-                        Alongside research, I explore the visual side of mathematics.
-                        The structures I study — graphs, networks, embeddings — carry
-                        an aesthetic quality that is intrinsic, not decorative.
-                        I exhibit this work when the occasion arises, most recently
-                        at <em>Intrecci Nascosti</em>, held at the
-                        Rectorate of Universit&agrave; della Tuscia.
-                    </p>
-                </div>
-                <div class="about-visual">
-                    <svg class="orbit-anim" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Outer ring -->
-                        <circle cx="130" cy="130" r="120" stroke="currentColor" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35" class="orbit-ring orbit-ring-1"/>
-                        <!-- Middle ring -->
-                        <circle cx="130" cy="130" r="85" stroke="currentColor" stroke-width="0.5" stroke-dasharray="3 6" opacity="0.28" class="orbit-ring orbit-ring-2"/>
-                        <!-- Inner ring -->
-                        <circle cx="130" cy="130" r="50" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 5" opacity="0.22" class="orbit-ring orbit-ring-3"/>
-                        <!-- Outer ring nodes (6) -->
-                        <circle r="3" fill="currentColor" opacity="0.5">
-                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z"/>
-                        </circle>
-                        <circle r="2" fill="currentColor" opacity="0.35">
-                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-3.3s"/>
-                        </circle>
-                        <circle r="2.5" fill="currentColor" opacity="0.4">
-                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-6.6s"/>
-                        </circle>
-                        <circle r="1.5" fill="currentColor" opacity="0.3">
-                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-10s"/>
-                        </circle>
-                        <circle r="2" fill="currentColor" opacity="0.35">
-                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-13.3s"/>
-                        </circle>
-                        <circle r="2.5" fill="currentColor" opacity="0.45">
-                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-16.6s"/>
-                        </circle>
-                        <!-- Middle ring nodes (5) -->
-                        <circle r="2.5" fill="currentColor" opacity="0.4">
-                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z"/>
-                        </circle>
-                        <circle r="2" fill="currentColor" opacity="0.3">
-                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z" begin="-2.8s"/>
-                        </circle>
-                        <circle r="3" fill="currentColor" opacity="0.45">
-                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z" begin="-5.6s"/>
-                        </circle>
-                        <circle r="1.5" fill="currentColor" opacity="0.3">
-                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z" begin="-8.4s"/>
-                        </circle>
-                        <circle r="2" fill="currentColor" opacity="0.35">
-                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z" begin="-11.2s"/>
-                        </circle>
-                        <!-- Inner ring nodes (3) -->
-                        <circle r="3.5" fill="currentColor" opacity="0.45">
-                            <animateMotion dur="9s" repeatCount="indefinite" path="M130,80 A50,50 0 1,1 129.9,80 Z"/>
-                        </circle>
-                        <circle r="2" fill="currentColor" opacity="0.35">
-                            <animateMotion dur="9s" repeatCount="indefinite" path="M130,80 A50,50 0 1,1 129.9,80 Z" begin="-3s"/>
-                        </circle>
-                        <circle r="2.5" fill="currentColor" opacity="0.4">
-                            <animateMotion dur="9s" repeatCount="indefinite" path="M130,80 A50,50 0 1,1 129.9,80 Z" begin="-6s"/>
-                        </circle>
-                        <!-- Center dot -->
-                        <circle cx="130" cy="130" r="4" fill="currentColor" opacity="0.25"/>
-                        <!-- Connecting lines -->
-                        <line x1="130" y1="130" x2="130" y2="10" stroke="currentColor" stroke-width="0.3" opacity="0.1"/>
-                        <line x1="130" y1="130" x2="245" y2="165" stroke="currentColor" stroke-width="0.3" opacity="0.1"/>
-                        <line x1="130" y1="130" x2="50" y2="210" stroke="currentColor" stroke-width="0.3" opacity="0.1"/>
-                        <line x1="130" y1="130" x2="15" y2="95" stroke="currentColor" stroke-width="0.3" opacity="0.08"/>
-                        <line x1="130" y1="130" x2="220" y2="40" stroke="currentColor" stroke-width="0.3" opacity="0.08"/>
-                    </svg>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- Visual -->
-    <section class="section section-dark" id="visual" aria-label="Visual work">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">02 / Visual</span>
-                <h2 class="section-title">Where mathematics meets form</h2>
-                <p class="section-description">
-                    Graphs, networks, and embeddings carry an aesthetic that emerges
-                    from their structure — not imposed on it. These pieces begin as
-                    research objects and become something to look at.
-                </p>
-            </div>
+    <section class="section" id="visual" aria-label="Visual work">
+        <div class="visual-gallery">
+            <figure class="visual-piece">
+                <div class="visual-video-wrap">
+                    <video class="visual-video" controls preload="metadata" playsinline
+                           poster="img/grafo_01_poster.jpg">
+                        <source src="img/grafo_01_10x.mp4?v=5" type="video/mp4">
+                    </video>
+                </div>
+                <figcaption class="visual-caption">
+                    <strong>Visibility graph construction</strong> —
+                    Excerpt from <em>Intrecci Nascosti</em>, a visual
+                    exhibition held at the Rectorate of
+                    Universit&agrave; della Tuscia.
+                    The intent was to show how mathematics embeds
+                    tools that exhibit aesthetic qualities
+                    comparable to those found in nature.
+                    <br>
+                    Music: &ldquo;Aquarium&rdquo; by
+                    Kevin MacLeod (incompetech.com),
+                    licensed under
+                    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC&nbsp;BY&nbsp;4.0</a>.
+                </figcaption>
+            </figure>
+        </div>
+    </section>
 
-            <div class="visual-gallery">
-                <figure class="visual-piece">
-                    <div class="visual-video-wrap">
-                        <video class="visual-video" controls preload="metadata" playsinline>
-                            <source src="img/grafo_01_10x.mp4?v=5" type="video/mp4">
-                        </video>
-                    </div>
-                    <figcaption class="visual-caption">
-                        <strong>Visibility graph construction</strong> —
-                        Excerpt from <em>Intrecci Nascosti</em>, a visual
-                        exhibition held at the Rectorate of
-                        Universit&agrave; della Tuscia.
-                        The intent was to show how mathematics embeds
-                        tools that exhibit aesthetic qualities
-                        comparable to those found in nature.
-                        <br>
-                        Music: &ldquo;Aquarium&rdquo; by
-                        Kevin MacLeod (incompetech.com),
-                        licensed under
-                        <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC&nbsp;BY&nbsp;4.0</a>.
-                    </figcaption>
-                </figure>
+    <!-- About -->
+    <section class="section" id="about" aria-label="About">
+        <div class="container about-grid">
+            <div class="about-portrait" id="photo-toggle">
+                <img src="img/photo-elegant.jpg" alt="Cristiano Baldassari" class="photo-casual">
+                <img src="img/photo.jpg" alt="Cristiano Baldassari" class="photo-elegant">
+            </div>
+            <div class="about-text">
+                <h2 class="section-title">Background</h2>
+                <p>
+                    I'm a researcher at the <strong>University of Tuscia</strong> in Viterbo,
+                    with a physics degree from <strong>Sapienza</strong> in Rome.
+                    I started out in consulting, working on fraud detection, predictive models
+                    and analytics for banks and media companies, then eventually followed
+                    my curiosity into academia.
+                </p>
+                <p>
+                    Today I work on unsupervised methods that connect time series and graph theory,
+                    mostly applied to energy and financial markets.
+                    I like finding structure where it's not obvious there is any.
+                </p>
+                <p>
+                    Alongside research, I explore the visual side of mathematics.
+                    The structures I study — graphs, networks, embeddings — carry
+                    an aesthetic quality that is intrinsic, not decorative.
+                    I exhibit this work when the occasion arises, most recently
+                    at <em>Intrecci Nascosti</em>, held at the
+                    Rectorate of Universit&agrave; della Tuscia.
+                </p>
             </div>
         </div>
     </section>
+
+
 
     <!-- Publications -->
     <section class="section" id="publications" aria-label="Publications">
