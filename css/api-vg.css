@@ -247,6 +247,34 @@
     cursor: not-allowed;
 }
 
+/* Video */
+.vg-video-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.03);
+    margin-bottom: 8px;
+}
+
+.vg-video-figure {
+    margin: 0;
+}
+
+.vg-video {
+    display: block;
+    width: 100%;
+    border-radius: var(--radius);
+}
+
+.vg-video-caption {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: var(--color-text-tertiary);
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
 /* Canvas */
 .vg-graph-wrap {
     position: relative;
