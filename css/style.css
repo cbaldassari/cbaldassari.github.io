@@ -864,13 +864,13 @@ strong {
 
 .pub-filter:hover {
     border-color: rgba(255,255,255,0.25);
-    color: #fff;
+    color: var(--color-text);
 }
 
 .pub-filter.active {
     background: var(--color-primary);
     border-color: var(--color-primary);
-    color: #fff;
+    color: var(--color-bg);
 }
 
 .publications-list {
@@ -912,7 +912,7 @@ strong {
 .publication-title {
     font-size: 1.02rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--color-text);
     margin-bottom: 8px;
     line-height: 1.45;
 }
@@ -975,7 +975,7 @@ strong {
 .pub-link:hover {
     background: var(--color-primary);
     border-color: var(--color-primary);
-    color: #fff;
+    color: var(--color-bg);
 }
 
 /* =============================================
@@ -1139,7 +1139,7 @@ strong {
     font-size: 1.1rem;
     font-weight: 650;
     margin-bottom: 4px;
-    color: #fff;
+    color: var(--color-text);
 }
 
 .timeline-content p {
@@ -1315,6 +1315,28 @@ strong {
     background: rgba(245, 242, 237, 0.9);
 }
 
+/* Light theme: fix rgba(255,255,255,...) borders/backgrounds */
+[data-theme="light"] .pub-filter {
+    border-color: var(--color-border);
+}
+
+[data-theme="light"] .pub-filter:hover {
+    border-color: var(--color-text-secondary);
+}
+
+[data-theme="light"] .pub-search {
+    border-color: var(--color-border);
+    background: var(--color-bg-alt);
+}
+
+[data-theme="light"] .publication-item {
+    border-color: var(--color-border);
+}
+
+[data-theme="light"] .visual-caption strong {
+    color: var(--color-text);
+}
+
 /* =============================================
    READING PROGRESS BAR
    ============================================= */
@@ -1428,7 +1450,7 @@ strong {
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 8px;
     background: rgba(255,255,255,0.06);
-    color: #fff;
+    color: var(--color-text);
     font-family: var(--font-body);
     font-size: 0.85rem;
     outline: none;

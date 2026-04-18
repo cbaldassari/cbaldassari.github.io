@@ -28,7 +28,7 @@
 }
 
 .vg-description strong {
-    color: #fff;
+    color: var(--color-text);
 }
 
 .vg-section {
@@ -54,7 +54,7 @@
 }
 
 .vg-section-hint strong {
-    color: #fff;
+    color: var(--color-text);
 }
 
 /* Pipeline diagram */
@@ -92,7 +92,7 @@
 .vg-pipeline-name {
     font-size: 0.82rem;
     font-weight: 600;
-    color: #fff;
+    color: var(--color-text);
 }
 
 .vg-pipeline-arrow {
@@ -142,7 +142,7 @@
     font-family: var(--font-mono);
     font-size: 0.82rem;
     line-height: 1.6;
-    color: #fff;
+    color: var(--color-text);
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: var(--radius);
@@ -187,7 +187,7 @@
 .vg-option-btn.selected {
     background: var(--color-primary);
     border-color: var(--color-primary);
-    color: #fff;
+    color: var(--color-text);
 }
 
 .vg-option-label {
@@ -221,7 +221,7 @@
 .vg-embed-btn.selected {
     background: var(--color-primary);
     border-color: var(--color-primary);
-    color: #fff;
+    color: var(--color-text);
 }
 
 .vg-run-btn {
@@ -230,7 +230,7 @@
     font-weight: 600;
     padding: 10px 24px;
     background: var(--color-primary);
-    color: #fff;
+    color: var(--color-text);
     border: none;
     border-radius: var(--radius);
     cursor: pointer;
@@ -308,7 +308,7 @@
 .vg-embedding-vector {
     font-family: var(--font-mono);
     font-size: 0.8rem;
-    color: #fff;
+    color: var(--color-text);
     line-height: 1.8;
     word-break: break-all;
 }
@@ -385,7 +385,7 @@
 }
 
 .vg-footnote strong {
-    color: #fff;
+    color: var(--color-text);
 }
 
 .vg-footnote a {
@@ -424,12 +424,12 @@
     font-size: 0.72rem;
     text-transform: uppercase;
     background: #10b981;
-    color: #fff;
+    color: var(--color-text);
     letter-spacing: 0.3px;
 }
 
 .vg-url {
-    color: #fff;
+    color: var(--color-text);
     font-weight: 500;
 }
 
@@ -462,7 +462,7 @@
 
 .vg-param-table td:first-child {
     font-family: var(--font-mono);
-    color: #fff;
+    color: var(--color-text);
     font-weight: 500;
     white-space: nowrap;
 }
@@ -483,7 +483,7 @@
     border-radius: 4px;
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.08);
-    color: #fff;
+    color: var(--color-text);
 }
 
 /* File upload area */
