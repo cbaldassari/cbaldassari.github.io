@@ -4,26 +4,22 @@
 
 (function() {
     const saved = localStorage.getItem('theme');
-    if (saved === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved === 'dark' || (!saved && prefersDark)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
     }
 })();
 
 function isDark() {
-    return document.documentElement.getAttribute('data-theme') !== 'light';
+    return document.documentElement.getAttribute('data-theme') === 'dark';
 }
 
 const themeToggle = document.getElementById('theme-toggle');
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        if (isLight) {
-            document.documentElement.removeAttribute('data-theme');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-        }
+        const next = isDark() ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
         // Reset photo state
         setPhotoState(false);
     });

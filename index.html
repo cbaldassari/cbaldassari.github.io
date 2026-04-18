@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cristiano Baldassari</title>
-    <meta name="description" content="Cristiano Baldassari - Researcher and visual artist. Mathematics, complex networks, and the aesthetics of structure.">
+    <meta name="description" content="Personal website of Cristiano Baldassari - Researcher, Università degli Studi della Tuscia">
     <link rel="canonical" href="https://cbaldassari.github.io/">
 
     <!-- Open Graph (Facebook, LinkedIn, WhatsApp, Telegram) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Cristiano Baldassari">
-    <meta property="og:description" content="Researcher and visual artist. Mathematics, complex networks, and the aesthetics of structure.">
+    <meta property="og:description" content="Researcher, Università degli Studi della Tuscia">
     <meta property="og:url" content="https://cbaldassari.github.io/">
     <meta property="og:image" content="https://cbaldassari.github.io/img/photo-elegant.jpg">
     <meta property="og:image:width" content="1024">
@@ -21,7 +21,7 @@
     <!-- Twitter/X Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cristiano Baldassari">
-    <meta name="twitter:description" content="Researcher and visual artist. Mathematics, complex networks, and the aesthetics of structure.">
+    <meta name="twitter:description" content="Researcher, Università degli Studi della Tuscia">
     <meta name="twitter:image" content="https://cbaldassari.github.io/img/photo-elegant.jpg">
 
     <!-- Schema.org JSON-LD -->
@@ -45,7 +45,7 @@
     </script>
 
     <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#c9a84c">
+    <meta name="theme-color" content="#6366f1">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="manifest" href="manifest.json">
     <link rel="alternate" type="application/rss+xml" title="Cristiano Baldassari" href="https://cbaldassari.github.io/feed.xml">
@@ -57,7 +57,7 @@
     <link rel="dns-prefetch" href="https://scholar.google.com">
     <link rel="author" type="text/plain" href="humans.txt">
     <script>
-    (function(){var s=localStorage.getItem('theme');if(s==='light')document.documentElement.setAttribute('data-theme','light');})();
+    (function(){var s=localStorage.getItem('theme'),d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(s==='dark'||(!s&&d))document.documentElement.setAttribute('data-theme','dark');})();
     </script>
     <link rel="stylesheet" href="css/fonts.css?v=9">
     <link rel="stylesheet" href="css/style.css?v=9">
@@ -86,7 +86,6 @@
             </button>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#visual" class="nav-link">Visual</a></li>
                 <li><a href="#publications" class="nav-link">Publications</a></li>
                 <li><a href="#demo" class="nav-link">Demo</a></li>
                 <li><a href="#api" class="nav-link">API</a></li>
@@ -105,88 +104,141 @@
     <!-- Hero -->
     <main>
     <section class="hero" id="home" aria-label="Introduction">
-        <div class="hero-bg"></div>
+        <div class="hero-bg">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+            <div class="hero-grid-pattern"></div>
+        </div>
         <div class="container hero-content">
             <div class="hero-text">
-                <p class="hero-role">Research & Visual</p>
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Researcher</span>
+                </div>
                 <h1 class="hero-name">
-                    Cristiano<br>Baldassari
+                    Cristiano<br>
+                    <span class="hero-name-accent">Baldassari</span>
                 </h1>
                 <p class="hero-description" id="hero-tagline">
                     The interesting part is always in the noise.
                 </p>
+                <div class="hero-cta">
+                    <a href="#publications" class="btn btn-primary">
+                        <span>Explore research</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17l9.2-9.2M17 17V8H8"/></svg>
+                    </a>
+                    <a href="#contact" class="btn btn-ghost">Contact me</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-frame" id="photo-toggle">
+                    <img src="img/photo-elegant.jpg" alt="Cristiano Baldassari" class="photo-casual">
+                    <img src="img/photo.jpg" alt="Cristiano Baldassari" class="photo-elegant">
+                    <div class="hero-image-ring"></div>
+
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- Visual -->
-    <section class="section" id="visual" aria-label="Visual work">
-        <div class="visual-gallery">
-            <figure class="visual-piece">
-                <div class="visual-video-wrap">
-                    <video class="visual-video" controls preload="metadata" playsinline
-                           poster="img/grafo_01_poster.jpg">
-                        <source src="img/grafo_01_10x.mp4?v=5" type="video/mp4">
-                    </video>
-                </div>
-                <figcaption class="visual-caption">
-                    <strong>Visibility graph construction</strong> —
-                    Excerpt from <em>Intrecci Nascosti</em>, a visual
-                    exhibition held at the Rectorate of
-                    Universit&agrave; della Tuscia.
-                    The intent was to show how mathematics embeds
-                    tools that exhibit aesthetic qualities
-                    comparable to those found in nature.
-                    <br>
-                    Music: &ldquo;Aquarium&rdquo; by
-                    Kevin MacLeod (incompetech.com),
-                    licensed under
-                    <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC&nbsp;BY&nbsp;4.0</a>.
-                </figcaption>
-            </figure>
+        <div class="hero-scroll">
+            <span>scroll</span>
+            <div class="hero-scroll-line"></div>
         </div>
     </section>
 
     <!-- About -->
     <section class="section" id="about" aria-label="About">
-        <div class="container about-grid">
-            <div class="about-portrait" id="photo-toggle">
-                <img src="img/photo-elegant.jpg" alt="Cristiano Baldassari" class="photo-casual">
-                <img src="img/photo.jpg" alt="Cristiano Baldassari" class="photo-elegant">
-            </div>
-            <div class="about-text">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">01 / About</span>
                 <h2 class="section-title">Background</h2>
-                <p>
-                    I'm a researcher at the <strong>University of Tuscia</strong> in Viterbo,
-                    with a physics degree from <strong>Sapienza</strong> in Rome.
-                    I started out in consulting, working on fraud detection, predictive models
-                    and analytics for banks and media companies, then eventually followed
-                    my curiosity into academia.
-                </p>
-                <p>
-                    Today I work on unsupervised methods that connect time series and graph theory,
-                    mostly applied to energy and financial markets.
-                    I like finding structure where it's not obvious there is any.
-                </p>
-                <p>
-                    Alongside research, I explore the visual side of mathematics.
-                    The structures I study — graphs, networks, embeddings — carry
-                    an aesthetic quality that is intrinsic, not decorative.
-                    I exhibit this work when the occasion arises, most recently
-                    at <em>Intrecci Nascosti</em>, held at the
-                    Rectorate of Universit&agrave; della Tuscia.
-                </p>
+            </div>
+            <div class="about-content about-grid">
+                <div class="about-text">
+                    <p>
+                        I'm a researcher at the <strong>University of Tuscia</strong> in Viterbo,
+                        with a physics degree from <strong>Sapienza</strong> in Rome.
+                        I started out in consulting, working on fraud detection, predictive models
+                        and analytics for banks and media companies, then eventually followed
+                        my curiosity into academia.
+                    </p>
+                    <p>
+                        Today I work on unsupervised methods that connect time series and graph theory,
+                        mostly applied to energy and financial markets.
+                        I like finding structure where it's not obvious there is any.
+                    </p>
+                </div>
+                <div class="about-visual">
+                    <svg class="orbit-anim" viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Outer ring -->
+                        <circle cx="130" cy="130" r="120" stroke="currentColor" stroke-width="0.5" stroke-dasharray="4 8" opacity="0.35" class="orbit-ring orbit-ring-1"/>
+                        <!-- Middle ring -->
+                        <circle cx="130" cy="130" r="85" stroke="currentColor" stroke-width="0.5" stroke-dasharray="3 6" opacity="0.28" class="orbit-ring orbit-ring-2"/>
+                        <!-- Inner ring -->
+                        <circle cx="130" cy="130" r="50" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 5" opacity="0.22" class="orbit-ring orbit-ring-3"/>
+                        <!-- Outer ring nodes (6) -->
+                        <circle r="3" fill="currentColor" opacity="0.5">
+                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z"/>
+                        </circle>
+                        <circle r="2" fill="currentColor" opacity="0.35">
+                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-3.3s"/>
+                        </circle>
+                        <circle r="2.5" fill="currentColor" opacity="0.4">
+                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-6.6s"/>
+                        </circle>
+                        <circle r="1.5" fill="currentColor" opacity="0.3">
+                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-10s"/>
+                        </circle>
+                        <circle r="2" fill="currentColor" opacity="0.35">
+                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-13.3s"/>
+                        </circle>
+                        <circle r="2.5" fill="currentColor" opacity="0.45">
+                            <animateMotion dur="20s" repeatCount="indefinite" path="M130,10 A120,120 0 1,1 129.9,10 Z" begin="-16.6s"/>
+                        </circle>
+                        <!-- Middle ring nodes (5) -->
+                        <circle r="2.5" fill="currentColor" opacity="0.4">
+                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z"/>
+                        </circle>
+                        <circle r="2" fill="currentColor" opacity="0.3">
+                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z" begin="-2.8s"/>
+                        </circle>
+                        <circle r="3" fill="currentColor" opacity="0.45">
+                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z" begin="-5.6s"/>
+                        </circle>
+                        <circle r="1.5" fill="currentColor" opacity="0.3">
+                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z" begin="-8.4s"/>
+                        </circle>
+                        <circle r="2" fill="currentColor" opacity="0.35">
+                            <animateMotion dur="14s" repeatCount="indefinite" path="M130,45 A85,85 0 1,1 129.9,45 Z" begin="-11.2s"/>
+                        </circle>
+                        <!-- Inner ring nodes (3) -->
+                        <circle r="3.5" fill="currentColor" opacity="0.45">
+                            <animateMotion dur="9s" repeatCount="indefinite" path="M130,80 A50,50 0 1,1 129.9,80 Z"/>
+                        </circle>
+                        <circle r="2" fill="currentColor" opacity="0.35">
+                            <animateMotion dur="9s" repeatCount="indefinite" path="M130,80 A50,50 0 1,1 129.9,80 Z" begin="-3s"/>
+                        </circle>
+                        <circle r="2.5" fill="currentColor" opacity="0.4">
+                            <animateMotion dur="9s" repeatCount="indefinite" path="M130,80 A50,50 0 1,1 129.9,80 Z" begin="-6s"/>
+                        </circle>
+                        <!-- Center dot -->
+                        <circle cx="130" cy="130" r="4" fill="currentColor" opacity="0.25"/>
+                        <!-- Connecting lines -->
+                        <line x1="130" y1="130" x2="130" y2="10" stroke="currentColor" stroke-width="0.3" opacity="0.1"/>
+                        <line x1="130" y1="130" x2="245" y2="165" stroke="currentColor" stroke-width="0.3" opacity="0.1"/>
+                        <line x1="130" y1="130" x2="50" y2="210" stroke="currentColor" stroke-width="0.3" opacity="0.1"/>
+                        <line x1="130" y1="130" x2="15" y2="95" stroke="currentColor" stroke-width="0.3" opacity="0.08"/>
+                        <line x1="130" y1="130" x2="220" y2="40" stroke="currentColor" stroke-width="0.3" opacity="0.08"/>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
 
-
-
     <!-- Publications -->
-    <section class="section" id="publications" aria-label="Publications">
+    <section class="section section-dark" id="publications" aria-label="Publications">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">03 / Research</span>
+                <span class="section-label">02 / Research</span>
                 <h2 class="section-title">Publications</h2>
                 <p class="section-description">
                     <span>Peer-reviewed research in machine learning, complex networks and quantitative finance.</span>
@@ -452,10 +504,10 @@
     </section>
 
     <!-- Demo (draft: not linked in navbar, add nav-link to publish) -->
-    <section class="section section-dark" id="demo" aria-label="Interactive demos">
+    <section class="section" id="demo" aria-label="Interactive demos">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">04 / Interactive</span>
+                <span class="section-label">03 / Interactive</span>
                 <h2 class="section-title">Demo</h2>
             </div>
             <div class="demo-content">
@@ -527,7 +579,7 @@
     <section class="section section-dark" id="api" aria-label="API endpoints">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">05 / Data</span>
+                <span class="section-label">04 / Data</span>
                 <h2 class="section-title">API</h2>
             </div>
             <div class="api-content">
@@ -594,6 +646,30 @@
                             <strong>float64[d]</strong> graph-level vector.
                             Default d&nbsp;=&nbsp;128.
                         </p>
+                    </div>
+
+                    <div class="vg-section">
+                        <h4 class="vg-section-label">Demo</h4>
+                        <figure class="vg-video-figure">
+                            <div class="vg-video-wrap">
+                                <video class="vg-video" controls preload="metadata" playsinline>
+                                    <source src="img/grafo_01_10x.mp4?v=5" type="video/mp4">
+                                </video>
+                            </div>
+                            <figcaption class="vg-video-caption">
+                                Excerpt from <em>Intrecci Nascosti</em>, a visual
+                                exhibition held at the Rectorate of
+                                Universit&agrave; della Tuscia.
+                                The intent was to show how mathematics embeds
+                                tools that exhibit aesthetic qualities
+                                comparable to those found in nature.
+                                <br>
+                                Music: &ldquo;Aquarium&rdquo; by
+                                Kevin MacLeod (incompetech.com),
+                                licensed under
+                                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC&nbsp;BY&nbsp;4.0</a>.
+                            </figcaption>
+                        </figure>
                     </div>
 
                     <div class="vg-section">
@@ -795,7 +871,7 @@ embedding = r.json()["embedding"]</div>
     <section class="section section-dark" id="cv" aria-label="Curriculum Vitae">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">06 / Experience</span>
+                <span class="section-label">05 / Experience</span>
                 <h2 class="section-title">Curriculum Vitae</h2>
             </div>
 
@@ -868,7 +944,7 @@ embedding = r.json()["embedding"]</div>
     <section class="section" id="contact" aria-label="Contact">
         <div class="container contact-container">
             <div class="section-header">
-                <span class="section-label">07 / Connect</span>
+                <span class="section-label">06 / Connect</span>
                 <h2 class="section-title">Let's collaborate</h2>
                 <p class="section-description">Interested in collaborating or just exchanging ideas? Reach out.</p>
             </div>

@@ -167,7 +167,7 @@
 .wb-preset-btn.active {
     background: var(--color-primary);
     border-color: var(--color-primary);
-    color: var(--color-bg);
+    color: #fff;
 }
 
 .wb-preset-description {
