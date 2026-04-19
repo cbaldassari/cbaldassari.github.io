@@ -57,7 +57,7 @@
     <link rel="dns-prefetch" href="https://scholar.google.com">
     <link rel="author" type="text/plain" href="humans.txt">
     <script>
-    (function(){var s=localStorage.getItem('theme'),d=window.matchMedia('(prefers-color-scheme:dark)').matches;if(s==='dark'||(!s&&d))document.documentElement.setAttribute('data-theme','dark');})();
+    document.documentElement.setAttribute('data-theme','dark');
     </script>
     <link rel="stylesheet" href="css/fonts.css?v=9">
     <link rel="stylesheet" href="css/style.css?v=9">
@@ -91,12 +91,7 @@
                 <li><a href="#cv" class="nav-link">CV</a></li>
                 <li><a href="#contact" class="nav-link btn-nav">Get in touch</a></li>
             </ul>
-            <div class="nav-actions">
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                </button>
-            </div>
+            <div class="nav-actions"></div>
         </div>
     </nav>
 
@@ -704,7 +699,6 @@
     <div class="shortcuts-modal" id="shortcuts-modal">
         <div class="shortcuts-panel">
             <h3>Keyboard Shortcuts</h3>
-            <div class="shortcut-row"><span>Toggle dark mode</span><span class="shortcut-key">D</span></div>
             <div class="shortcut-row"><span>Back to top</span><span class="shortcut-key">T</span></div>
             <div class="shortcut-row"><span>Search publications</span><span class="shortcut-key">/</span></div>
             <div class="shortcut-row"><span>Close / Dismiss</span><span class="shortcut-key">Esc</span></div>

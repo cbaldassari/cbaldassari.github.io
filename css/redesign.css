@@ -394,7 +394,8 @@ strong {
 }
 
 .orbit-anim {
-    display: none;
+    color: var(--color-primary);
+    opacity: 0.7;
 }
 
 .about-text {
@@ -709,18 +710,8 @@ strong {
     }
 }
 
-/* --- LIGHT THEME OVERRIDES --- */
+/* Dark mode only — no light theme */
 
-[data-theme="light"] .navbar.scrolled,
-:root:not([data-theme="dark"]) .navbar.scrolled {
-    background: rgba(255, 255, 255, 0.92);
-}
-
-/* Keep original light theme colors working */
-:root:not([data-theme]) {
-    --color-text: #0f172a;
-    --color-text-secondary: #64748b;
-    --color-text-tertiary: #94a3b8;
-    --color-bg: #ffffff;
-    --color-bg-alt: #f8fafc;
+.theme-toggle {
+    display: none !important;
 }
