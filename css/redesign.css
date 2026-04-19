@@ -15,7 +15,7 @@
     --color-accent-rgb: 107, 143, 113;
     --color-text: #f0ece5;
     --color-text-secondary: #b5b0a8;
-    --color-text-tertiary: #7a756e;
+    --color-text-tertiary: #9e9890;
     --color-bg: #08080a;
     --color-bg-alt: #101012;
     --color-bg-dark: #040406;
@@ -35,7 +35,7 @@
 [data-theme="dark"] {
     --color-text: #f0ece5;
     --color-text-secondary: #b5b0a8;
-    --color-text-tertiary: #7a756e;
+    --color-text-tertiary: #9e9890;
     --color-bg: #08080a;
     --color-bg-alt: #101012;
     --color-bg-dark: #040406;
