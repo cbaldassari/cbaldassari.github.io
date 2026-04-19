@@ -753,37 +753,32 @@ strong {
 
 @media (max-width: 768px) {
     /* TikTok-style snap scroll */
-    html {
-        scroll-snap-type: y mandatory;
-        scroll-padding-top: 0;
+    html,
+    body {
+        scroll-snap-type: y proximity;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
     }
 
     .hero,
-    .section {
+    #about,
+    #contact {
         scroll-snap-align: start;
         min-height: 100vh;
         min-height: 100svh;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        box-sizing: border-box;
     }
 
     .hero {
         justify-content: flex-end;
+        padding-bottom: clamp(48px, 8vh, 100px);
     }
 
-    .section-dark {
-        background: var(--color-bg-dark);
-    }
-
-    /* Publications needs scroll inside its snap */
-    #publications {
-        min-height: auto;
-        scroll-snap-align: start;
-    }
-
+    #publications,
     #cv {
-        min-height: auto;
         scroll-snap-align: start;
     }
 
