@@ -7,8 +7,8 @@
 /* --- FOUNDATION --- */
 
 :root {
-    --color-primary: #b8860b;
-    --color-primary-rgb: 184, 134, 11;
+    --color-primary: #d4a025;
+    --color-primary-rgb: 212, 160, 37;
     --color-primary-light: rgba(184, 134, 11, 0.06);
     --color-primary-glow: rgba(184, 134, 11, 0.1);
     --color-accent: #6b8f71;
@@ -736,7 +736,7 @@ strong {
 .back-to-top:focus-visible,
 .back-to-top:active,
 .has-hover .back-to-top:hover {
-    background: #9a7209 !important;
+    background: #b8890e !important;
 }
 
 /* --- SHORTCUTS MODAL --- */
