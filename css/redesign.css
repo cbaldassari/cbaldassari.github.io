@@ -765,21 +765,12 @@ strong {
     }
 
     .hero,
-    .section {
+    #about,
+    #publications,
+    #cv,
+    #contact {
         scroll-snap-align: start;
         scroll-snap-stop: always;
-        min-height: 100vh;
-        min-height: 100svh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        box-sizing: border-box;
-        overflow-y: auto;
-    }
-
-    .hero {
-        justify-content: flex-end;
-        padding-bottom: clamp(48px, 8vh, 100px);
     }
 
     .nav-menu {
