@@ -665,6 +665,14 @@ strong {
     border: none;
 }
 
+.back-to-top:hover,
+.back-to-top:focus,
+.back-to-top:focus-visible,
+.back-to-top:active,
+.has-hover .back-to-top:hover {
+    background: #9a7209 !important;
+}
+
 /* --- SHORTCUTS MODAL --- */
 
 .shortcuts-panel {
