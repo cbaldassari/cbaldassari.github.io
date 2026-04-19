@@ -718,8 +718,17 @@
     <script src="js/main.js?v=9"></script>
     <script src="js/demo-barycenter.js?v=1"></script>
     <script>
-    // Abstract expand/collapse
+    // Wrap authors + venue on one line, and abstract expand/collapse
     document.querySelectorAll('.publication-item').forEach(item => {
+        const authors = item.querySelector('.publication-authors');
+        const venue = item.querySelector('.publication-venue');
+        if (authors && venue) {
+            const meta = document.createElement('div');
+            meta.className = 'pub-meta-line';
+            authors.parentNode.insertBefore(meta, authors);
+            meta.appendChild(authors);
+            meta.appendChild(venue);
+        }
         const abs = item.querySelector('.publication-abstract');
         if (!abs) return;
         const links = item.querySelector('.publication-links');

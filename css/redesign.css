@@ -489,13 +489,35 @@ strong {
     line-height: 1.45;
 }
 
+.publication-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.pub-meta-line {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+}
+
 .publication-authors {
     font-weight: 300;
+    margin-bottom: 0;
 }
 
 .publication-venue {
     font-style: italic;
     font-weight: 300;
+    margin-bottom: 0;
+    color: var(--color-text-tertiary);
+}
+
+.publication-venue::before {
+    content: '—';
+    margin-right: 16px;
+    color: var(--color-border);
 }
 
 .publication-abstract {
