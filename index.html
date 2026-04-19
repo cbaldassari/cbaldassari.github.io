@@ -718,6 +718,22 @@
     <script src="js/main.js?v=9"></script>
     <script src="js/demo-barycenter.js?v=1"></script>
     <script>
+    // Abstract expand/collapse
+    document.querySelectorAll('.publication-item').forEach(item => {
+        const abs = item.querySelector('.publication-abstract');
+        if (!abs) return;
+        const links = item.querySelector('.publication-links');
+        const btn = document.createElement('button');
+        btn.className = 'pub-expand-btn';
+        btn.innerHTML = 'Abstract <span class="arrow">▼</span>';
+        btn.addEventListener('click', () => {
+            abs.classList.toggle('expanded');
+            btn.classList.toggle('active');
+        });
+        links.prepend(btn);
+    });
+    </script>
+    <script>
     // Unregister old service worker and clear caches
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then(regs => {
