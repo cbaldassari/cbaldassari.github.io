@@ -63,7 +63,6 @@
     <link rel="stylesheet" href="css/style.css?v=9">
     <link rel="stylesheet" href="css/print.css?v=9" media="print">
     <link rel="stylesheet" href="css/demo-barycenter.css?v=1">
-    <link rel="stylesheet" href="css/api-vg.css?v=4">
 </head>
 <body>
 
@@ -88,7 +87,6 @@
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#publications" class="nav-link">Publications</a></li>
                 <li><a href="#demo" class="nav-link">Demo</a></li>
-                <li><a href="#api" class="nav-link">API</a></li>
                 <li><a href="#cv" class="nav-link">CV</a></li>
                 <li><a href="#contact" class="nav-link btn-nav">Get in touch</a></li>
             </ul>
@@ -575,303 +573,11 @@
         </div>
     </section>
 
-    <!-- API (draft: not linked in navbar, add nav-link to publish) -->
-    <section class="section section-dark" id="api" aria-label="API endpoints">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">04 / Data</span>
-                <h2 class="section-title">API</h2>
-            </div>
-            <div class="api-content">
-                <div class="vg-api" id="vg-api">
-                    <div class="vg-intro">
-                        <h3 class="vg-title">Visibility Graph Embedding</h3>
-                        <p class="vg-description">
-                            Maps a univariate time series to a fixed-length
-                            <strong>float64</strong> vector via
-                            <a href="https://github.com/CarlosBergillos/ts2vg" target="_blank" rel="noopener">visibility graph</a>
-                            construction and
-                            <a href="https://github.com/benedekrozemberczki/diff2vec" target="_blank" rel="noopener">Diff2Vec</a>
-                            graph embedding. Input from file upload or REST call.
-                            Output usable in any ML pipeline.
-                        </p>
-                    </div>
-
-                    <div class="vg-pipeline">
-                        <div class="vg-pipeline-step">
-                            <span class="vg-pipeline-icon">Input</span>
-                            <span class="vg-pipeline-name">Time Series</span>
-                        </div>
-                        <span class="vg-pipeline-arrow">&rarr;</span>
-                        <div class="vg-pipeline-step">
-                            <span class="vg-pipeline-icon">Transform</span>
-                            <span class="vg-pipeline-name">Visibility Graph</span>
-                        </div>
-                        <span class="vg-pipeline-arrow">&rarr;</span>
-                        <div class="vg-pipeline-step">
-                            <span class="vg-pipeline-icon">Output</span>
-                            <span class="vg-pipeline-name">Embedding</span>
-                        </div>
-                    </div>
-
-                    <div class="vg-section">
-                        <h4 class="vg-section-label">Algorithm</h4>
-                        <p class="vg-section-hint">
-                            <strong>1. Parsing.</strong>
-                            The target column is extracted as
-                            <strong>float64[n]</strong>.
-                            Multi-column files require a
-                            <strong>column</strong> parameter;
-                            single-column files are detected automatically.
-                        </p>
-                        <p class="vg-section-hint">
-                            <strong>2. Visibility graph.</strong>
-                            Each observation becomes a node; edges connect
-                            mutually visible points. Two variants:
-                            <strong>natural</strong> (denser, global patterns)
-                            and <strong>horizontal</strong> (sparser, local
-                            structure). Built with
-                            <a href="https://github.com/CarlosBergillos/ts2vg" target="_blank" rel="noopener">ts2vg</a>.
-                            See
-                            <a href="https://link.springer.com/article/10.1007/s10287-023-00460-4" target="_blank" rel="noopener">Mari &amp; Baldassari (2023)</a>
-                            and
-                            <a href="https://link.springer.com/article/10.1007/s00521-023-08468-2" target="_blank" rel="noopener">Mari &amp; Baldassari (2023b)</a>
-                            for applications to financial time series.
-                        </p>
-                        <p class="vg-section-hint">
-                            <strong>3. Diff2Vec embedding.</strong>
-                            Node embeddings via diffusion trees and skip-gram
-                            (<a href="https://github.com/benedekrozemberczki/diff2vec" target="_blank" rel="noopener">Rozemberczki &amp; Sarkar, 2020</a>),
-                            aggregated by mean into a single
-                            <strong>float64[d]</strong> graph-level vector.
-                            Default d&nbsp;=&nbsp;128.
-                        </p>
-                    </div>
-
-                    <div class="vg-section">
-                        <h4 class="vg-section-label">Demo</h4>
-                        <figure class="vg-video-figure">
-                            <div class="vg-video-wrap">
-                                <video class="vg-video" controls preload="metadata" playsinline>
-                                    <source src="img/grafo_01_10x.mp4?v=5" type="video/mp4">
-                                </video>
-                            </div>
-                            <figcaption class="vg-video-caption">
-                                Excerpt from <em>Intrecci Nascosti</em>, a visual
-                                exhibition held at the Rectorate of
-                                Universit&agrave; della Tuscia.
-                                The intent was to show how mathematics embeds
-                                tools that exhibit aesthetic qualities
-                                comparable to those found in nature.
-                                <br>
-                                Music: &ldquo;Aquarium&rdquo; by
-                                Kevin MacLeod (incompetech.com),
-                                licensed under
-                                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC&nbsp;BY&nbsp;4.0</a>.
-                            </figcaption>
-                        </figure>
-                    </div>
-
-                    <div class="vg-section">
-                        <h4 class="vg-section-label">Usage - Web Interface</h4>
-                        <p class="vg-section-hint">
-                            Upload a data file through the form below or paste
-                            values directly. Supported input formats:
-                        </p>
-                        <div class="vg-format-list">
-                            <span class="vg-format-tag">.csv</span>
-                            <span class="vg-format-tag">.tsv</span>
-                            <span class="vg-format-tag">.json</span>
-                            <span class="vg-format-tag">.xlsx</span>
-                            <span class="vg-format-tag">.parquet</span>
-                        </div>
-                        <p class="vg-section-hint">
-                            For multi-column files, the first numeric column is used.
-                            Single-column files are parsed automatically.
-                            CSV and JSON files are processed client-side;
-                            XLSX and Parquet require the REST endpoint.
-                            The graph visualization and embedding vector are
-                            displayed inline after computation.
-                        </p>
-                    </div>
-
-                    <div class="vg-section">
-                        <h4 class="vg-section-label">Usage - REST API</h4>
-                        <p class="vg-section-hint">
-                            Programmatic access via HTTP. Two endpoints available:
-                            JSON input for inline data, multipart upload for files.
-                        </p>
-
-                        <div class="vg-endpoint">
-                            <span class="vg-method">POST</span>
-                            <span class="vg-url">/api/vg-embedding</span>
-                        </div>
-                        <p class="vg-section-hint">Send values as a JSON array.</p>
-                        <table class="vg-param-table">
-                            <thead>
-                                <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>values</td><td>float[]</td><td>Time series values (required)</td></tr>
-                                <tr><td>method</td><td>string</td><td><code>natural</code> | <code>horizontal</code> (default: <code>natural</code>)</td></tr>
-                                <tr><td>embedding_dim</td><td>int</td><td>Diff2Vec output dimensions (default: 128)</td></tr>
-                                <tr><td>diffusion_number</td><td>int</td><td>Number of Euler diffusions (default: 10)</td></tr>
-                                <tr><td>diffusion_cover</td><td>int</td><td>Nodes per diffusion tree (default: 80)</td></tr>
-                            </tbody>
-                        </table>
-<div class="vg-code-block">curl -X POST /api/vg-embedding \
-  -H "Content-Type: application/json" \
-  -d '{"values":[1.2,3.4,2.1,5.6,4.3],"method":"natural","embedding_dim":128}'</div>
-
-                        <div class="vg-endpoint">
-                            <span class="vg-method">POST</span>
-                            <span class="vg-url">/api/vg-embedding/upload</span>
-                        </div>
-                        <p class="vg-section-hint">Upload a file as <code>multipart/form-data</code>.</p>
-                        <table class="vg-param-table">
-                            <thead>
-                                <tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td>file</td><td>file</td><td>Data file (.csv, .tsv, .json, .xlsx, .parquet)</td></tr>
-                                <tr><td>column</td><td>string</td><td>Target column name (optional for single-column files)</td></tr>
-                                <tr><td>method</td><td>string</td><td><code>natural</code> | <code>horizontal</code> (default: <code>natural</code>)</td></tr>
-                                <tr><td>embedding_dim</td><td>int</td><td>Diff2Vec output dimensions (default: 128)</td></tr>
-                                <tr><td>diffusion_number</td><td>int</td><td>Number of Euler diffusions (default: 10)</td></tr>
-                                <tr><td>diffusion_cover</td><td>int</td><td>Nodes per diffusion tree (default: 80)</td></tr>
-                            </tbody>
-                        </table>
-<div class="vg-code-block">curl -X POST /api/vg-embedding/upload \
-  -F "file=@prices.csv" \
-  -F "column=close" \
-  -F "method=natural" \
-  -F "embedding_dim=128"</div>
-
-                        <p class="vg-section-hint">Response (JSON):</p>
-<div class="vg-code-block">{
-  "embedding": [0.0234, 0.1567, 0.2891, ...],   // float64[embedding_dim]
-  "graph": {
-    "nodes": 80,
-    "edges": 342,
-    "density": 0.108,
-    "adjacency_list": {"0": [1,2,5], "1": [0,2,3], ...}
-  },
-  "method": "natural",
-  "embedding_dim": 128
-}</div>
-
-                        <p class="vg-section-hint">Python example:</p>
-<div class="vg-code-block">import requests
-
-# From JSON array
-r = requests.post("/api/vg-embedding", json={
-    "values": [1.2, 3.4, 2.1, 5.6, 4.3],
-    "method": "natural",
-    "embedding_dim": 128
-})
-embedding = r.json()["embedding"]  # float64[128]
-
-# From file upload
-with open("prices.csv", "rb") as f:
-    r = requests.post("/api/vg-embedding/upload",
-        files={"file": f},
-        data={"column": "close", "method": "natural"}
-    )
-embedding = r.json()["embedding"]</div>
-                    </div>
-
-                    <div class="vg-section">
-                        <h4 class="vg-section-label">Try it</h4>
-                        <p class="vg-section-hint">
-                            Upload a file, paste values, or load a sample.
-                            Both methods run entirely in the browser. Max 500 points.
-                        </p>
-                        <div class="vg-upload-area" id="vg-upload-area">
-                            <input type="file" id="vg-file-input" accept=".csv,.tsv,.json" hidden>
-                            <span class="vg-upload-text">Drop a file here or <label for="vg-file-input" class="vg-upload-link">browse</label></span>
-                            <span class="vg-upload-formats">.csv .tsv .json</span>
-                        </div>
-                        <div class="vg-samples">
-                            <button class="vg-sample-btn" data-sample="sine">Sine wave</button>
-                            <button class="vg-sample-btn" data-sample="random-walk">Random walk</button>
-                            <button class="vg-sample-btn" data-sample="seasonal">Seasonal</button>
-                        </div>
-                        <div class="vg-input-group">
-                            <textarea class="vg-textarea" id="vg-input" placeholder="e.g. 1.2, 3.4, 2.1, 5.6, ..." rows="3"></textarea>
-                            <div class="vg-options">
-                                <span class="vg-option-label">Graph:</span>
-                                <button class="vg-option-btn selected" data-vg-type="natural">Natural VG</button>
-                                <button class="vg-option-btn" data-vg-type="horizontal">Horizontal VG</button>
-                            </div>
-                            <div class="vg-options">
-                                <span class="vg-option-label">Embedding:</span>
-                                <button class="vg-embed-btn selected" data-embed-method="spectral">Spectral</button>
-                                <button class="vg-embed-btn" data-embed-method="eigenmaps">Eigenmaps</button>
-                            </div>
-                        </div>
-                        <button class="vg-run-btn" id="vg-run">Compute</button>
-                    </div>
-
-                    <div class="vg-loading" id="vg-loading">
-                        <div class="vg-spinner"></div>
-                        <span>Computing...</span>
-                    </div>
-
-                    <div class="vg-output" id="vg-output">
-                        <div class="vg-section">
-                            <h4 class="vg-section-label">Visibility Graph</h4>
-                            <p class="vg-section-hint">
-                                Each dot is a node at position (t, value).
-                                Edges connect mutually visible pairs.
-                            </p>
-                            <div class="vg-graph-wrap">
-                                <canvas id="vg-canvas" aria-label="Visibility graph visualization"></canvas>
-                            </div>
-                            <div class="vg-info" id="vg-info"></div>
-                        </div>
-
-                        <div class="vg-section">
-                            <h4 class="vg-section-label">Embedding</h4>
-                            <p class="vg-section-hint">
-                                Fixed-length vector encoding the graph topology.
-                                Usable as feature input for classification,
-                                clustering, or similarity search.
-                            </p>
-                            <div class="vg-embedding-wrap">
-                                <div class="vg-embedding-vector" id="vg-embedding"></div>
-                                <button class="vg-copy-btn" id="vg-copy">Copy vector</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p class="vg-footnote">
-                        <strong>Spectral</strong> uses the eigenvalues of the
-                        normalized graph Laplacian as embedding coordinates
-                        (dim&nbsp;=&nbsp;min(10,&nbsp;n&minus;1)).
-                        <strong>Eigenmaps</strong> extends this to
-                        <a href="https://doi.org/10.1162/089976603321780317" target="_blank" rel="noopener">Laplacian Eigenmaps</a>
-                        (Belkin &amp; Niyogi, 2003):
-                        eigenvectors of the Laplacian provide per-node coordinates
-                        that are mean-pooled into a graph-level vector
-                        (dim&nbsp;=&nbsp;min(32,&nbsp;n&minus;1)).
-                        Both methods run entirely in the browser via the
-                        Jacobi eigendecomposition; no data leaves the client.
-                        For production workloads the REST API offers
-                        <a href="https://github.com/benedekrozemberczki/diff2vec" target="_blank" rel="noopener">Diff2Vec</a>
-                        (128-dim, up to 10&nbsp;000 points).
-                        Related work:
-                        <a href="#publications">publications</a>.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CV -->
     <section class="section section-dark" id="cv" aria-label="Curriculum Vitae">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">05 / Experience</span>
+                <span class="section-label">04 / Experience</span>
                 <h2 class="section-title">Curriculum Vitae</h2>
             </div>
 
@@ -944,7 +650,7 @@ embedding = r.json()["embedding"]</div>
     <section class="section" id="contact" aria-label="Contact">
         <div class="container contact-container">
             <div class="section-header">
-                <span class="section-label">06 / Connect</span>
+                <span class="section-label">05 / Connect</span>
                 <h2 class="section-title">Let's collaborate</h2>
                 <p class="section-description">Interested in collaborating or just exchanging ideas? Reach out.</p>
             </div>
@@ -1013,7 +719,6 @@ embedding = r.json()["embedding"]</div>
             async src="//gc.zgo.at/count.js"></script>
     <script src="js/main.js?v=9"></script>
     <script src="js/demo-barycenter.js?v=1"></script>
-    <script src="js/api-vg.js?v=3"></script>
     <script>
     // Unregister old service worker and clear caches
     if ('serviceWorker' in navigator) {
