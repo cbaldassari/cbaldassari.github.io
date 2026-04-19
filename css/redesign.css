@@ -771,7 +771,7 @@ strong {
     #contact {
         scroll-snap-align: start;
         scroll-snap-stop: always;
-        scroll-margin-top: -20px;
+        scroll-margin-top: -40px;
     }
 
     .nav-menu {
