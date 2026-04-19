@@ -623,7 +623,11 @@ strong {
     background: transparent;
 }
 
-/* --- DEMO --- */
+/* --- DEMO (hidden) --- */
+
+#demo {
+    display: none;
+}
 
 .wb-title {
     font-weight: 400;
