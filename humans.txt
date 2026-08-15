@@ -1,6 +1,6 @@
-/* TEAM */
+﻿/* TEAM */
 Name: Cristiano Baldassari
-Role: Researcher
+Role: Machine learning researcher
 Affiliation: Università degli Studi della Tuscia, Viterbo, Italy
 Site: https://cbaldassari.github.io
 GitHub: https://github.com/cbaldassari
