@@ -323,3 +323,68 @@ if (shortcutsModal) {
         }
     });
 }
+
+// =============================================
+// EASTER EGGS
+// =============================================
+
+(function () {
+    const CANON = 'The interesting part is always in the noise.';
+    const FLIP  = 'The noise is always in the interesting part.';
+    const el = document.getElementById('hero-tagline');
+    if (!el) return;
+
+    // The theme switch is gone, so the old hover-swap can never fire.
+    // Pin the canonical line and let the reader flip it instead.
+    el.textContent = CANON;
+
+    // A quiet affordance: it looks clickable only once you go near it.
+    el.style.cursor = 'pointer';
+    el.style.userSelect = 'none';
+    el.style.transition = 'opacity 0.4s ease, color 0.3s ease';
+    el.setAttribute('role', 'button');
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('aria-label', 'Flip the sentence');
+    el.addEventListener('mouseenter', function () { el.style.color = 'var(--color-primary)'; });
+    el.addEventListener('mouseleave', function () { el.style.color = ''; });
+
+    let flipped = false;
+
+    function flip() {
+        flipped = !flipped;
+        el.style.opacity = '0';
+        setTimeout(function () {
+            el.textContent = flipped ? FLIP : CANON;
+            el.style.opacity = '1';
+        }, 400);
+    }
+
+    el.addEventListener('click', flip);
+    el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
+    });
+
+    // The deeper layer: type the word itself, from anywhere.
+    let buffer = '';
+    document.addEventListener('keydown', function (e) {
+        if (e.metaKey || e.ctrlKey || e.altKey || e.key.length !== 1) return;
+        const tag = (document.activeElement || {}).tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+        buffer = (buffer + e.key.toLowerCase()).slice(-5);
+        if (buffer !== 'noise') return;
+        buffer = '';
+        flip();
+    });
+
+    const mono = 'font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;line-height:1.6;color:#b5b0a8';
+    console.log(
+        '%c\n' +
+        '  cbaldassari.github.io\n\n' +
+        '      B(m1..mn) = argmin  S li W2^2(m, mi)\n' +
+        '                     m     i\n\n' +
+        '  The Wasserstein barycenter: the distribution that sits\n' +
+        '  closest to all the others, in the sense of optimal transport.\n\n' +
+        '  You found the console. The sentence flips: click it, or type noise.\n',
+        mono
+    );
+})();
