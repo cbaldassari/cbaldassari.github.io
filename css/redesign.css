@@ -810,3 +810,15 @@ strong {
 .theme-toggle {
     display: none !important;
 }
+
+/* --- CONTACT: five cards, last row centred --- */
+
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-grid .contact-card {
+    flex: 0 1 168px;
+}
