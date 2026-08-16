@@ -623,16 +623,6 @@ strong {
     background: transparent;
 }
 
-/* --- DEMO (hidden) --- */
-
-#demo {
-    display: none;
-}
-
-.wb-title {
-    font-weight: 400;
-}
-
 /* --- TIMELINE --- */
 
 .timeline::before {

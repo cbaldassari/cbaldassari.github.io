@@ -63,7 +63,6 @@
     <link rel="stylesheet" href="css/fonts.css?v=9">
     <link rel="stylesheet" href="css/style.css?v=9">
     <link rel="stylesheet" href="css/print.css?v=9" media="print">
-    <link rel="stylesheet" href="css/demo-barycenter.css?v=1">
     <link rel="stylesheet" href="css/redesign.css?v=3">
 </head>
 <body>
@@ -495,83 +494,12 @@
         </div>
     </section>
 
-    <!-- Demo (draft: not linked in navbar, add nav-link to publish) -->
-    <section class="section" id="demo" aria-label="Interactive demos">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">03 / Interactive</span>
-                <h2 class="section-title">Demo</h2>
-            </div>
-            <div class="demo-content">
-                <div class="wb-demo" id="wb-demo">
-                    <div class="wb-intro">
-                        <h3 class="wb-title">Wasserstein Barycenter</h3>
-                        <p class="wb-description">
-                            Each curve below represents a possible scenario - for example,
-                            how energy prices might be distributed under different market conditions.
-                            The <strong>Wasserstein barycenter</strong> (the dark curve) is a way
-                            to combine these scenarios into a single representative distribution.
-                        </p>
-                        <p class="wb-description">
-                            What makes it different from a simple average? A pointwise average of
-                            two bell curves with separate peaks produces an artificial dip in the
-                            middle. The Wasserstein barycenter instead "slides" the peaks toward
-                            each other, preserving a natural shape. It does this by finding the
-                            cheapest way to redistribute probability mass between the inputs
-                            - a concept from <strong>optimal transport</strong> theory.
-                        </p>
-                        <p class="wb-description">
-                            The floating particles visualize this process: each one travels from
-                            an input distribution to the barycenter, showing the mass that needs
-                            to be moved. Use the sliders to adjust how much each scenario counts
-                            and watch the barycenter reshape in real time.
-                        </p>
-                    </div>
-                    <div class="wb-section">
-                        <h4 class="wb-section-label">Scenario</h4>
-                        <p class="wb-section-hint">Choose a preset to load a set of synthetic distributions.</p>
-                        <div class="wb-presets">
-                            <button class="wb-preset-btn" data-preset="energy">Energy prices</button>
-                            <button class="wb-preset-btn" data-preset="rates">Interest rates</button>
-                            <button class="wb-preset-btn" data-preset="bimodal">Bimodal mix</button>
-                        </div>
-                        <p class="wb-preset-description" id="wb-preset-desc"></p>
-                    </div>
-
-                    <div class="wb-section">
-                        <h4 class="wb-section-label">Distributions &amp; Barycenter</h4>
-                        <p class="wb-section-hint">Colored curves are the input distributions. The dark curve is the Wasserstein barycenter. Particles show optimal transport paths.</p>
-                        <div class="wb-canvas-wrap">
-                            <canvas id="wb-canvas" aria-label="Wasserstein barycenter visualization"></canvas>
-                        </div>
-                        <div class="wb-legend" id="wb-legend"></div>
-                    </div>
-
-                    <div class="wb-section">
-                        <h4 class="wb-section-label">Weights</h4>
-                        <p class="wb-section-hint">Drag a slider to change how much each distribution influences the barycenter. Weights are automatically normalized.</p>
-                        <div class="wb-controls" id="wb-controls"></div>
-                    </div>
-
-                    <p class="wb-footnote">
-                        Technical note: the barycenter is computed exactly for one-dimensional
-                        distributions by averaging their quantile functions (inverse CDFs),
-                        weighted by the sliders above.
-                        All distributions shown are synthetic - they do not represent
-                        real market data.
-                        See <a href="#publications">publications</a> for the full methodology
-                        applied to real-world datasets.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- CV -->
     <section class="section section-dark" id="cv" aria-label="Curriculum Vitae">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">04 / Experience</span>
+                <span class="section-label">03 / Experience</span>
                 <h2 class="section-title">Curriculum Vitae</h2>
             </div>
 
@@ -644,7 +572,7 @@
     <section class="section" id="contact" aria-label="Contact">
         <div class="container contact-container">
             <div class="section-header">
-                <span class="section-label">05 / Connect</span>
+                <span class="section-label">04 / Connect</span>
                 <h2 class="section-title">Let's collaborate</h2>
                 <p class="section-description">Interested in collaborating or just exchanging ideas? Reach out.</p>
             </div>
@@ -701,7 +629,6 @@
     </button>
 
     <script src="js/main.js?v=10"></script>
-    <script src="js/demo-barycenter.js?v=1"></script>
     <script>
     // Wrap authors + venue on one line, and abstract expand/collapse
     document.querySelectorAll('.publication-item').forEach(item => {
