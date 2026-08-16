@@ -812,3 +812,29 @@ strong {
 .contact-grid .contact-card {
     flex: 0 1 240px;
 }
+
+/* --- ABOUT PORTRAIT (floated in the text) --- */
+
+.about-text {
+    overflow: hidden;
+}
+
+.about-portrait {
+    float: right;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    filter: grayscale(1);
+    margin: 2px 0 8px 28px;
+    shape-outside: inset(0);
+}
+
+@media (max-width: 640px) {
+    .about-portrait {
+        float: none;
+        display: block;
+        width: 130px;
+        height: 130px;
+        margin: 0 0 28px 0;
+    }
+}
